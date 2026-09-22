@@ -1,0 +1,177 @@
+========================================
+  FALLING SUN 2026 - PROJECT SUMMARY
+========================================
+
+PROJECT NAME: FALLING SUN
+TYPE: Under-18 Hackathon Website
+FRAMEWORK: React + TypeScript + Vite + Tailwind CSS + Framer Motion
+DEPLOYED ON: Vercel
+LIVE URL: https://fallingsun2026.vercel.app
+PROJECT NAME ON VERCEL: fallingsun2026
+
+========================================
+  ABOUT THE PROJECT
+========================================
+
+Falling Sun is a premier under-18 hackathon website built with React, TypeScript,
+Vite, Tailwind CSS, and Framer Motion. It features a modern, animated UI with
+three hackathon tracks: Game Development, Web Development, and Robotics.
+
+Key features:
+- Animated hero section with GPU-powered mouse parallax
+- 12H + 12H 2-day format explained in interactive sections
+- Track showcase with horizontal scrolling
+- Schedule timeline
+- Prizes section
+- Team member grid with modal details
+- FAQ accordion
+- Registration portal with countdown lock
+- WhatsApp community integration
+- Responsive design (mobile + desktop)
+- Smooth page transitions and scroll animations
+
+========================================
+  ALL CHANGES MADE
+========================================
+
+1. TEAM SECTION - FULL OVERHAUL
+---------------------------------
+OLD TEAM (11 members):
+  - Mayank, Tanmay, Ayush (Lead Organizers)
+  - Bhavesh (President), Aazim (Director), Manas (Vice Director)
+  - Aarya, Bidisha, Aarav, Arnab, Sampada (Event Incharges)
+
+NEW TEAM (8 members):
+  - Aniket Gaba (Director) - FIRST in row 1
+  - Tanmay Singh (Lead Organizer)
+  - Ayush Sharma (Lead Organizer)
+  - Kartik Patel (Lead Organizer)
+  - Anand (Organizer) - FIRST in row 2
+  - Dev Priya (Organizer)
+  - Aditya Kashyap (Organizer)
+  - Divyansh (Event Incharge)
+
+All 11 old team photos removed. 8 new photos added from
+"C:\Users\tanmay\Downloads\teamfallingsun" folder.
+
+2. TEAM PHOTOS - COMPRESSED
+------------------------------
+All photos compressed using sharp-cli (400x500, JPEG quality 75):
+  - aditya-kashyap.jpeg: 62.35 KB -> 17.60 KB
+  - anand.jpeg: 46.21 KB -> 10.90 KB
+  - aniket-gaba.jpeg: 71.34 KB -> 15.70 KB
+  - ayush-sharma.jpeg: 33.20 KB -> 13.24 KB
+  - dev-priya.jpeg: 46.93 KB -> 19.08 KB
+  - divyansh.jpeg: 172.16 KB -> 36.42 KB
+  - kartik-patel.jpeg: 32.95 KB -> 9.80 KB
+  - tanmay-singh.jpeg: 128.06 KB -> 20.19 KB
+
+3. _card.png FILES REMOVED
+-----------------------------
+All old _card.png variants deleted from public/team/:
+  bhavesh_card.png, aazim_card.png, manas_card.png,
+  aarya_card.png, bidisha_card.png, aarav_card.png,
+  arnab_card.png, sampada_card.png
+
+4. NAMES - UNDERSCORES REPLACED WITH SPACES
+----------------------------------------------
+File: src/config/eventConfig.ts
+  - "Aditya_Kashyap" -> "Aditya Kashyap"
+  - "Ayush_Sharma" -> "Ayush Sharma"
+  - "Kartik_Patel" -> "Kartik Patel"
+  - "Dev_Priya" -> "Dev Priya"
+  - "Tanmay_Singh" -> "Tanmay Singh"
+  - "Aniket_Gaba" -> "Aniket Gaba"
+
+5. TEAM CYFERNODE -> TEAM FALLING SUN
+---------------------------------------
+Replaced "Team Cyfernode" with "Team Falling Sun" in:
+  - src/components/team/HomeTeamSection.tsx (line 31)
+  - src/pages/TeamPage.tsx (line 18)
+  - src/components/team/TeamGrid.tsx (line 18, line 114)
+
+6. WHATSAPP LINK UPDATED
+---------------------------
+OLD: https://chat.whatsapp.com/falling-sun-official-updates
+NEW: https://chat.whatsapp.com/DBIttoQufGgC6yVIiS30Qz
+
+Updated in: src/config/eventConfig.ts
+
+7. INSTAGRAM LINK UPDATED
+----------------------------
+OLD: https://instagram.com/fallingsunhack
+NEW: https://www.instagram.com/fallingsun.in?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==
+
+Updated in: src/config/eventConfig.ts
+
+8. TWITTER & DISCORD REMOVED
+-------------------------------
+Removed from:
+  - src/config/eventConfig.ts (discordUrl, twitterUrl deleted)
+  - src/types/index.ts (discordUrl?, twitterUrl? deleted)
+  - src/components/common/Footer.tsx (Discord & Twitter links removed)
+
+Footer channels now show: WHATSAPP / INSTAGRAM
+
+9. REGISTRATION LOCK MODAL
+-----------------------------
+NEW FILE: src/components/common/RegistrationLockModal.tsx
+
+Features:
+  - Lock icon with countdown to October 5, 2026
+  - Live ticking countdown (DAYS / HRS / MIN / SEC)
+  - Dark gradient header with lock icon
+  - "GOT IT" close button
+  - RegistrationProvider context for global state
+
+Updated in: src/App.tsx (wrapped with RegistrationProvider)
+
+Buttons that now show lock modal on click:
+  - Navbar.tsx (desktop REGISTER + mobile menu REGISTER)
+  - HeroSection.tsx (APPLY NOW)
+  - HomePage.tsx (REGISTER NOW)
+  - AboutPage.tsx (REGISTER NOW)
+  - TracksPage.tsx (ENROLL IN THIS TRACK)
+  - TrackHorizontal.tsx (ENROLL IN THIS TRACK)
+
+RegisterPage.tsx updated:
+  - "APPLICATIONS CURRENTLY OPEN" -> "APPLICATIONS OPENING SOON"
+  - Added full countdown timer section on the page
+  - Removed direct registration form link
+  - Shows WhatsApp join button instead
+
+10. FILES MODIFIED
+--------------------
+  - src/config/eventConfig.ts (team, urls)
+  - src/types/index.ts (removed discord/twitter)
+  - src/App.tsx (added RegistrationProvider)
+  - src/components/common/Navbar.tsx (lock modal)
+  - src/components/common/Footer.tsx (removed twitter/discord, added instagram)
+  - src/components/common/RegistrationLockModal.tsx (NEW)
+  - src/components/home/HeroSection.tsx (lock modal)
+  - src/components/home/HomeTeamSection.tsx (renamed)
+  - src/components/team/TeamGrid.tsx (renamed)
+  - src/components/tracks/TrackHorizontal.tsx (lock modal)
+  - src/pages/HomePage.tsx (lock modal)
+  - src/pages/AboutPage.tsx (lock modal)
+  - src/pages/TracksPage.tsx (lock modal)
+  - src/pages/RegisterPage.tsx (countdown page)
+  - src/pages/TeamPage.tsx (renamed)
+  - public/team/ (8 new photos, all old removed)
+
+========================================
+  HOW TO RUN LOCALLY
+========================================
+
+  npm install
+  npm run dev
+
+  Then open http://localhost:5173
+
+========================================
+  HOW TO DEPLOY
+========================================
+
+  vercel --yes --prod --name fallingsun2026
+
+========================================

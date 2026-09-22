@@ -1,0 +1,222 @@
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { eventConfig } from '../../config/eventConfig';
+import { GameDevVisual, WebDevVisual, RoboticsVisual } from './TrackVisuals';
+import { ArrowLeft, ArrowRight, CheckCircle2, ChevronRight, Sparkles } from 'lucide-react';
+import { MagneticButton } from '../common/MagneticButton';
+import { MaskedReveal, InteractiveRollText } from '../common/AnimatedText';
+import { useRegistrationLock } from '../common/RegistrationLockModal';
+
+export const TrackHorizontal: React.FC = () => {
+  const [activeTrack, setActiveTrack] = useState(0);
+  const { open: openRegLock } = useRegistrationLock();
+  const [hoveredTab, setHoveredTab] = useState<number | null>(null);
+  const track = eventConfig.tracks[activeTrack];
+
+  const visuals = [
+    <GameDevVisual key="gamedev" />,
+    <WebDevVisual key="webdev" />,
+    <RoboticsVisual key="robotics" />,
+  ];
+
+  const nextTrack = () => {
+    setActiveTrack((prev) => (prev + 1) % eventConfig.tracks.length);
+  };
+
+  const prevTrack = () => {
+    setActiveTrack((prev) => (prev - 1 + eventConfig.tracks.length) % eventConfig.tracks.length);
+  };
+
+  // Keyboard arrow listener when user is focused
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight') nextTrack();
+      if (e.key === 'ArrowLeft') prevTrack();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  return (
+    <div className="relative w-full max-w-7xl mx-auto px-6 md:px-12 py-10 select-none">
+      {/* Top Track Switcher Tabs (CyferNode Editorial Pill Design) */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-8 border-b border-black/10">
+        <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-full bg-white border border-black/10 shadow-[0_2px_12px_rgba(0,0,0,0.03)]">
+          {eventConfig.tracks.map((t, idx) => {
+            const isActive = activeTrack === idx;
+            const isTabHovered = hoveredTab === idx;
+            return (
+              <motion.button
+                key={t.id}
+                type="button"
+                onClick={() => setActiveTrack(idx)}
+                onMouseEnter={() => setHoveredTab(idx)}
+                onMouseLeave={() => setHoveredTab(null)}
+                whileTap={{ scale: 0.94 }}
+                data-cursor="link"
+                className={`relative px-5 py-2 rounded-full font-mono text-xs font-bold tracking-wider transition-all duration-300 flex items-center gap-2 ${
+                  isActive
+                    ? 'text-black'
+                    : 'text-ink-muted hover:text-ink hover:bg-black/[0.02]'
+                }`}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="track-tab-pill"
+                    className="absolute inset-0 bg-sun rounded-full shadow-[0_2px_10px_rgba(245,158,11,0.35)]"
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{t.number}</span>
+                <span className="relative z-10 hidden sm:inline">
+                  <InteractiveRollText
+                    text={t.title}
+                    isHovered={isTabHovered || isActive}
+                    activeColor={isActive ? "text-black" : "text-sun"}
+                  />
+                </span>
+              </motion.button>
+            );
+          })}
+        </div>
+
+        {/* Navigation Arrows & Progress */}
+        <div className="flex items-center gap-4">
+          <div className="font-mono text-xs text-ink-muted">
+            <span className="text-sun font-black text-sm">{track.number}</span>
+            <span className="text-black/20 mx-1.5">/</span>
+            <span>03</span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <motion.button
+              type="button"
+              onClick={prevTrack}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.88 }}
+              data-cursor="link"
+              className="w-10 h-10 rounded-full bg-white border border-black/10 flex items-center justify-center text-ink hover:bg-sun hover:text-black hover:border-sun transition-all shadow-sm"
+              aria-label="Previous Track"
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </motion.button>
+            <motion.button
+              type="button"
+              onClick={nextTrack}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.88 }}
+              data-cursor="link"
+              className="w-10 h-10 rounded-full bg-white border border-black/10 flex items-center justify-center text-ink hover:bg-sun hover:text-black hover:border-sun transition-all shadow-sm"
+              aria-label="Next Track"
+            >
+              <ArrowRight className="w-4 h-4" />
+            </motion.button>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Track Interactive Chapter (Seamless Spring Slide Animation) */}
+      <div className="relative pt-12 min-h-[580px]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={track.id}
+            initial={{ opacity: 0, x: 40, filter: 'blur(4px)' }}
+            animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+            exit={{ opacity: 0, x: -40, filter: 'blur(4px)' }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+          >
+            {/* Left Column: Track Intelligence */}
+            <div className="lg:col-span-6 space-y-6">
+              <div className="flex items-center gap-3 font-mono text-xs text-sun-dark font-bold">
+                <span className="font-black text-3xl text-sun">{track.number}</span>
+                <span className="text-black/20">//</span>
+                <span className="tracking-widest uppercase">DISCIPLINE BLUEPRINT</span>
+              </div>
+
+              <h3 className="font-display text-4xl sm:text-5xl font-black text-ink tracking-tight break-word">
+                <MaskedReveal text={track.title} />
+              </h3>
+
+              <div className="font-mono text-xs text-sun-dark font-bold uppercase tracking-wider flex items-center gap-2">
+                <Sparkles className="w-3.5 h-3.5 text-sun" />
+                <span>{track.tagline}</span>
+              </div>
+
+              <p className="text-ink-muted text-base leading-relaxed font-sans font-medium">
+                {track.description}
+              </p>
+
+              {/* Evaluation Focus Areas */}
+              <div className="space-y-3 pt-2">
+                <div className="font-mono text-[11px] text-ink-faint uppercase tracking-widest font-bold">
+                  // BENCHMARK CRITERIA
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {track.focusAreas.map((area, idx) => (
+                    <motion.div
+                      key={area}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      whileHover={{ scale: 1.02, x: 3 }}
+                      transition={{ delay: 0.08 + idx * 0.04 }}
+                      className="flex items-center gap-2.5 text-xs text-ink-soft font-sans font-medium p-2.5 rounded-xl bg-white border border-black/5 shadow-sm cursor-default"
+                    >
+                      <CheckCircle2 className="w-4 h-4 text-sun shrink-0" />
+                      <span>{area}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Suggested Technology Tools */}
+              <div className="space-y-2 pt-2">
+                <div className="font-mono text-[11px] text-ink-faint uppercase tracking-widest font-bold">
+                  // RECOMMENDED ENGINES & STACKS
+                </div>
+                <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
+                  {track.tools.map((tool, idx) => (
+                    <motion.span
+                      key={tool}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      whileHover={{ scale: 1.08, y: -2 }}
+                      transition={{ delay: 0.15 + idx * 0.03 }}
+                      className="px-3 py-1.5 rounded-lg bg-white border border-black/10 text-ink font-semibold shadow-sm hover:border-sun transition-colors cursor-default"
+                    >
+                      {tool}
+                    </motion.span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Action Link with Cascading Animated Button */}
+              <div className="pt-4 flex flex-wrap items-center gap-4">
+                <MagneticButton
+                  onClick={openRegLock}
+                  text="ENROLL IN THIS TRACK"
+                  icon={<ChevronRight className="w-4 h-4" />}
+                  className="px-7 py-3.5 rounded-full font-mono text-xs font-bold tracking-wider"
+                  variant="primary"
+                />
+
+                <MagneticButton
+                  to="/tracks"
+                  text="FULL SPECIFICATION"
+                  icon={<ChevronRight className="w-4 h-4" />}
+                  className="px-6 py-3 rounded-full font-mono text-xs font-bold tracking-wider"
+                  variant="outline"
+                />
+              </div>
+            </div>
+
+            {/* Right Column: Interactive Track Visual */}
+            <div className="lg:col-span-6">
+              {visuals[activeTrack]}
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+};
