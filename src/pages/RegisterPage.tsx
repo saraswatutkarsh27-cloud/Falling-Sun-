@@ -1,33 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { SectionHeader } from '../components/common/SectionHeader';
 import { eventConfig } from '../config/eventConfig';
-import { CheckCircle2, ShieldCheck, MessageSquare, Lock, Clock } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, MessageSquare, Lock, Clock, PartyPopper, ArrowUpRight } from 'lucide-react';
 import { MagneticButton } from '../components/common/MagneticButton';
 import { WhatsAppCTA } from '../components/common/WhatsAppCTA';
 import { MaskedReveal, InteractiveRollText } from '../components/common/AnimatedText';
-
-const REGISTRATION_OPENS_AT = new Date('2026-10-05T00:00:00').getTime();
-
-function getTimeLeft() {
-  const now = Date.now();
-  const diff = Math.max(0, REGISTRATION_OPENS_AT - now);
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
-  const seconds = Math.floor((diff / 1000) % 60);
-  return { days, hours, minutes, seconds, isOpen: diff <= 0 };
-}
+import { useCountdown, CountdownGrid } from '../components/common/CountdownTimer';
+import { isRegistrationOpen, getRegistrationTarget } from '../utils/registration';
 
 export const RegisterPage: React.FC = () => {
   const [selectedTrack, setSelectedTrack] = useState<string>('game-development');
   const [hoveredTrack, setHoveredTrack] = useState<string | null>(null);
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft);
-
-  useEffect(() => {
-    const interval = setInterval(() => setTimeLeft(getTimeLeft()), 1000);
-    return () => clearInterval(interval);
-  }, []);
+  const timeLeft = useCountdown();
+  const registrationOpen = isRegistrationOpen();
+  const opensLabel = new Date(eventConfig.registrationOpensAt).toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
 
   return (
     <div className="pt-32 pb-24 px-6 md:px-12 bg-[#F0EFF4] min-h-screen space-y-24 text-ink">
@@ -50,7 +41,7 @@ export const RegisterPage: React.FC = () => {
             <div className="lg:col-span-7 space-y-8">
               <div className="font-mono text-xs text-sun-dark uppercase tracking-widest font-bold flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-sun animate-ping" />
-                <span>APPLICATIONS OPENING SOON</span>
+                <span>{registrationOpen ? 'APPLICATIONS OPEN NOW' : 'APPLICATIONS OPENING SOON'}</span>
               </div>
 
               <div className="space-y-2 min-w-0">
@@ -65,32 +56,38 @@ export const RegisterPage: React.FC = () => {
               {/* Countdown Timer */}
               <div className="p-6 rounded-2xl bg-gradient-to-br from-ink to-neutral-800 border border-black/10">
                 <div className="flex items-center gap-2 font-mono text-xs text-white/50 tracking-widest uppercase mb-4">
-                  <Lock className="w-3.5 h-3.5 text-sun" />
-                  <span>REGISTRATION COUNTDOWN</span>
+                  {registrationOpen ? (
+                    <PartyPopper className="w-3.5 h-3.5 text-sun" />
+                  ) : (
+                    <Lock className="w-3.5 h-3.5 text-sun" />
+                  )}
+                  <span>{registrationOpen ? 'REGISTRATION LIVE' : 'REGISTRATION COUNTDOWN'}</span>
                 </div>
-                <div className="grid grid-cols-4 gap-3">
-                  {[
-                    { label: 'DAYS', value: timeLeft.days },
-                    { label: 'HRS', value: timeLeft.hours },
-                    { label: 'MIN', value: timeLeft.minutes },
-                    { label: 'SEC', value: timeLeft.seconds },
-                  ].map((item) => (
-                    <div key={item.label} className="text-center">
-                      <div className="bg-white/10 rounded-xl p-3 border border-white/5">
-                        <span className="font-display text-3xl font-black text-white tabular-nums">
-                          {String(item.value).padStart(2, '0')}
-                        </span>
-                      </div>
-                      <span className="font-mono text-[10px] text-white/40 tracking-widest mt-2 block">
-                        {item.label}
-                      </span>
+
+                {registrationOpen ? (
+                  <div className="space-y-4">
+                    <p className="text-white/70 text-sm font-sans">
+                      The application portal is open. Submit your entry — solo creators and teams of up to 4 members.
+                    </p>
+                    <a
+                      href={getRegistrationTarget()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-sun text-black font-mono text-xs font-bold tracking-wider hover:bg-white transition-colors"
+                    >
+                      <span>START REGISTRATION</span>
+                      <ArrowUpRight className="w-4 h-4" />
+                    </a>
+                  </div>
+                ) : (
+                  <>
+                    <CountdownGrid timeLeft={timeLeft} variant="dark" />
+                    <div className="mt-4 flex items-center justify-center gap-2 font-mono text-xs text-white/40">
+                      <Clock className="w-3.5 h-3.5 text-sun" />
+                      <span>{opensLabel.toUpperCase()} • 12:00 AM</span>
                     </div>
-                  ))}
-                </div>
-                <div className="mt-4 flex items-center justify-center gap-2 font-mono text-xs text-white/40">
-                  <Clock className="w-3.5 h-3.5 text-sun" />
-                  <span>OCTOBER 5, 2026 • 12:00 AM</span>
-                </div>
+                  </>
+                )}
               </div>
 
               {/* Event Metadata */}

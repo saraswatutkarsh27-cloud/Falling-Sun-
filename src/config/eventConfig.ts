@@ -14,6 +14,10 @@ export const eventConfig: EventConfig = {
   whatsappUrl: "https://chat.whatsapp.com/DBIttoQufGgC6yVIiS30Qz",
   instagramUrl: "https://www.instagram.com/fallingsun.in?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==",
 
+  // Registration portal state (single source of truth)
+  registrationOpensAt: "2026-10-05T00:00:00",
+  registrationUrl: "",
+
   tracks: [
     {
       id: "game-development",
@@ -216,18 +220,9 @@ export const eventConfig: EventConfig = {
     {
       id: "aniket-gaba",
       name: "Aniket Gaba",
-      role: "Director",
-      bio: "Directing event execution, schedule orchestration, and operational alignment.",
+      role: "Backbone",
+      bio: "The backbone of Falling Sun — keeping the entire event, team, and operations standing tall.",
       image: "/team/aniket-gaba.jpeg",
-      isPlaceholder: false,
-      section: "backbone",
-    },
-    {
-      id: "anshika",
-      name: "Anshika",
-      role: "Associate Director",
-      bio: "Supporting event operations, coordinating teams, and driving strategic execution.",
-      image: "/team/anshika.jpeg",
       isPlaceholder: false,
       section: "backbone",
     },
@@ -282,9 +277,17 @@ export const eventConfig: EventConfig = {
     {
       id: "divyansh",
       name: "Divyansh",
-      role: "Event Incharge",
-      bio: "Managing on-site hardware testbenches, mentoring support, and logistics.",
+      role: "Organizer",
+      bio: "Organizing on-site hardware testbenches, mentoring support, and logistics.",
       image: "/team/divyansh.jpeg",
+      isPlaceholder: false,
+    },
+    {
+      id: "pranab",
+      name: "Pranab",
+      role: "Organizer",
+      bio: "Organizing event operations, participant coordination, and on-ground execution.",
+      image: "/team/pranab.jpeg",
       isPlaceholder: false,
     },
     {

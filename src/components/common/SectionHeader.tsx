@@ -21,7 +21,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
 }) => {
   return (
     <div className={`space-y-4 ${align === 'center' ? 'text-center' : 'text-left'} ${className}`}>
-      {/* Category & Section Number with CyferNode tick mark */}
+      {/* Category & Section Number with Falling Sun tick mark */}
       <div className={`flex items-center gap-3 font-mono text-xs text-ink-muted ${align === 'center' ? 'justify-center' : 'justify-start'}`}>
         <span className="text-sun font-black text-sm">{number}</span>
         <span className="text-black/20">//</span>

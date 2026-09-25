@@ -10,6 +10,7 @@ import { PageTransition } from './components/common/PageTransition';
 import { ScrollHUD } from './components/common/ScrollHUD';
 import { AmbientBackground } from './components/common/AmbientBackground';
 import { RegistrationProvider } from './components/common/RegistrationLockModal';
+import { RouteSeo } from './components/common/RouteSeo';
 
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
@@ -110,6 +111,7 @@ export const App: React.FC = () => {
 
   return (
     <Router>
+      <RouteSeo />
       <RegistrationProvider>
       <div className="relative min-h-screen bg-background text-ink selection:bg-sun selection:text-black">
         {/* Analog Noise Texture */}

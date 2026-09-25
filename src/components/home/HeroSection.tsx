@@ -60,7 +60,7 @@ export const HeroSection: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full flex flex-col justify-between pt-28 pb-12 px-6 md:px-12 overflow-hidden select-none">
+    <div className="relative min-h-screen w-full flex flex-col justify-between pt-24 sm:pt-28 pb-10 px-6 md:px-12 overflow-hidden select-none">
       {/* TECHNICAL RULER TICKER */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
@@ -124,7 +124,7 @@ export const HeroSection: React.FC = () => {
             className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 relative"
           >
             <img
-              src="/logo_transparent.png"
+              src="/logo_transparent.webp"
               alt="Falling Sun Emblem"
               className="w-full h-full object-contain filter drop-shadow-[0_12px_28px_rgba(245,158,11,0.25)]"
             />
@@ -136,7 +136,7 @@ export const HeroSection: React.FC = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.7 }}
-          className="flex items-center gap-3 font-mono text-xs sm:text-sm tracking-[0.25em] text-sun-dark uppercase mb-3 font-bold"
+          className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 font-mono text-[10px] sm:text-xs sm:tracking-[0.25em] text-sun-dark uppercase mb-3 font-bold"
         >
           <span>UNDER 18 HACKATHON</span>
           <span className="text-black/25">•</span>
@@ -145,7 +145,7 @@ export const HeroSection: React.FC = () => {
 
         {/* Editorial Typography: FALLING */}
         <div className="overflow-hidden py-1 w-full max-w-full flex items-center justify-center">
-          <div className="font-display font-black text-[15vw] sm:text-[14vw] md:text-[13vw] leading-[0.85] tracking-tighter text-ink flex items-center justify-center">
+          <div className="font-display font-black text-[12vw] md:text-[min(11.5vw,180px)] leading-[0.85] tracking-tighter text-ink flex items-center justify-center whitespace-nowrap">
             {Array.from('FALLING').map((char, i) => (
               <span key={`falling-${i}`} className="inline-block overflow-hidden align-top">
                 <motion.span
@@ -167,7 +167,7 @@ export const HeroSection: React.FC = () => {
 
         {/* Editorial Typography: SUN (Vibrant Solar Gold with 4K Glow) */}
         <div className="overflow-hidden py-1 w-full flex items-center justify-center">
-          <div className="font-display font-black text-[15vw] sm:text-[14vw] md:text-[13vw] leading-[0.85] tracking-tighter text-sun flex items-center justify-center drop-shadow-[0_6px_35px_rgba(245,158,11,0.3)]">
+          <div className="font-display font-black text-[12vw] md:text-[min(11.5vw,180px)] leading-[0.85] tracking-tighter text-sun flex items-center justify-center whitespace-nowrap [text-shadow:0_6px_35px_rgba(245,158,11,0.35)]">
             {Array.from('SUN').map((char, i) => (
               <span key={`sun-${i}`} className="inline-block overflow-hidden align-top">
                 <motion.span
@@ -193,7 +193,7 @@ export const HeroSection: React.FC = () => {
           animate={{ scaleX: 1 }}
           transition={{ delay: 0.7, duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
           style={{ x: laserTranslateX }}
-          className="w-full max-w-4xl h-[1.5px] bg-gradient-to-r from-transparent via-sun to-transparent my-6"
+          className="w-full max-w-4xl h-[1.5px] bg-gradient-to-r from-transparent via-sun to-transparent my-4 sm:my-6"
         />
 
         {/* Supporting Format Statement & Interactive Quick Stats */}
@@ -215,7 +215,7 @@ export const HeroSection: React.FC = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.95, duration: 0.6 }}
-          className="mt-6 inline-flex flex-wrap items-center gap-3 p-1.5 px-4 rounded-full bg-white/80 border border-black/10 shadow-[0_2px_12px_rgba(0,0,0,0.03)] font-mono text-[11px]"
+          className="mt-6 hidden sm:inline-flex flex-wrap items-center gap-3 p-1.5 px-4 rounded-full bg-white/80 border border-black/10 shadow-[0_2px_12px_rgba(0,0,0,0.03)] font-mono text-[11px]"
         >
           <span className="flex items-center gap-1.5 text-sun-dark font-bold">
             <Zap className="w-3.5 h-3.5 fill-sun text-sun" />
@@ -244,13 +244,13 @@ export const HeroSection: React.FC = () => {
         </div>
 
         {/* Interactive CTAs */}
-        <div className="flex items-center gap-3 mx-auto sm:mx-0">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mx-auto sm:mx-0">
           <MagneticButton
             onClick={scrollToExplore}
             dataCursor="link"
             text="SCROLL TO EXPLORE"
             icon={<ArrowDown className="w-3.5 h-3.5" />}
-            className="px-5 py-2.5 rounded-full font-mono text-[11px] font-bold"
+            className="px-4 sm:px-5 py-2.5 rounded-full font-mono text-[10px] sm:text-[11px] font-bold"
             variant="outline"
           />
 
@@ -260,7 +260,7 @@ export const HeroSection: React.FC = () => {
             dataCursorLabel="JOIN"
             text="APPLY NOW"
             icon={<ArrowUpRight className="w-3.5 h-3.5" />}
-            className="px-5 py-2.5 rounded-full font-mono text-[11px] font-bold"
+            className="px-4 sm:px-5 py-2.5 rounded-full font-mono text-[10px] sm:text-[11px] font-bold"
             variant="primary"
           />
         </div>

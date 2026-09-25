@@ -21,7 +21,7 @@ export const RulerTicker: React.FC<RulerTickerProps> = ({
           {label}
         </span>
 
-        {/* Center Ruler Marks (like CyferNode) */}
+        {/* Center Ruler Marks (like Falling Sun) */}
         <div className="flex items-end gap-1.5 sm:gap-2.5 h-6 mx-auto">
           {ticks.map((t) => {
             const isTall = t % 6 === 0;

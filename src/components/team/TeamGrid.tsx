@@ -1,50 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { eventConfig } from '../../config/eventConfig';
-import { Shield, Sparkles, X, Info, Crown } from 'lucide-react';
+import { Shield, Sparkles, X, Info } from 'lucide-react';
 import { WhatsAppCTA } from '../common/WhatsAppCTA';
 import { TeamMember } from '../../types';
-
-const getRoleBadge = (role: string) => {
-  if (role === 'Lead Organizer') {
-    return (
-      <span className="flex items-center gap-1 font-mono text-[9px] text-flame-dark uppercase font-bold bg-flame/15 border border-flame/20 px-2 py-0.5 rounded">
-        <Sparkles className="w-2.5 h-2.5 text-flame" />
-        <span>LEAD ORG</span>
-      </span>
-    );
-  }
-  if (role === 'Director') {
-    return (
-      <span className="flex items-center gap-1 font-mono text-[9px] text-amber-700 uppercase font-bold bg-amber-100 border border-amber-300 px-2 py-0.5 rounded">
-        <Crown className="w-2.5 h-2.5 text-amber-600" />
-        <span>DIRECTOR</span>
-      </span>
-    );
-  }
-  if (role === 'Vice Director') {
-    return (
-      <span className="flex items-center gap-1 font-mono text-[9px] text-purple-700 uppercase font-bold bg-purple-100 border border-purple-300 px-2 py-0.5 rounded">
-        <Crown className="w-2.5 h-2.5 text-purple-600" />
-        <span>VICE DIRECTOR</span>
-      </span>
-    );
-  }
-  if (role === 'Associate Director') {
-    return (
-      <span className="flex items-center gap-1 font-mono text-[9px] text-purple-700 uppercase font-bold bg-purple-100 border border-purple-300 px-2 py-0.5 rounded">
-        <Crown className="w-2.5 h-2.5 text-purple-600" />
-        <span>ASSOC. DIRECTOR</span>
-      </span>
-    );
-  }
-  return (
-    <span className="flex items-center gap-1 font-mono text-[9px] text-sun-dark uppercase font-bold bg-sun/10 px-2 py-0.5 rounded">
-      <Shield className="w-2.5 h-2.5 text-sun-dark" />
-      <span>CORE</span>
-    </span>
-  );
-};
+import { RoleTag } from './RoleTag';
 
 export const TeamGrid: React.FC = () => {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
@@ -91,6 +51,7 @@ export const TeamGrid: React.FC = () => {
                     className="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-105"
                     loading="lazy"
                   />
+                  <RoleTag role={member.role} />
                   <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-start justify-end p-3">
                     <span className="p-1.5 rounded-full bg-white/80 backdrop-blur-md text-ink text-xs shadow-sm">
                       <Info className="w-3.5 h-3.5" />
@@ -102,7 +63,6 @@ export const TeamGrid: React.FC = () => {
                     <p className="font-display text-sm font-bold text-ink">{member.name}</p>
                     <p className="font-mono text-[11px] text-ink-muted">{member.role}</p>
                   </div>
-                  {getRoleBadge(member.role)}
                 </div>
               </motion.div>
             ))}
@@ -131,6 +91,7 @@ export const TeamGrid: React.FC = () => {
                   className="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-105"
                   loading="lazy"
                 />
+                <RoleTag role={member.role} />
                 <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-start justify-end p-3">
                   <span className="p-1.5 rounded-full bg-white/80 backdrop-blur-md text-ink text-xs shadow-sm">
                     <Info className="w-3.5 h-3.5" />
@@ -142,7 +103,6 @@ export const TeamGrid: React.FC = () => {
                   <p className="font-display text-sm font-bold text-ink">{member.name}</p>
                   <p className="font-mono text-[11px] text-ink-muted">{member.role}</p>
                 </div>
-                {getRoleBadge(member.role)}
               </div>
             </motion.div>
           ))}

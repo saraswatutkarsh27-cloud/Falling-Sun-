@@ -104,7 +104,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
               className="relative w-36 h-36 md:w-44 md:h-44"
             >
               <img
-                src="/logo_transparent.png"
+                src="/logo_transparent.webp"
                 alt="Falling Sun Logo"
                 className="w-full h-full object-contain filter drop-shadow-[0_12px_30px_rgba(245,158,11,0.25)]"
               />

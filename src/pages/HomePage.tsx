@@ -68,7 +68,7 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 05: TEAM CYFERNODE */}
+      {/* 05: TEAM Falling Sun */}
       <HomeTeamSection />
 
       {/* 06: FAQ PREVIEW */}

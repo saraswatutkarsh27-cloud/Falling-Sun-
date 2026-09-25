@@ -109,7 +109,7 @@ export const Navbar: React.FC = () => {
               transition={{ duration: 0.4 }}
             >
               <img
-                src="/logo_transparent.png"
+                src="/logo_transparent.webp"
                 alt="Falling Sun Logo"
                 className="w-full h-full object-contain filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.08)]"
               />

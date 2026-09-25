@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Sparkles, Crown } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { eventConfig } from '../../config/eventConfig';
+import { RoleTag } from './RoleTag';
 
 export const HomeTeamSection: React.FC = () => {
   const backboneMembers = eventConfig.team.filter((m) => m.section === 'backbone');
@@ -71,10 +72,7 @@ export const HomeTeamSection: React.FC = () => {
                       className="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-105"
                       loading="lazy"
                     />
-                    <div className="absolute top-3 left-3 px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-md border border-white/20 font-mono text-[9px] text-sun-light tracking-widest uppercase font-bold z-10 shadow-sm flex items-center gap-1">
-                      <Crown className="w-2.5 h-2.5 text-amber-400" />
-                      <span>{member.role === 'Director' ? 'DIRECTOR' : 'ASSOC. DIRECTOR'}</span>
-                    </div>
+                    <RoleTag role={member.role} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-300 pointer-events-none" />
                   </div>
                 </motion.div>
@@ -103,26 +101,7 @@ export const HomeTeamSection: React.FC = () => {
                     loading="lazy"
                   />
 
-                  {member.role === 'Lead Organizer' && (
-                    <div className="absolute top-3 left-3 px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-md border border-white/20 font-mono text-[9px] text-sun-light tracking-widest uppercase font-bold z-10 shadow-sm flex items-center gap-1">
-                      <Sparkles className="w-2.5 h-2.5 text-sun-light" />
-                      <span>LEAD ORG</span>
-                    </div>
-                  )}
-
-                  {member.role === 'Director' && (
-                    <div className="absolute top-3 left-3 px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-md border border-white/20 font-mono text-[9px] text-amber-300 tracking-widest uppercase font-bold z-10 shadow-sm flex items-center gap-1">
-                      <Crown className="w-2.5 h-2.5 text-amber-400" />
-                      <span>DIRECTOR</span>
-                    </div>
-                  )}
-
-                  {member.role === 'Associate Director' && (
-                    <div className="absolute top-3 left-3 px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-md border border-white/20 font-mono text-[9px] text-purple-300 tracking-widest uppercase font-bold z-10 shadow-sm flex items-center gap-1">
-                      <Crown className="w-2.5 h-2.5 text-purple-400" />
-                      <span>ASSOC. DIRECTOR</span>
-                    </div>
-                  )}
+                  <RoleTag role={member.role} />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-300 pointer-events-none" />
                 </div>

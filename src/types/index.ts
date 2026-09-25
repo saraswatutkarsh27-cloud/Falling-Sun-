@@ -42,7 +42,6 @@ export interface TeamMember {
   image: string;
   socials?: {
     github?: string;
-    twitter?: string;
     linkedin?: string;
   };
   isPlaceholder?: boolean;
@@ -67,6 +66,8 @@ export interface EventConfig {
   coordinates: string;
   whatsappUrl: string;
   instagramUrl?: string;
+  registrationOpensAt: string;
+  registrationUrl?: string;
   tracks: TrackItem[];
   schedule: ScheduleDay[];
   prizes: PrizeItem[];
