@@ -6,8 +6,8 @@ PROJECT NAME: FALLING SUN
 TYPE: Under-18 Hackathon Website
 FRAMEWORK: React + TypeScript + Vite + Tailwind CSS + Framer Motion
 DEPLOYED ON: Vercel
-LIVE URL: https://fallingsun2026.vercel.app
-PROJECT NAME ON VERCEL: fallingsun2026
+LIVE URL: https://falling-sun-2026.vercel.app
+PROJECT NAME ON VERCEL: falling-sun-2026
 
 ========================================
   ABOUT THE PROJECT
