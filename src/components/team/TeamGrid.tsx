@@ -38,6 +38,22 @@ const getRoleBadge = (role: string) => {
       </span>
     );
   }
+  if (role === 'Principal') {
+    return (
+      <span className="flex items-center gap-1 font-mono text-[9px] text-cream uppercase font-bold bg-pink border-2 border-ink px-2 py-0.5">
+        <Crown className="w-2.5 h-2.5 text-current" />
+        <span>PRINCIPAL</span>
+      </span>
+    );
+  }
+  if (role === 'Faculty Advisor') {
+    return (
+      <span className="flex items-center gap-1 font-mono text-[9px] text-cream uppercase font-bold bg-green border-2 border-ink px-2 py-0.5">
+        <Shield className="w-2.5 h-2.5 text-current" />
+        <span>FACULTY ADVISOR</span>
+      </span>
+    );
+  }
   return (
     <span className="flex items-center gap-1 font-mono text-[9px] text-ink uppercase font-bold bg-cream border-2 border-ink px-2 py-0.5">
       <Shield className="w-2.5 h-2.5 text-current" />
@@ -68,6 +84,23 @@ export const TeamGrid: React.FC = () => {
 
         <WhatsAppCTA compact className="shrink-0" />
       </div>
+
+      {/* BACKBONE Section Header */}
+      {backboneMembers.length > 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex items-center gap-4"
+        >
+          <span className="flex items-center gap-2 font-mono text-xs text-reddark tracking-widest uppercase font-bold">
+            <Crown className="w-3.5 h-3.5 text-reddark" />
+            <span>BACKBONE</span>
+          </span>
+          <div className="flex-1 h-px bg-ink/30 border-t-2 border-dashed"></div>
+        </motion.div>
+      )}
 
       {/* BACKBONE Members - Top Row */}
       {backboneMembers.length > 0 && (
@@ -109,6 +142,13 @@ export const TeamGrid: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* Divider */}
+      <div className="flex items-center gap-3">
+        <div className="flex-1 h-px bg-ink/25 border-t-2 border-dashed"></div>
+        <span className="font-mono text-[10px] text-ink-muted uppercase tracking-widest">CREW</span>
+        <div className="flex-1 h-px bg-ink/25 border-t-2 border-dashed"></div>
+      </div>
 
       {/* TEAM SECTION */}
       <div className="space-y-6">

@@ -4,6 +4,13 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight, Sparkles, Crown } from 'lucide-react';
 import { eventConfig } from '../../config/eventConfig';
 
+const backboneLabel: Record<string, string> = {
+  Director: "DIRECTOR",
+  Principal: "PRINCIPAL",
+  "Faculty Advisor": "ADVISOR",
+  "Associate Director": "ASSOC. DIRECTOR",
+};
+
 export const HomeTeamSection: React.FC = () => {
   const backboneMembers = eventConfig.team.filter((m) => m.section === 'backbone');
   const regularMembers = eventConfig.team.filter((m) => m.section !== 'backbone');
@@ -73,7 +80,7 @@ export const HomeTeamSection: React.FC = () => {
                     />
                     <div className="absolute top-3 left-3 px-2 py-0.5 bg-ink border-2 border-cream font-mono text-[9px] text-yellow tracking-widest uppercase font-bold z-10 flex items-center gap-1">
                       <Crown className="w-2.5 h-2.5 text-yellow" />
-                      <span>{member.role === 'Director' ? 'DIRECTOR' : 'ASSOC. DIRECTOR'}</span>
+                      <span>{backboneLabel[member.role] ?? 'MEMBER'}</span>
                     </div>
                   </div>
                 </motion.div>
