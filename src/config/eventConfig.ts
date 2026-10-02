@@ -93,7 +93,7 @@ export const eventConfig: EventConfig = {
       dayNumber: "DAY 01",
       title: "IGNITION & ARCHITECTURE",
       duration: "12 HOURS HACKING",
-      dateLabel: "DATE ANNOUNCEMENT PENDING",
+      dateLabel: "24 OCTOBER 2026 — DAY 01",
       events: [
         {
           time: "TBA",
@@ -143,7 +143,7 @@ export const eventConfig: EventConfig = {
       dayNumber: "DAY 02",
       title: "SYNTHESIS & JUDGING",
       duration: "12 HOURS HACKING",
-      dateLabel: "DATE ANNOUNCEMENT PENDING",
+      dateLabel: "25 OCTOBER 2026 — DAY 02",
       events: [
         {
           time: "TBA",

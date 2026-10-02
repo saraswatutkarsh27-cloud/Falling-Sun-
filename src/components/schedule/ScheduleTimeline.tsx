@@ -32,7 +32,9 @@ export const ScheduleTimeline: React.FC = () => {
               Exact hourly milestones, keynote speakers, and judging blocks will be announced through WhatsApp. The chronological event structure is outlined below.
             </p>
             <p className="font-mono text-xs text-ink font-bold tracking-widest pt-1">
-              {EVENT_DATE_LABEL}
+              <p className="font-mono text-xs text-ink font-bold tracking-widest">{EVENT_DATE_LABEL}</p>
+              <p className="font-mono text-xs text-cream/80">DAY 01 — 24 OCTOBER 2026</p>
+              <p className="font-mono text-xs text-cream/80">DAY 02 — 25 OCTOBER 2026</p>
             </p>
           </div>
         </div>
