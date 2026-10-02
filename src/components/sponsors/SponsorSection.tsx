@@ -4,7 +4,7 @@ import { SectionHeader } from '../common/SectionHeader';
 import { Sparkles, ArrowUpRight, Cpu, Cloud, Terminal, Shield, Mail } from 'lucide-react';
 import { eventConfig } from '../../config/eventConfig';
 
-const SPONSOR_EMAIL = 'fallingsun.delhi@gmail.com';
+const SPONSOR_EMAIL = 'tanmaymicrosoft2010@gmail.com';
 const mailtoLink = `mailto:${SPONSOR_EMAIL}?subject=Sponsorship%20Proposal%20-%20Falling%20Sun%202026&body=Hi%20Falling%20Sun%20Team%2C%0A%0AI%20am%20interested%20in%20sponsoring%20Falling%20Sun%202026.%20Please%20share%20details%20about%20partnership%20opportunities.%0A%0AOrganization%3A%0AContact%20Person%3A%0APhone%3A`;
 
 export const SponsorSection: React.FC = () => {
@@ -193,9 +193,15 @@ export const SponsorSection: React.FC = () => {
                 <ArrowUpRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
               </a>
 
-              <span className="font-mono text-[11px] text-cream/70">
-                {SPONSOR_EMAIL}
-              </span>
+              <div className="font-mono text-[11px] text-cream/70 leading-relaxed">
+                <div>Contact Lead Org</div>
+                <a
+                  href={`mailto:${SPONSOR_EMAIL}`}
+                  className="hover:text-yellow transition-colors"
+                >
+                  {SPONSOR_EMAIL}
+                </a>
+              </div>
 
               <a
                 href={eventConfig.whatsappUrl}
