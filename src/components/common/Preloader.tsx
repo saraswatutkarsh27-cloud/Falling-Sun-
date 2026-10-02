@@ -76,23 +76,20 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
       {!isFinished && (
         <motion.div
           key="preloader-overlay"
-          className="fixed inset-0 z-[99999] flex flex-col justify-between bg-[#F0EFF4] p-8 md:p-14 text-ink overflow-hidden select-none"
+          className="fixed inset-0 z-[99999] flex flex-col justify-between bg-bg p-8 md:p-14 text-cream overflow-hidden select-none"
           initial={{ opacity: 1 }}
           exit={{
             y: '-100%',
             transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] },
           }}
         >
-          {/* Subtle light grid */}
-          <div className="absolute inset-0 tech-grid opacity-50 pointer-events-none" />
-
           {/* Top metadata */}
-          <div className="relative z-10 flex items-center justify-between font-mono text-xs text-ink-muted">
+          <div className="relative z-10 flex items-center justify-between font-mono text-xs text-cream">
             <span className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-sun animate-ping" />
-              <span className="text-ink font-bold tracking-widest uppercase">CALIBRATING SYSTEM</span>
+              <span className="h-2 w-2 bg-yellow animate-ping" />
+              <span className="text-cream font-bold tracking-widest uppercase">CALIBRATING SYSTEM</span>
             </span>
-            <span className="text-ink-muted font-semibold">28°32'N 77°14'E</span>
+            <span className="font-semibold text-ink">28°32'N 77°14'E</span>
           </div>
 
           {/* Center Logo & Emblem */}
@@ -106,7 +103,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
               <img
                 src="/logo_transparent.png"
                 alt="Falling Sun Logo"
-                className="w-full h-full object-contain filter drop-shadow-[0_12px_30px_rgba(245,158,11,0.25)]"
+                className="w-full h-full object-contain"
               />
             </motion.div>
 
@@ -115,10 +112,10 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.1, duration: 0.6 }}
             >
-              <h1 className="font-display text-2xl md:text-3xl font-black tracking-widest text-ink">
+              <h1 className="font-display text-2xl md:text-3xl font-black tracking-widest text-cream">
                 FALLING SUN
               </h1>
-              <p className="mt-1 font-mono text-xs tracking-widest text-ink-muted uppercase font-semibold">
+              <p className="mt-1 font-mono text-xs tracking-widest text-yellow uppercase font-bold">
                 UNDER 18 HACKATHON // 12H + 12H
               </p>
             </motion.div>
@@ -127,19 +124,19 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           {/* Bottom Progress Counter (Guaranteed 01 -> 100) */}
           <div className="relative z-10 space-y-4 max-w-xl mx-auto w-full">
             <div className="flex items-end justify-between font-mono">
-              <div className="text-xs text-ink-muted uppercase tracking-wider font-semibold">
+              <div className="text-xs text-cream uppercase tracking-wider font-bold">
                 INITIALIZING ENVIRONMENT...
               </div>
-              <div className="text-4xl md:text-6xl font-black tracking-tighter text-ink font-mono">
+              <div className="text-4xl md:text-6xl font-black tracking-tighter text-cream font-mono">
                 {String(progress).padStart(2, '0')}{' '}
-                <span className="text-lg md:text-2xl text-ink-faint font-normal">/ 100</span>
+                <span className="text-lg md:text-2xl text-yellow font-normal">/ 100</span>
               </div>
             </div>
 
-            {/* Hairline progress track */}
-            <div className="h-[3px] w-full bg-black/10 overflow-hidden rounded-full">
+            {/* Progress track */}
+            <div className="h-[6px] w-full bg-cream/40 overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-sun via-amber-500 to-flame transition-all duration-75"
+                className="h-full bg-yellow transition-all duration-75"
                 style={{ width: `${progress}%` }}
               />
             </div>

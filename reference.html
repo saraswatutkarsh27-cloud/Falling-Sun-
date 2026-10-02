@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Falling Sun – Under 18 Hackathon</title>
+<link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@900&family=Caveat+Brush&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e8232b;--cream:#f3dfc6;--ink:#1d1210;--blue:#b8161c;--navy:#0b1170;--pink:#f2327f;--lime:#c9c93a;--yellow:#ffc50f;--green:#1f9a4a;--brown:#9a3f12;
+--lines:repeating-linear-gradient(0deg,rgba(243,223,198,.2) 0 1px,transparent 1px 4px);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--cream);font-family:"Space Grotesk",system-ui,sans-serif;font-weight:500;overflow-x:hidden;counter-reset:n}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.15;mix-blend-mode:multiply;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 9 -4.2'/></filter><rect width='300' height='300' filter='url(%23n)'/></svg>")}
+.d{font-family:"Londrina Solid",Impact,sans-serif;font-weight:900;text-transform:uppercase;line-height:.92;margin:0;filter:url(#rough);color:var(--cream)}
+h2.d{font-size:clamp(2.6rem,9vw,5rem);margin-bottom:28px;transform:rotate(-2deg);display:inline-block;background:var(--cream);color:var(--bg);padding:2px 16px}
+.hand{font-family:"Caveat Brush",cursive;color:var(--brown)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 5vw;background:var(--bg);border-bottom:3px solid var(--cream)}
+nav b{font-family:"Londrina Solid";font-weight:900;font-size:1.5rem;letter-spacing:.03em}
+nav .l{display:flex;gap:18px;overflow-x:auto;white-space:nowrap}
+nav a{color:var(--cream);text-decoration:none;font-weight:700;font-size:.9rem;text-transform:uppercase}
+.btn{display:inline-block;background:var(--yellow);color:var(--ink);font-family:"Londrina Solid";font-weight:900;font-size:1.4rem;text-transform:uppercase;text-decoration:none;padding:8px 28px;border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);transform:rotate(-2deg);transition:.15s}
+.btn:hover{transform:rotate(1deg) translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
+section{padding:60px 5vw;max-width:1100px;margin:auto}
+.stamp{position:relative;background:var(--cream);padding:16px;filter:drop-shadow(7px 7px 0 var(--ink))}
+.stamp::after,.card::after{content:"";position:absolute;inset:0;pointer-events:none;background:
+radial-gradient(circle 6px at 50% 0,var(--bg) 97%,#0000) top/16px 12px repeat-x,
+radial-gradient(circle 6px at 50% 100%,var(--bg) 97%,#0000) bottom/16px 12px repeat-x,
+radial-gradient(circle 6px at 0 50%,var(--bg) 97%,#0000) left/12px 16px repeat-y,
+radial-gradient(circle 6px at 100% 50%,var(--bg) 97%,#0000) right/12px 16px repeat-y}
+.hero{max-width:none;padding:22px 3vw 40px;text-align:center}
+.hero .stamp{min-height:calc(100vh - 150px);display:flex;margin-bottom:30px}
+.eng{flex:1;position:relative;overflow:hidden;background:var(--blue) var(--lines);text-align:left;padding:clamp(22px,4vw,56px);display:flex;flex-direction:column;justify-content:space-between;gap:14px}
+.eng>*{position:relative;z-index:2}
+.eng>.st{position:absolute;z-index:1;animation:tw 3s ease-in-out infinite;clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%)}
+@keyframes tw{50%{transform:scale(.7) rotate(15deg)}}
+.tag{align-self:flex-start;background:var(--yellow);color:var(--ink);font-weight:700;letter-spacing:.08em;padding:5px 12px;transform:rotate(-1.5deg);border:2px solid var(--ink)}
+.t{font-size:clamp(3.6rem,15vw,11rem);transform:rotate(-2deg)}
+.t .p{color:var(--yellow);display:block}
+.lead{max-width:520px;font-size:clamp(1.05rem,2vw,1.35rem);font-weight:700;margin:0}
+.skew{display:block;width:100%;max-width:820px;margin:0 auto}
+.skew text{font-family:"Caveat Brush",cursive;fill:var(--brown);font-size:30px;text-anchor:middle}
+.skew .o{stroke:#111;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}
+.den{display:flex;align-items:baseline;gap:10px;font-family:"Londrina Solid";font-weight:900}
+.den b{font-size:clamp(2rem,7vw,3.6rem);-webkit-text-stroke:2px var(--cream);color:transparent}
+.grid,.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:32px}
+.card{position:relative;background:var(--cream);color:var(--ink);padding:26px 22px;counter-increment:n;filter:drop-shadow(6px 6px 0 var(--ink))}
+.card:nth-child(odd){transform:rotate(-1deg)}.card:nth-child(even){transform:rotate(1deg)}
+.card::before{content:"NO. 0" counter(n);display:block;font-family:"Caveat Brush";font-size:1.2rem;color:var(--brown);margin-bottom:4px}
+.card h3{font-family:"Londrina Solid";font-weight:900;text-transform:uppercase;color:var(--bg);margin:0 0 8px;font-size:1.9rem;line-height:1}
+.card p{margin:0}
+.pill{display:inline-block;background:var(--ink);color:var(--cream);font-weight:700;padding:5px 12px;margin:6px 8px 0 0;border:2px solid var(--ink);transform:rotate(-1deg)}
+details{background:var(--cream);color:var(--ink);padding:14px 18px;margin-bottom:14px;border:3px solid var(--ink);border-left:10px solid var(--green);box-shadow:5px 5px 0 var(--ink)}
+summary{cursor:pointer;font-weight:700;font-size:1.05rem}
+.mq{background:var(--yellow);color:var(--ink);font-family:"Londrina Solid";font-weight:900;overflow:hidden;white-space:nowrap;border-block:3px solid var(--ink);padding:8px 0;font-size:1.5rem;transform:rotate(-1deg);margin:10px -2vw}
+.mq span{display:inline-block;animation:m 24s linear infinite}
+@keyframes m{to{transform:translateX(-50%)}}
+footer{background:var(--ink);text-align:center;padding:40px 5vw;font-family:"Londrina Solid";font-weight:900;letter-spacing:.06em;font-size:1.3rem}
+@media(prefers-reduced-motion:reduce){.mq span,.eng>.st{animation:none}html{scroll-behavior:auto}}
+</style></head><body><svg width="0" height="0" style="position:absolute"><filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter></svg>
+<nav><b>FALLING SUN</b><div class="l"><a href="#about">About</a><a href="#tracks">Tracks</a><a href="#schedule">Schedule</a><a href="#prizes">Prizes</a><a href="#faq">FAQ</a></div><a class="btn" style="padding:4px 16px;font-size:1.1rem" href="#register">Register</a></nav>
+<section class="hero"><div class="stamp"><div class="eng"><i class="st" style="left:4%;top:8%;width:40px;height:40px;background:#f3dfc6;animation-delay:0s"></i><i class="st" style="left:90%;top:6%;width:56px;height:56px;background:#c9c93a;animation-delay:0.7s"></i><i class="st" style="left:60%;top:3%;width:26px;height:26px;background:#f3dfc6;animation-delay:1.3s"></i><i class="st" style="left:94%;top:48%;width:34px;height:34px;background:#c9c93a;animation-delay:0.4s"></i><i class="st" style="left:3%;top:52%;width:28px;height:28px;background:#c9c93a;animation-delay:1.8s"></i><span class="tag">UNDER 18 HACKATHON · 12H + 12H · 2 DAYS</span>
+<h1 class="d t">Young builders<br>turn ideas<span class="p">into reality.</span></h1>
+<p class="lead">A two-day hackathon for high school students and self-taught teens. Build a game, a web app or a robot. Zero entry fee.</p>
+<svg class="skew" viewBox="0 0 900 240" role="img" aria-label="Skewer of lemons and chillies reading Falling Sun Under 18"><line class="o" x1="5" y1="130" x2="895" y2="130"/><path class="o" fill="#e4161b" d="M40 60 C56 56 62 70 60 100 C58 150 46 210 34 224 C34 150 28 110 32 80 Z"/><path d="M38 84 L38 130" stroke="#fff" stroke-width="4" stroke-linecap="round"/><path class="o" fill="#ffc50f" d="M70 130 C80 70 170.0 62 270 130 C170.0 198 80 190 70 130Z"/><path d="M86 112 Q88 98 100 92" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/><text x="170" y="142">FALLING</text><path class="o" fill="#1f9a4a" d="M300 60 C316 56 322 70 320 100 C318 150 306 220 294 234 C294 150 288 110 292 80 Z"/><path d="M298 84 L298 130" stroke="#fff" stroke-width="4" stroke-linecap="round"/><path class="o" fill="#e4161b" d="M330 60 C346 56 352 70 350 100 C348 150 336 210 324 224 C324 150 318 110 322 80 Z"/><path d="M328 84 L328 130" stroke="#fff" stroke-width="4" stroke-linecap="round"/><path class="o" fill="#ffc50f" d="M350 130 C360 70 445.0 62 540 130 C445.0 198 360 190 350 130Z"/><path d="M366 112 Q368 98 380 92" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/><text x="445" y="142">SUN</text><path class="o" fill="#1f9a4a" d="M570 60 C586 56 592 70 590 100 C588 150 576 220 564 234 C564 150 558 110 562 80 Z"/><path d="M568 84 L568 130" stroke="#fff" stroke-width="4" stroke-linecap="round"/><path class="o" fill="#e4161b" d="M600 60 C616 56 622 70 620 100 C618 150 606 210 594 224 C594 150 588 110 592 80 Z"/><path d="M598 84 L598 130" stroke="#fff" stroke-width="4" stroke-linecap="round"/><path class="o" fill="#ffc50f" d="M630 130 C640 70 745.0 62 860 130 C745.0 198 640 190 630 130Z"/><path d="M646 112 Q648 98 660 92" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/><text x="745" y="142">U18</text></svg>
+<div class="den"><b>12H+12H</b><span>2 DAYS</span></div></div></div>
+<a class="btn" href="#register">Register</a></section>
+
+<div class="mq"><span>GAME DEV ✦ WEB DEV ✦ ROBOTICS ✦ ZERO ENTRY FEE ✦ 12H + 12H ✦ BUILD SOMETHING WORTH REMEMBERING ✦ GAME DEV ✦ WEB DEV ✦ ROBOTICS ✦ ZERO ENTRY FEE ✦ 12H + 12H ✦ BUILD SOMETHING WORTH REMEMBERING ✦ </span></div>
+
+<section id="about"><h2 class="d">About</h2>
+<p style="font-size:1.15rem;max-width:700px">Falling Sun is a two-day under-18 hackathon where students build real, working prototypes. No hollow slide decks and no vaporware. Physics engines in Godot, real-time websites in React, or sensor circuits on an ESP32, we want things that actually run.</p>
+<p style="margin-top:18px"><span class="pill">Solo or up to 4 members</span><span class="pill">All skill levels welcome</span><span class="pill">Bring your own hardware</span></p></section>
+
+<section id="tracks"><h2 class="d">Three tracks</h2>
+<div class="grid">
+<div class="card"><h3>Game Development</h3><p>Build something playable: mechanics, procedural generation, physics or atmosphere. Godot, Unity, Unreal, Phaser, Raylib and more.</p></div>
+<div class="card"><h3>Web Development</h3><p>Build real web applications that work under pressure, from real-time apps to full-stack tools.</p></div>
+<div class="card"><h3>Robotics</h3><p>Microcontrollers, sensors and servos. Build a machine that does something in the physical world.</p></div>
+</div></section>
+
+<section id="schedule"><h2 class="d">Schedule</h2>
+<div class="cols">
+<div class="card"><h3>Day 1 · First 12 hours</h3><p><b>The build window.</b> Get the problem statements, set up your workstation and commit your first code. Mentors review your design and hardware pinouts. Midpoint repository snapshot, then overnight rest.</p></div>
+<div class="card"><h3>Day 2 · Final 12 hours</h3><p><b>Polish and showcase.</b> Push features, fix bugs and rehearse your demo. Hard code freeze, then stage pitches to the judges, followed by awards.</p></div>
+</div>
+<p style="margin-top:22px">Exact dates and timings will be announced on WhatsApp.</p></section>
+
+<section id="prizes"><h2 class="d">Prizes</h2>
+<p style="font-size:1.15rem;max-width:620px">Prizes and sponsors will be revealed soon. Updates go out on the official WhatsApp channel.</p></section>
+
+<section id="faq"><h2 class="d">FAQ</h2>
+<details><summary>What is Falling Sun?</summary><p>An under-18 hackathon where young builders spend 2 days (12 hours + 12 hours) making real projects in Game Development, Web Development and Robotics.</p></details>
+<details><summary>Can I join solo or in a team?</summary><p>Both. Teams can have up to 4 members.</p></details>
+<details><summary>I have never been to a hackathon. Should I still join?</summary><p>Yes. All skill levels are welcome and mentors will be around.</p></details>
+<details><summary>What should I bring?</summary><p>Your laptop and any hardware you need. Bring your own hardware for the robotics track.</p></details>
+<details><summary>When are the dates and prizes announced?</summary><p>On the official WhatsApp channel, as soon as they are confirmed.</p></details>
+</section>
+
+<section id="register" style="text-align:center"><h2 class="d">Ready to build?</h2><p style="margin-bottom:26px">Reserve your spot before applications fill up.</p><a class="btn" href="https://www.fallingsun.in">Register</a></section>
+<footer>FALLING SUN · UNDER 18 HACKATHON · 2026</footer>
+</body></html>

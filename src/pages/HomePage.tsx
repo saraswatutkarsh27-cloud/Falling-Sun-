@@ -17,7 +17,7 @@ import { useRegistrationLock } from '../components/common/RegistrationLockModal'
 export const HomePage: React.FC = () => {
   const { open: openRegLock } = useRegistrationLock();
   return (
-    <div className="space-y-0 bg-[#F0EFF4] text-ink">
+    <div className="space-y-0 bg-bg text-cream">
       {/* 00: HERO */}
       <HeroSection />
 
@@ -31,7 +31,7 @@ export const HomePage: React.FC = () => {
       <Format1212 />
 
       {/* 03: TRACKS EXPERIENCE */}
-      <section className="relative py-20 bg-[#F0EFF4] border-t border-black/10">
+      <section className="relative py-20 bg-bg">
         <div className="max-w-7xl mx-auto px-6 md:px-12 mb-12">
           <SectionHeader
             number="03"
@@ -59,7 +59,7 @@ export const HomePage: React.FC = () => {
       <SponsorSection />
 
       {/* 05: WHATSAPP ANNOUNCEMENT CALLOUT */}
-      <section className="py-24 px-6 md:px-12 bg-[#EAE9EF] border-t border-black/10">
+      <section className="py-24 px-6 md:px-12 bg-reddark border-y-[3px] border-cream">
         <div className="max-w-7xl mx-auto">
           <WhatsAppCTA
             title="ALL UPDATES LIVE ON WHATSAPP"
@@ -72,7 +72,7 @@ export const HomePage: React.FC = () => {
       <HomeTeamSection />
 
       {/* 06: FAQ PREVIEW */}
-      <section className="py-28 px-6 md:px-12 bg-[#F0EFF4] border-t border-black/10">
+      <section className="py-28 px-6 md:px-12 bg-bg">
         <div className="max-w-7xl mx-auto space-y-16">
           <SectionHeader
             number="06"
@@ -86,7 +86,7 @@ export const HomePage: React.FC = () => {
               to="/faq"
               text="VIEW ALL FAQS & GUIDELINES"
               icon={<ArrowUpRight className="w-4 h-4" />}
-              className="px-6 py-3 rounded-full font-mono text-xs font-bold tracking-wider"
+              className="px-6 py-3 font-mono text-xs font-bold tracking-wider"
               variant="outline"
             />
           </div>
@@ -94,17 +94,15 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 07: FINAL CALL TO ACTION (Light Theme) */}
-      <section className="py-32 px-6 md:px-12 bg-white border-t border-black/10 text-center relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-sun/15 rounded-full blur-[140px] pointer-events-none" />
-
+      <section className="py-32 px-6 md:px-12 bg-cream border-t-[3px] border-ink text-center relative overflow-hidden text-ink">
         <div className="relative z-10 max-w-4xl mx-auto space-y-8">
-          <div className="font-mono text-xs text-sun-dark font-bold tracking-widest uppercase">
+          <div className="text-xs text-brown font-bold tracking-widest uppercase">
             // JOIN THE COHORT
           </div>
 
           <h2 className="font-display text-4xl sm:text-6xl md:text-7xl font-black text-ink tracking-tight">
             ARE YOU READY<br />
-            <span className="text-sun">TO BUILD?</span>
+            <span className="text-bg">TO BUILD?</span>
           </h2>
 
           <p className="text-ink-muted text-base md:text-lg max-w-xl mx-auto font-sans leading-relaxed font-medium">
@@ -128,8 +126,8 @@ export const HomePage: React.FC = () => {
               rel="noopener noreferrer"
               text="WHATSAPP COMMUNITY"
               icon={<ArrowUpRight className="w-4 h-4" />}
-              className="px-8 py-4 rounded-full font-mono text-xs font-bold tracking-wider"
-              variant="outline"
+              className="px-8 py-4 font-mono text-xs font-bold tracking-wider"
+              variant="dark"
             />
           </div>
         </div>

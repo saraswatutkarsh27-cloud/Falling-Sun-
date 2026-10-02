@@ -78,25 +78,31 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
   };
 
   let variantStyles = '';
-  let rollAccentColor = 'text-sun';
+  let rollAccentColor = 'text-brown';
 
   if (variant === 'primary') {
     variantStyles =
-      'bg-ink text-white hover:bg-sun hover:text-black border border-ink shadow-[0_4px_16px_rgba(0,0,0,0.12)] hover:shadow-[0_8px_28px_rgba(245,158,11,0.35)]';
-    rollAccentColor = 'text-black group-hover:text-black';
+      'bg-yellow text-ink border-2 border-ink shadow-btn hover:shadow-[7px_7px_0_#1d1210] transition-shadow';
+    rollAccentColor = 'text-brown';
   } else if (variant === 'secondary') {
     variantStyles =
-      'bg-sun text-black hover:bg-ink hover:text-white border border-sun shadow-[0_4px_16px_rgba(245,158,11,0.25)] hover:shadow-[0_8px_28px_rgba(0,0,0,0.25)]';
-    rollAccentColor = 'text-white';
+      'bg-cream text-ink border-2 border-ink shadow-btn hover:shadow-[7px_7px_0_#1d1210] transition-shadow';
+    rollAccentColor = 'text-brown';
   } else if (variant === 'outline') {
     variantStyles =
-      'bg-white text-ink border border-black/15 hover:border-sun hover:bg-sun/10 shadow-sm';
-    rollAccentColor = 'text-sun-dark';
+      'bg-transparent text-cream border-2 border-cream hover:bg-cream hover:text-ink shadow-btn hover:shadow-[7px_7px_0_#1d1210] transition-colors';
+    rollAccentColor = 'text-ink';
   } else if (variant === 'dark') {
     variantStyles =
-      'bg-black text-white hover:bg-sun hover:text-black border border-black shadow-sm';
-    rollAccentColor = 'text-black';
+      'bg-ink text-cream border-2 border-ink shadow-btn hover:shadow-[7px_7px_0_#1d1210] transition-shadow';
+    rollAccentColor = 'text-yellow';
   }
+
+  // Square off any rounded utility passed in — reference buttons are hard-edged
+  const cleanedClassName = className.replace(
+    /\brounded-(full|xl|2xl|3xl|lg|md|sm)\b/g,
+    'rounded-none'
+  );
 
   const displayText = text || (typeof children === 'string' ? children : '');
   const chars = displayText ? Array.from(displayText) : [];
@@ -110,27 +116,10 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
       onClick={handleClick}
       style={{ x: smoothX, y: smoothY }}
       whileTap={{ scale: 0.94 }}
-      className={`group relative inline-flex items-center justify-center gap-2.5 overflow-hidden select-none cursor-pointer transition-colors duration-200 will-change-transform transform-gpu ${variantStyles} ${className}`}
+      className={`group relative inline-flex items-center justify-center gap-2.5 overflow-hidden select-none cursor-pointer will-change-transform transform-gpu ${variantStyles} ${cleanedClassName}`}
       data-cursor={dataCursor}
       data-cursor-label={dataCursorLabel}
     >
-      {/* Animated Glowing Solar Border Sweep */}
-      <motion.div
-        className="absolute inset-0 rounded-full opacity-0 pointer-events-none bg-gradient-to-r from-sun via-amber-400 to-flame blur-[6px]"
-        animate={{
-          opacity: isHovered ? 0.6 : 0,
-        }}
-        transition={{ duration: 0.3 }}
-      />
-
-      {/* Shimmer Light Streak on Hover */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/35 to-transparent pointer-events-none -skew-x-12"
-        initial={{ x: '-160%' }}
-        animate={{ x: isHovered ? '160%' : '-160%' }}
-        transition={{ duration: 0.6, ease: 'easeInOut' }}
-      />
-
       {/* Click Ripple Waves */}
       <AnimatePresence>
         {ripples.map((rip) => (
@@ -141,7 +130,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
             style={{ left: rip.x, top: rip.y }}
-            className="absolute -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-sun/40 rounded-full pointer-events-none"
+            className="absolute -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-yellow/50 pointer-events-none"
           />
         ))}
       </AnimatePresence>
@@ -149,20 +138,15 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
       {/* Beacon Dot indicator */}
       <span className="relative flex h-1.5 w-1.5 shrink-0">
         <span
-          className={`animate-ping absolute inline-flex h-full w-full rounded-full transition-opacity duration-200 ${
-            isHovered ? 'bg-sun opacity-100' : 'opacity-0'
-          }`}
-        />
-        <span
-          className={`relative inline-flex rounded-full h-1.5 w-1.5 transition-colors duration-200 ${
-            isHovered ? 'bg-sun' : 'bg-current opacity-40'
+          className={`absolute inline-flex h-full w-full transition-opacity duration-200 bg-current ${
+            isHovered ? 'opacity-100' : 'opacity-0'
           }`}
         />
       </span>
 
       {/* Dynamic Text Roll or Custom Children */}
       {chars.length > 0 ? (
-        <span className="relative inline-flex items-center overflow-hidden font-mono text-xs font-black uppercase leading-none py-0.5 tracking-wider">
+        <span className="relative inline-flex items-center overflow-hidden font-display text-sm uppercase leading-none py-0.5 tracking-wide">
           {chars.map((char, index) => {
             if (char === ' ') {
               return (

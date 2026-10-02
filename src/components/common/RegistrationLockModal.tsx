@@ -48,28 +48,28 @@ const RegistrationLockModal: React.FC<{ show: boolean; onClose: () => void }> = 
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/70"
           />
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 30 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-10 w-full max-w-md bg-white rounded-3xl overflow-hidden shadow-2xl border border-black/10"
+            className="relative z-10 w-full max-w-md bg-cream border-2 border-ink shadow-card overflow-hidden"
           >
             {/* Header */}
-            <div className="relative bg-gradient-to-br from-ink to-neutral-800 p-8 text-center">
+            <div className="relative bg-ink p-8 text-center">
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-colors"
+                className="absolute top-4 right-4 p-2 bg-cream/10 hover:bg-cream/20 text-cream/70 hover:text-cream transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
-              <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-sun/20 flex items-center justify-center">
-                <Lock className="w-8 h-8 text-sun" />
+              <div className="w-16 h-16 mx-auto mb-4 bg-yellow flex items-center justify-center">
+                <Lock className="w-8 h-8 text-ink" />
               </div>
-              <h3 className="font-display text-2xl font-black text-white mb-1">REGISTRATION LOCKED</h3>
-              <p className="font-mono text-xs text-white/50 tracking-wider">PORTAL OPENS OCTOBER 5, 2026</p>
+              <h3 className="font-display text-2xl font-black text-cream mb-1">REGISTRATION LOCKED</h3>
+              <p className="font-mono text-xs text-cream/80 tracking-wider">PORTAL OPENS OCTOBER 5, 2026</p>
             </div>
 
             {/* Countdown */}
@@ -85,8 +85,8 @@ const RegistrationLockModal: React.FC<{ show: boolean; onClose: () => void }> = 
                   { label: 'SEC', value: timeLeft.seconds },
                 ].map((item) => (
                   <div key={item.label} className="text-center">
-                    <div className="bg-[#F0EFF4] rounded-xl p-3 border border-black/5">
-                      <span className="font-display text-3xl font-black text-ink tabular-nums">
+                    <div className="bg-ink p-3">
+                      <span className="font-display text-3xl font-black text-cream tabular-nums">
                         {String(item.value).padStart(2, '0')}
                       </span>
                     </div>
@@ -97,12 +97,12 @@ const RegistrationLockModal: React.FC<{ show: boolean; onClose: () => void }> = 
                 ))}
               </div>
               <div className="mt-6 flex items-center justify-center gap-2 font-mono text-xs text-ink-muted">
-                <Clock className="w-3.5 h-3.5 text-sun" />
+                <Clock className="w-3.5 h-3.5 text-reddark" />
                 <span>OCTOBER 5, 2026 • 12:00 AM</span>
               </div>
               <button
                 onClick={onClose}
-                className="mt-6 w-full py-3 rounded-xl bg-ink text-white font-mono text-xs font-bold tracking-wider hover:bg-sun hover:text-black transition-colors"
+                className="mt-6 w-full py-3 bg-yellow text-ink border-2 border-ink shadow-btn font-display text-lg font-black uppercase tracking-wide hover:shadow-[7px_7px_0_#1d1210] transition-shadow"
               >
                 GOT IT
               </button>

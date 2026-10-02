@@ -8,39 +8,39 @@ import { TeamMember } from '../../types';
 const getRoleBadge = (role: string) => {
   if (role === 'Lead Organizer') {
     return (
-      <span className="flex items-center gap-1 font-mono text-[9px] text-flame-dark uppercase font-bold bg-flame/15 border border-flame/20 px-2 py-0.5 rounded">
-        <Sparkles className="w-2.5 h-2.5 text-flame" />
+      <span className="flex items-center gap-1 font-mono text-[9px] text-cream uppercase font-bold bg-reddark border-2 border-ink px-2 py-0.5">
+        <Sparkles className="w-2.5 h-2.5 text-current" />
         <span>LEAD ORG</span>
       </span>
     );
   }
   if (role === 'Director') {
     return (
-      <span className="flex items-center gap-1 font-mono text-[9px] text-amber-700 uppercase font-bold bg-amber-100 border border-amber-300 px-2 py-0.5 rounded">
-        <Crown className="w-2.5 h-2.5 text-amber-600" />
+      <span className="flex items-center gap-1 font-mono text-[9px] text-ink uppercase font-bold bg-yellow border-2 border-ink px-2 py-0.5">
+        <Crown className="w-2.5 h-2.5 text-current" />
         <span>DIRECTOR</span>
       </span>
     );
   }
   if (role === 'Vice Director') {
     return (
-      <span className="flex items-center gap-1 font-mono text-[9px] text-purple-700 uppercase font-bold bg-purple-100 border border-purple-300 px-2 py-0.5 rounded">
-        <Crown className="w-2.5 h-2.5 text-purple-600" />
+      <span className="flex items-center gap-1 font-mono text-[9px] text-ink uppercase font-bold bg-lime border-2 border-ink px-2 py-0.5">
+        <Crown className="w-2.5 h-2.5 text-current" />
         <span>VICE DIRECTOR</span>
       </span>
     );
   }
   if (role === 'Associate Director') {
     return (
-      <span className="flex items-center gap-1 font-mono text-[9px] text-purple-700 uppercase font-bold bg-purple-100 border border-purple-300 px-2 py-0.5 rounded">
-        <Crown className="w-2.5 h-2.5 text-purple-600" />
+      <span className="flex items-center gap-1 font-mono text-[9px] text-cream uppercase font-bold bg-ink border-2 border-ink px-2 py-0.5">
+        <Crown className="w-2.5 h-2.5 text-current" />
         <span>ASSOC. DIRECTOR</span>
       </span>
     );
   }
   return (
-    <span className="flex items-center gap-1 font-mono text-[9px] text-sun-dark uppercase font-bold bg-sun/10 px-2 py-0.5 rounded">
-      <Shield className="w-2.5 h-2.5 text-sun-dark" />
+    <span className="flex items-center gap-1 font-mono text-[9px] text-ink uppercase font-bold bg-cream border-2 border-ink px-2 py-0.5">
+      <Shield className="w-2.5 h-2.5 text-current" />
       <span>CORE</span>
     </span>
   );
@@ -55,9 +55,9 @@ export const TeamGrid: React.FC = () => {
   return (
     <div className="space-y-16">
       {/* Notice Callout */}
-      <div className="p-6 rounded-3xl bg-white border border-black/10 shadow-[0_4px_20px_rgba(0,0,0,0.02)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="p-6 bg-cream border-2 border-ink shadow-card flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="space-y-1">
-          <div className="flex items-center gap-2 font-mono text-xs text-sun-dark tracking-widest uppercase font-bold">
+          <div className="flex items-center gap-2 font-mono text-xs text-reddark tracking-widest uppercase font-bold">
             <Sparkles className="w-3.5 h-3.5" />
             <span>ORGANIZING COMMITTEE • TEAM FALLING SUN</span>
           </div>
@@ -82,9 +82,9 @@ export const TeamGrid: React.FC = () => {
                 transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -8 }}
                 onClick={() => setSelectedMember(member)}
-                className="group relative rounded-2xl overflow-hidden bg-white border border-black/10 hover:border-sun shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_36px_rgba(245,158,11,0.12)] transition-all duration-300 cursor-pointer flex flex-col"
+                className="group relative overflow-hidden bg-cream border-2 border-ink shadow-card hover:shadow-[8px_8px_0_#1d1210] transition-all duration-300 cursor-pointer flex flex-col"
               >
-                <div className="relative aspect-[220/280] w-full overflow-hidden bg-neutral-900">
+                <div className="relative aspect-[220/280] w-full overflow-hidden bg-ink">
                   <img
                     src={member.image}
                     alt={`${member.name} - ${member.role}`}
@@ -92,12 +92,12 @@ export const TeamGrid: React.FC = () => {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-start justify-end p-3">
-                    <span className="p-1.5 rounded-full bg-white/80 backdrop-blur-md text-ink text-xs shadow-sm">
+                    <span className="p-1.5 bg-cream border-2 border-ink text-ink text-xs">
                       <Info className="w-3.5 h-3.5" />
                     </span>
                   </div>
                 </div>
-                <div className="p-4 bg-white border-t border-black/5 flex items-center justify-between">
+                <div className="p-4 bg-cream border-t-2 border-ink/20 flex items-center justify-between">
                   <div>
                     <p className="font-display text-sm font-bold text-ink">{member.name}</p>
                     <p className="font-mono text-[11px] text-ink-muted">{member.role}</p>
@@ -122,9 +122,9 @@ export const TeamGrid: React.FC = () => {
               transition={{ duration: 0.5, delay: idx * 0.06, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -8 }}
               onClick={() => setSelectedMember(member)}
-              className="group relative rounded-2xl overflow-hidden bg-white border border-black/10 hover:border-black/30 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.12)] transition-all duration-300 cursor-pointer flex flex-col"
+              className="group relative overflow-hidden bg-cream border-2 border-ink shadow-card hover:shadow-[8px_8px_0_#1d1210] transition-all duration-300 cursor-pointer flex flex-col"
             >
-              <div className="relative aspect-[220/280] w-full overflow-hidden bg-neutral-900">
+              <div className="relative aspect-[220/280] w-full overflow-hidden bg-ink">
                 <img
                   src={member.image}
                   alt={`${member.name} - ${member.role}`}
@@ -132,12 +132,12 @@ export const TeamGrid: React.FC = () => {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-start justify-end p-3">
-                  <span className="p-1.5 rounded-full bg-white/80 backdrop-blur-md text-ink text-xs shadow-sm">
+                  <span className="p-1.5 bg-cream border-2 border-ink text-ink text-xs">
                     <Info className="w-3.5 h-3.5" />
                   </span>
                 </div>
               </div>
-              <div className="p-4 bg-white border-t border-black/5 flex items-center justify-between">
+              <div className="p-4 bg-cream border-t-2 border-ink/20 flex items-center justify-between">
                 <div>
                   <p className="font-display text-sm font-bold text-ink">{member.name}</p>
                   <p className="font-mono text-[11px] text-ink-muted">{member.role}</p>
@@ -158,18 +158,18 @@ export const TeamGrid: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedMember(null)}
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/70"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-10 w-full max-w-md bg-white rounded-3xl overflow-hidden shadow-2xl border border-black/10 p-6 space-y-6"
+              className="relative z-10 w-full max-w-md bg-cream border-2 border-ink shadow-card overflow-hidden p-6 space-y-6"
             >
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-20 rounded-xl overflow-hidden bg-neutral-900 border border-black/10 shrink-0">
+                  <div className="w-16 h-20 overflow-hidden bg-ink border-2 border-ink shrink-0">
                     <img
                       src={selectedMember.image}
                       alt={selectedMember.name}
@@ -177,19 +177,19 @@ export const TeamGrid: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <span className="font-mono text-[11px] font-bold text-sun-dark tracking-widest uppercase">
+                    <span className="font-mono text-[11px] font-bold text-reddark tracking-widest uppercase">
                       {selectedMember.role}
                     </span>
                     <h3 className="font-display text-2xl font-black text-ink break-word">
                       {selectedMember.name}
                     </h3>
-                    <p className="font-mono text-[10px] text-ink-faint">FALLING SUN CREW</p>
+                    <p className="font-mono text-[10px] text-ink-muted">FALLING SUN CREW</p>
                   </div>
                 </div>
                 <button
                   type="button"
                   onClick={() => setSelectedMember(null)}
-                  className="p-2 rounded-full hover:bg-black/5 text-ink transition-colors"
+                  className="p-2 hover:bg-black/10 text-ink transition-colors"
                   aria-label="Close details"
                 >
                   <X className="w-5 h-5" />
@@ -200,13 +200,13 @@ export const TeamGrid: React.FC = () => {
                 <h4 className="font-mono text-xs uppercase tracking-widest text-ink-muted font-bold">
                   // RESPONSIBILITY & FOCUS
                 </h4>
-                <p className="text-ink-soft text-sm leading-relaxed font-sans font-medium">
+                <p className="text-ink text-sm leading-relaxed font-sans font-medium">
                   {selectedMember.bio}
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-black/5 flex items-center justify-between font-mono text-xs text-ink-muted">
-                <span className="flex items-center gap-1.5 text-sun-dark font-semibold">
+              <div className="pt-4 border-t-2 border-ink/20 flex items-center justify-between font-mono text-xs text-ink-muted">
+                <span className="flex items-center gap-1.5 text-reddark font-semibold">
                   <Shield className="w-3.5 h-3.5" />
                   <span>VERIFIED ORGANIZER</span>
                 </span>

@@ -30,26 +30,28 @@ const DesktopNavItem: React.FC<{
       className="group relative flex items-center gap-1.5 py-1 text-xs tracking-wider transition-colors duration-200"
       data-cursor="link"
     >
-      <span className="font-mono text-[10px] text-ink-faint group-hover:text-sun transition-colors">
+      <span className="text-[10px] font-bold text-ink transition-colors">
         {item.number}
       </span>
       <InteractiveRollText
         text={item.label}
         isHovered={isHovered}
-        activeColor="text-sun"
-        className={`font-mono text-xs font-medium ${
-          isActive ? 'text-sun font-bold' : 'text-ink-muted group-hover:text-ink'
+        activeColor="text-ink"
+        className={`text-xs font-bold ${
+          isActive
+            ? 'text-cream underline decoration-yellow decoration-2 underline-offset-4'
+            : 'text-cream group-hover:underline decoration-yellow decoration-2 underline-offset-4'
         }`}
       />
       {isActive && (
         <motion.div
           layoutId="nav-active-indicator"
-          className="absolute -bottom-1 left-0 right-0 h-[2px] bg-sun"
+          className="absolute -bottom-1 left-0 right-0 h-[2px] bg-yellow"
           transition={{ type: 'spring', stiffness: 350, damping: 30 }}
         />
       )}
       {!isActive && (
-        <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-ink/40 group-hover:w-full transition-all duration-300" />
+        <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-cream/50 group-hover:w-full transition-all duration-300" />
       )}
     </Link>
   );
@@ -88,10 +90,8 @@ export const Navbar: React.FC = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 will-change-transform ${
-          isScrolled
-            ? 'py-3 bg-white/85 backdrop-blur-md border-b border-black/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.03)]'
-            : 'py-6 bg-transparent border-b border-transparent'
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 will-change-transform bg-bg border-b-[3px] border-cream ${
+          isScrolled ? 'py-3 shadow-[4px_4px_0_#1d1210]' : 'py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
@@ -111,17 +111,17 @@ export const Navbar: React.FC = () => {
               <img
                 src="/logo_transparent.png"
                 alt="Falling Sun Logo"
-                className="w-full h-full object-contain filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.08)]"
+                className="w-full h-full object-contain"
               />
             </motion.div>
             <div className="flex flex-col">
               <InteractiveRollText
                 text="FALLING SUN"
                 isHovered={brandHovered}
-                activeColor="text-sun"
-                className="font-display text-sm md:text-base font-black tracking-wider text-ink"
+                activeColor="text-ink"
+                className="font-display text-xl md:text-2xl font-black tracking-wide text-cream uppercase"
               />
-              <span className="font-mono text-[9px] tracking-widest text-ink-muted uppercase">
+              <span className="text-[10px] tracking-widest text-ink font-bold uppercase">
                 U18 HACKATHON
               </span>
             </div>
@@ -156,7 +156,7 @@ export const Navbar: React.FC = () => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-ink hover:text-sun transition-colors border border-black/10 rounded-full bg-white/80"
+              className="lg:hidden p-2 text-cream hover:text-yellow transition-colors border-2 border-cream bg-bg"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -173,13 +173,11 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '-100%' }}
             transition={{ duration: 0.45, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-40 bg-[#F0EFF4] flex flex-col justify-between p-8 pt-28 text-ink lg:hidden overflow-y-auto will-change-transform"
+            className="fixed inset-0 z-40 bg-bg flex flex-col justify-between p-8 pt-28 text-cream lg:hidden overflow-y-auto will-change-transform"
           >
-            {/* Background grid details */}
-            <div className="absolute inset-0 tech-grid opacity-40 pointer-events-none" />
 
             <div className="relative z-10 space-y-6">
-              <div className="font-mono text-xs text-ink-muted tracking-widest uppercase">
+              <div className="text-xs text-cream tracking-widest uppercase font-bold">
                 // NAVIGATION DIRECTORY
               </div>
 
@@ -195,11 +193,11 @@ export const Navbar: React.FC = () => {
                     >
                       <Link
                         to={item.path}
-                        className={`flex items-baseline gap-4 py-2.5 border-b border-black/5 ${
-                          isActive ? 'text-sun' : 'text-ink-soft hover:text-ink'
+                        className={`flex items-baseline gap-4 py-2.5 border-b border-cream/30 ${
+                          isActive ? 'text-ink' : 'text-cream hover:text-ink'
                         }`}
                       >
-                        <span className="font-mono text-sm text-sun font-bold">
+                        <span className="text-sm text-cream font-bold">
                           {item.number}
                         </span>
                         <span className="font-display text-3xl font-extrabold tracking-tight">
@@ -219,7 +217,7 @@ export const Navbar: React.FC = () => {
               >
                 <button
                   onClick={() => { setMobileMenuOpen(false); openRegLock(); }}
-                  className="flex items-center justify-between w-full p-4 rounded-xl bg-ink text-white font-mono font-bold tracking-wider hover:bg-sun hover:text-black transition-colors"
+                  className="flex items-center justify-between w-full p-4 border-2 border-ink bg-yellow text-ink font-display text-xl font-black uppercase tracking-wide shadow-btn hover:shadow-[7px_7px_0_#1d1210] transition-all"
                 >
                   <span>REGISTER FOR HACKATHON</span>
                   <ArrowUpRight className="w-5 h-5" />
@@ -228,12 +226,12 @@ export const Navbar: React.FC = () => {
             </div>
 
             {/* Mobile Footer Status */}
-            <div className="relative z-10 pt-8 border-t border-black/10 flex flex-col gap-2 font-mono text-xs text-ink-muted">
+            <div className="relative z-10 pt-8 border-t border-cream/30 flex flex-col gap-2 text-xs text-cream">
               <div className="flex items-center justify-between">
-                <span className="font-semibold text-ink">{eventConfig.format}</span>
-                <span className="text-sun font-bold">{eventConfig.ageGroup}</span>
+                <span className="font-bold">{eventConfig.format}</span>
+                <span className="text-ink font-bold">{eventConfig.ageGroup}</span>
               </div>
-              <div className="flex items-center justify-between text-[11px] text-ink-faint">
+              <div className="flex items-center justify-between text-[11px] text-ink">
                 <span>{eventConfig.coordinates}</span>
                 <span>© {eventConfig.name}</span>
               </div>

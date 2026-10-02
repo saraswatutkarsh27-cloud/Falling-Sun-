@@ -40,8 +40,8 @@ export const TrackHorizontal: React.FC = () => {
   return (
     <div className="relative w-full max-w-7xl mx-auto px-6 md:px-12 py-10 select-none">
       {/* Top Track Switcher Tabs (CyferNode Editorial Pill Design) */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-8 border-b border-black/10">
-        <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-full bg-white border border-black/10 shadow-[0_2px_12px_rgba(0,0,0,0.03)]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-8 border-b-[3px] border-cream/40">
+        <div className="flex flex-wrap items-center gap-2 p-1.5 bg-cream border-2 border-ink shadow-card">
           {eventConfig.tracks.map((t, idx) => {
             const isActive = activeTrack === idx;
             const isTabHovered = hoveredTab === idx;
@@ -54,16 +54,16 @@ export const TrackHorizontal: React.FC = () => {
                 onMouseLeave={() => setHoveredTab(null)}
                 whileTap={{ scale: 0.94 }}
                 data-cursor="link"
-                className={`relative px-5 py-2 rounded-full font-mono text-xs font-bold tracking-wider transition-all duration-300 flex items-center gap-2 ${
+                className={`relative px-5 py-2 font-display text-sm font-black tracking-wide transition-all duration-300 flex items-center gap-2 ${
                   isActive
-                    ? 'text-black'
-                    : 'text-ink-muted hover:text-ink hover:bg-black/[0.02]'
+                    ? 'text-ink'
+                    : 'text-ink-muted hover:text-ink hover:bg-black/5'
                 }`}
               >
                 {isActive && (
                   <motion.div
                     layoutId="track-tab-pill"
-                    className="absolute inset-0 bg-sun rounded-full shadow-[0_2px_10px_rgba(245,158,11,0.35)]"
+                    className="absolute inset-0 bg-yellow"
                     transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                   />
                 )}
@@ -72,7 +72,7 @@ export const TrackHorizontal: React.FC = () => {
                   <InteractiveRollText
                     text={t.title}
                     isHovered={isTabHovered || isActive}
-                    activeColor={isActive ? "text-black" : "text-sun"}
+                    activeColor={isActive ? "text-ink" : "text-brown"}
                   />
                 </span>
               </motion.button>
@@ -82,10 +82,10 @@ export const TrackHorizontal: React.FC = () => {
 
         {/* Navigation Arrows & Progress */}
         <div className="flex items-center gap-4">
-          <div className="font-mono text-xs text-ink-muted">
-            <span className="text-sun font-black text-sm">{track.number}</span>
-            <span className="text-black/20 mx-1.5">/</span>
-            <span>03</span>
+          <div className="text-xs text-ink">
+            <span className="bg-cream text-bg border-2 border-ink px-2 py-0.5 font-black text-sm">{track.number}</span>
+            <span className="text-cream/70 mx-1.5 font-bold">/</span>
+            <span className="font-bold">03</span>
           </div>
 
           <div className="flex items-center gap-2">
@@ -95,7 +95,7 @@ export const TrackHorizontal: React.FC = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.88 }}
               data-cursor="link"
-              className="w-10 h-10 rounded-full bg-white border border-black/10 flex items-center justify-center text-ink hover:bg-sun hover:text-black hover:border-sun transition-all shadow-sm"
+              className="w-10 h-10 bg-cream border-2 border-ink flex items-center justify-center text-ink hover:bg-yellow hover:text-ink transition-all shadow-[3px_3px_0_#1d1210]"
               aria-label="Previous Track"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -106,7 +106,7 @@ export const TrackHorizontal: React.FC = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.88 }}
               data-cursor="link"
-              className="w-10 h-10 rounded-full bg-white border border-black/10 flex items-center justify-center text-ink hover:bg-sun hover:text-black hover:border-sun transition-all shadow-sm"
+              className="w-10 h-10 bg-cream border-2 border-ink flex items-center justify-center text-ink hover:bg-yellow hover:text-ink transition-all shadow-[3px_3px_0_#1d1210]"
               aria-label="Next Track"
             >
               <ArrowRight className="w-4 h-4" />
@@ -128,28 +128,28 @@ export const TrackHorizontal: React.FC = () => {
           >
             {/* Left Column: Track Intelligence */}
             <div className="lg:col-span-6 space-y-6">
-              <div className="flex items-center gap-3 font-mono text-xs text-sun-dark font-bold">
-                <span className="font-black text-3xl text-sun">{track.number}</span>
-                <span className="text-black/20">//</span>
+              <div className="flex items-center gap-3 text-xs text-cream font-bold">
+                <span className="font-black text-3xl text-cream">{track.number}</span>
+                <span className="text-ink">//</span>
                 <span className="tracking-widest uppercase">DISCIPLINE BLUEPRINT</span>
               </div>
 
-              <h3 className="font-display text-4xl sm:text-5xl font-black text-ink tracking-tight break-word">
+              <h3 className="font-display text-4xl sm:text-5xl font-black text-cream tracking-tight break-word">
                 <MaskedReveal text={track.title} />
               </h3>
 
-              <div className="font-mono text-xs text-sun-dark font-bold uppercase tracking-wider flex items-center gap-2">
-                <Sparkles className="w-3.5 h-3.5 text-sun" />
+              <div className="text-xs text-ink font-bold uppercase tracking-wider flex items-center gap-2">
+                <Sparkles className="w-3.5 h-3.5 text-cream" />
                 <span>{track.tagline}</span>
               </div>
 
-              <p className="text-ink-muted text-base leading-relaxed font-sans font-medium">
+              <p className="text-cream text-base lg:text-lg leading-relaxed font-medium">
                 {track.description}
               </p>
 
               {/* Evaluation Focus Areas */}
               <div className="space-y-3 pt-2">
-                <div className="font-mono text-[11px] text-ink-faint uppercase tracking-widest font-bold">
+                <div className="text-[11px] text-ink uppercase tracking-widest font-bold">
                   // BENCHMARK CRITERIA
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -160,9 +160,9 @@ export const TrackHorizontal: React.FC = () => {
                       animate={{ opacity: 1, y: 0 }}
                       whileHover={{ scale: 1.02, x: 3 }}
                       transition={{ delay: 0.08 + idx * 0.04 }}
-                      className="flex items-center gap-2.5 text-xs text-ink-soft font-sans font-medium p-2.5 rounded-xl bg-white border border-black/5 shadow-sm cursor-default"
+                      className="flex items-center gap-2.5 text-xs text-ink font-medium p-2.5 bg-cream border-2 border-ink cursor-default"
                     >
-                      <CheckCircle2 className="w-4 h-4 text-sun shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-reddark shrink-0" />
                       <span>{area}</span>
                     </motion.div>
                   ))}
@@ -171,7 +171,7 @@ export const TrackHorizontal: React.FC = () => {
 
               {/* Suggested Technology Tools */}
               <div className="space-y-2 pt-2">
-                <div className="font-mono text-[11px] text-ink-faint uppercase tracking-widest font-bold">
+                <div className="text-[11px] text-ink uppercase tracking-widest font-bold">
                   // RECOMMENDED ENGINES & STACKS
                 </div>
                 <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
@@ -182,7 +182,7 @@ export const TrackHorizontal: React.FC = () => {
                       animate={{ opacity: 1, scale: 1 }}
                       whileHover={{ scale: 1.08, y: -2 }}
                       transition={{ delay: 0.15 + idx * 0.03 }}
-                      className="px-3 py-1.5 rounded-lg bg-white border border-black/10 text-ink font-semibold shadow-sm hover:border-sun transition-colors cursor-default"
+                      className="px-3 py-1.5 bg-cream border-2 border-ink text-ink font-bold hover:bg-yellow transition-colors cursor-default"
                     >
                       {tool}
                     </motion.span>
@@ -196,7 +196,7 @@ export const TrackHorizontal: React.FC = () => {
                   onClick={openRegLock}
                   text="ENROLL IN THIS TRACK"
                   icon={<ChevronRight className="w-4 h-4" />}
-                  className="px-7 py-3.5 rounded-full font-mono text-xs font-bold tracking-wider"
+                  className="px-7 py-3.5 font-mono text-xs font-bold tracking-wider"
                   variant="primary"
                 />
 
@@ -204,7 +204,7 @@ export const TrackHorizontal: React.FC = () => {
                   to="/tracks"
                   text="FULL SPECIFICATION"
                   icon={<ChevronRight className="w-4 h-4" />}
-                  className="px-6 py-3 rounded-full font-mono text-xs font-bold tracking-wider"
+                  className="px-6 py-3 font-mono text-xs font-bold tracking-wider"
                   variant="outline"
                 />
               </div>
