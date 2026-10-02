@@ -4,6 +4,7 @@ import { eventConfig } from '../../config/eventConfig';
 import { Clock, AlertCircle } from 'lucide-react';
 import { WhatsAppCTA } from '../common/WhatsAppCTA';
 import { MagneticButton } from '../common/MagneticButton';
+import { EVENT_DATE_LABEL } from '../../data/event';
 
 export const ScheduleTimeline: React.FC = () => {
   const [activeDay, setActiveDay] = useState(0);
@@ -29,6 +30,9 @@ export const ScheduleTimeline: React.FC = () => {
             </div>
             <p className="text-ink-muted text-xs sm:text-sm font-sans">
               Exact hourly milestones, keynote speakers, and judging blocks will be announced through WhatsApp. The chronological event structure is outlined below.
+            </p>
+            <p className="font-mono text-xs text-ink font-bold tracking-widest pt-1">
+              {EVENT_DATE_LABEL}
             </p>
           </div>
         </div>

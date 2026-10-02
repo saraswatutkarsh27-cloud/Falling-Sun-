@@ -15,7 +15,7 @@ export const TeamPage: React.FC = () => {
             The students behind the event.
           </h1>
           <p className="text-cream text-base sm:text-lg max-w-2xl mx-auto font-bold leading-relaxed">
-            Team Falling Sun — student builders, designers, and organizers crafting the Falling Sun under-18 hackathon.
+            Team Falling Sun — student builders, designers, and organizers crafting the Falling Sun hackathon.
           </p>
         </div>
 
@@ -25,7 +25,7 @@ export const TeamPage: React.FC = () => {
         {/* WhatsApp Callout */}
         <WhatsAppCTA
           title="MENTOR ROSTER WILL BE UNVEILED ON WHATSAPP"
-          subtitle="Interested in mentoring or reviewing under-18 projects? Join our WhatsApp channel or submit your application to join the mentorship cohort."
+          subtitle="Interested in mentoring or reviewing projects? Join our WhatsApp channel or submit your application to join the mentorship cohort."
         />
       </div>
     </div>

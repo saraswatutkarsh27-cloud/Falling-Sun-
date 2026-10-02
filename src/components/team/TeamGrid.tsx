@@ -86,7 +86,7 @@ export const TeamGrid: React.FC = () => {
             <span>ORGANIZING COMMITTEE • TEAM FALLING SUN</span>
           </div>
           <p className="text-ink-muted text-xs sm:text-sm font-sans">
-            Curated and run by students passionate about the under-18 builder ecosystem. Full mentor credentials and judging panels will be unveiled via WhatsApp.
+            Curated and run by students passionate about the builder ecosystem. Full mentor credentials and judging panels will be unveiled via WhatsApp.
           </p>
         </div>
 

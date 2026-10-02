@@ -116,7 +116,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
                 FALLING SUN
               </h1>
               <p className="mt-1 font-mono text-xs tracking-widest text-yellow uppercase font-bold">
-                UNDER 18 HACKATHON // 12H + 12H
+                HACKATHON 2026 // 12H + 12H
               </p>
             </motion.div>
           </div>

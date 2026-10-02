@@ -9,7 +9,7 @@ interface MarqueeBannerProps {
 
 export const MarqueeBanner: React.FC<MarqueeBannerProps> = ({
   items = [
-    'UNDER 18 HACKATHON',
+    'HACKATHON 2026',
     'GAME DEVELOPMENT',
     'WEB DEVELOPMENT',
     'ROBOTICS',

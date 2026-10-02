@@ -64,8 +64,6 @@ export const WhatsAppCTA: React.FC<WhatsAppCTAProps> = ({
               <Bell className="w-4 h-4 text-brown" />
               <span>Instant Drop Alerts</span>
             </span>
-            <span className="text-ink/30">•</span>
-            <span>Under-18 Verified</span>
           </div>
         </div>
 

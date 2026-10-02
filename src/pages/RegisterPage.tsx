@@ -55,7 +55,7 @@ export const RegisterPage: React.FC = () => {
                   <MaskedReveal text="READY TO BUILD?" highlightWords={["BUILD?"]} highlightClass="text-bg" />
                 </div>
                 <p className="font-display text-xl sm:text-2xl text-ink font-bold pt-2">
-                  FALLING SUN // UNDER 18 HACKATHON
+                  FALLING SUN // HACKATHON 2026
                 </p>
               </div>
 
@@ -99,7 +99,7 @@ export const RegisterPage: React.FC = () => {
 
                 <div className="p-4 bg-black/5 border-2 border-ink/40 space-y-1">
                   <span className="text-ink-muted uppercase font-bold text-[10px]">ELIGIBILITY</span>
-                  <div className="text-reddark font-black text-sm">{eventConfig.ageGroup}</div>
+                  <div className="text-reddark font-black text-sm">ALL SKILL LEVELS</div>
                 </div>
 
                 <div className="p-4 bg-black/5 border-2 border-ink/40 space-y-1 col-span-2 sm:col-span-1">

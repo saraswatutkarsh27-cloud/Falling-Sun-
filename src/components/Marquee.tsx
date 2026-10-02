@@ -6,7 +6,7 @@ interface MarqueeProps {
 }
 
 const DEFAULT_ITEMS = [
-  'UNDER 18 HACKATHON',
+  'HACKATHON 2026',
   'GAME DEVELOPMENT',
   'WEB DEVELOPMENT',
   'ROBOTICS',

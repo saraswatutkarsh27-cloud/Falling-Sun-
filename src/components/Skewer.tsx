@@ -20,7 +20,7 @@ const LABEL = {
 
 /**
  * The nimbu-mirchi skewer: red and green chillies, yellow lemons,
- * thick black outlines and hand-lettered FALLING / SUN / U18 labels.
+ * thick black outlines and hand-lettered FALLING / SUN / 2026 labels.
  * SVG markup copied from reference.html.
  */
 export const Skewer: React.FC<SkewerProps> = ({ className = '' }) => (
@@ -28,7 +28,7 @@ export const Skewer: React.FC<SkewerProps> = ({ className = '' }) => (
     className={`block mx-auto w-full max-w-[820px] ${className}`}
     viewBox="0 0 900 240"
     role="img"
-    aria-label="Skewer of lemons and chillies reading Falling Sun Under 18"
+    aria-label="Skewer of lemons and chillies reading Falling Sun 2026"
   >
     <line x1="5" y1="130" x2="895" y2="130" {...O} />
     <path
@@ -74,7 +74,7 @@ export const Skewer: React.FC<SkewerProps> = ({ className = '' }) => (
     <path {...O} fill="#ffc50f" d="M630 130 C640 70 745.0 62 860 130 C745.0 198 640 190 630 130Z" />
     <path d="M646 112 Q648 98 660 92" stroke="#fff" strokeWidth="5" fill="none" strokeLinecap="round" />
     <text x="745" y="142" {...LABEL}>
-      U18
+      2026
     </text>
   </svg>
 );

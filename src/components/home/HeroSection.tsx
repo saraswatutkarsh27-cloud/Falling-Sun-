@@ -7,6 +7,7 @@ import { useRegistrationLock } from '../common/RegistrationLockModal';
 import { Stamp } from '../Stamp';
 import { Skewer } from '../Skewer';
 import { Sparkle } from '../Sparkle';
+import { EVENT_DATE_LABEL } from '../../data/event';
 
 export const HeroSection: React.FC = () => {
   const { open: openRegLock } = useRegistrationLock();
@@ -105,7 +106,12 @@ export const HeroSection: React.FC = () => {
 
             {/* Tag line */}
             <span className="self-start bg-yellow text-ink font-bold tracking-[0.08em] px-3 py-1.5 border-2 border-ink -rotate-[1.5deg] text-xs sm:text-sm uppercase">
-              UNDER 18 HACKATHON · GAME • WEB • ROBOTICS • CREATIVE SKILLS
+              HACKATHON · GAME • WEB • ROBOTICS • CREATIVE SKILLS
+            </span>
+
+            {/* Event date (single source: src/data/event.ts) */}
+            <span className="self-start font-mono text-xs text-cream font-bold tracking-widest">
+              {EVENT_DATE_LABEL}
             </span>
 
             {/* Headline */}
@@ -145,7 +151,7 @@ export const HeroSection: React.FC = () => {
                 COHORT CAPACITY 78% FILLED (44 SLOTS REMAINING)
               </span>
               <span className="bg-cream text-ink text-xs font-bold px-3 py-1 border-2 border-ink -rotate-1 uppercase">
-                EDITION // 2026 · 28°32'N 77°14'E · V2.6 // UNDER-18
+                EDITION // 2026 · 28°32'N 77°14'E · V2.6
               </span>
             </div>
 

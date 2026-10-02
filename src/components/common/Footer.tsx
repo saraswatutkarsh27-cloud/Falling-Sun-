@@ -89,7 +89,7 @@ export const Footer: React.FC = () => {
                 <span className="text-yellow">WORTH REMEMBERING.</span>
               </div>
               <p className="text-xs text-cream/80 max-w-md pt-2 font-sans font-medium">
-                A two-day under-18 hackathon where young builders turn raw imagination into playable games, distributed web applications, and autonomous robotics.
+                A two-day hackathon where young builders turn raw imagination into playable games, distributed web applications, and autonomous robotics.
               </p>
             </div>
 
@@ -97,7 +97,7 @@ export const Footer: React.FC = () => {
               <Terminal className="w-4 h-4 text-yellow" />
               <span>{eventConfig.format}</span>
               <span className="mx-2 text-cream/30">|</span>
-              <span className="font-semibold text-cream">{eventConfig.ageGroup}</span>
+              <span className="font-semibold text-cream">{eventConfig.edition}</span>
             </div>
           </div>
 
@@ -171,7 +171,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Copyright & Coordinates */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 text-xs text-cream/80">
           <div>
-            © {eventConfig.name} — {eventConfig.ageGroup} HACKATHON. ALL RIGHTS RESERVED.
+            © {eventConfig.name} · HACKATHON · 2026. ALL RIGHTS RESERVED.
           </div>
           <div className="flex items-center gap-3">
             <span>{eventConfig.coordinates}</span>

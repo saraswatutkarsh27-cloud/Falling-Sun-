@@ -122,7 +122,7 @@ export const Navbar: React.FC = () => {
                 className="font-display text-xl md:text-2xl font-black tracking-wide text-cream uppercase"
               />
               <span className="text-[10px] tracking-widest text-ink font-bold uppercase">
-                U18 HACKATHON
+                HACKATHON 2026
               </span>
             </div>
           </Link>
@@ -229,7 +229,7 @@ export const Navbar: React.FC = () => {
             <div className="relative z-10 pt-8 border-t border-cream/30 flex flex-col gap-2 text-xs text-cream">
               <div className="flex items-center justify-between">
                 <span className="font-bold">{eventConfig.format}</span>
-                <span className="text-ink font-bold">{eventConfig.ageGroup}</span>
+                <span className="text-ink font-bold">{eventConfig.edition}</span>
               </div>
               <div className="flex items-center justify-between text-[11px] text-ink">
                 <span>{eventConfig.coordinates}</span>

@@ -3,7 +3,6 @@ import { EventConfig } from '../types';
 export const eventConfig: EventConfig = {
   name: "FALLING SUN",
   tagline: "BUILD SOMETHING WORTH REMEMBERING.",
-  ageGroup: "UNDER 18",
   format: "12H + 12H // 2 DAYS",
   totalHours: "24 HOURS TOTAL (12H + 12H)",
   edition: "2026 EDITION",
@@ -349,17 +348,23 @@ export const eventConfig: EventConfig = {
 
   faqs: [
     {
+      id: "f0",
+      question: "Who can participate?",
+      answer: "Those who are under 18 and all.",
+      category: "Eligibility",
+    },
+    {
       id: "f1",
       question: "WHAT IS FALLING SUN?",
       answer:
-        "FALLING SUN is a premier under-18 hackathon where ambitious young technologists gather for 2 days (12 hours + 12 hours) to build real, working projects in Game Development, Web Development, Robotics, and Creative Skills. It is engineered to give builders high-end creative freedom without corporate templates.",
+        "FALLING SUN is a premier hackathon where ambitious young technologists gather for 2 days (12 hours + 12 hours) to build real, working projects in Game Development, Web Development, Robotics, and Creative Skills. It is engineered to give builders high-end creative freedom without corporate templates.",
       category: "General",
     },
     {
       id: "f2",
-      question: "WHO CAN PARTICIPATE? IS IT STRICTLY UNDER 18?",
+      question: "IS IT OPEN TO ALL SKILL LEVELS?",
       answer:
-        "Yes, Falling Sun is strictly an under-18 event. You must be aged 18 or younger on the day the hackathon commences. High school students, self-taught creators, and young builders of all skill levels are welcome.",
+        "Yes. Self-taught creators and young builders of all skill levels are welcome.",
       category: "Eligibility",
     },
     {
@@ -401,7 +406,7 @@ export const eventConfig: EventConfig = {
       id: "f8",
       question: "WHAT SHOULD I BRING TO THE HACKATHON?",
       answer:
-        "Bring your laptop, charger, testing hardware/peripherals (for Game Dev and Robotics, bring your controllers, dev boards, sensors, and cables), personal identification (student ID or government ID verifying your age), and uninhibited curiosity.",
+        "Bring your laptop, charger, testing hardware/peripherals (for Game Dev and Robotics, bring your controllers, dev boards, sensors, and cables), personal identification (student ID or government ID), and uninhibited curiosity.",
       category: "Preparation",
     },
     {

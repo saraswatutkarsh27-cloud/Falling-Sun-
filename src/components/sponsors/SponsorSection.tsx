@@ -47,7 +47,7 @@ export const SponsorSection: React.FC = () => {
           number="04"
           category="PARTNERS & ECOSYSTEM"
           title="BACKED BY VISIONARY FORCES."
-          subtitle="Engineering studios, developer platforms, and hardware labs enabling the next wave of under-18 creators."
+          subtitle="Engineering studios, developer platforms, and hardware labs enabling the next wave of creators."
         />
 
         {/* TIER 01: TITLE / PRESENTING PARTNER (Featured Wide Card showing TBA) */}
@@ -164,7 +164,7 @@ export const SponsorSection: React.FC = () => {
               </h3>
 
               <p className="text-cream/80 text-sm md:text-base font-sans font-medium leading-relaxed max-w-2xl">
-                Place your developer tools, cloud infrastructure, robotics hardware, and engineering brand directly in front of the nation's top 200+ under-18 builders. Sponsor specialized track bounties, mentor aspiring prodigies, and scout exceptional talent early.
+                Place your developer tools, cloud infrastructure, robotics hardware, and engineering brand directly in front of the nation's top 200+ builders. Sponsor specialized track bounties, mentor aspiring prodigies, and scout exceptional talent early.
               </p>
 
               <div className="flex flex-wrap items-center gap-6 pt-2 font-mono text-xs text-cream/80">
