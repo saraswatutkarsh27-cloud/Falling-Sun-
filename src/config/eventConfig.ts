@@ -214,15 +214,6 @@ export const eventConfig: EventConfig = {
 
   team: [
     {
-      id: "aniket-gaba",
-      name: "Aniket Sir",
-      role: "Director",
-      bio: "Directing event execution, schedule orchestration, and operational alignment.",
-      image: "/team/aniket-gaba.jpeg",
-      isPlaceholder: false,
-      section: "backbone",
-    },
-    {
       id: "girijesh-mishra",
       name: "Girijesh Kr Mishra Sir",
       role: "Principal",
@@ -247,6 +238,15 @@ export const eventConfig: EventConfig = {
       bio: "Overseeing participant experience, coordination, and on-ground event support.",
       image: "https://placehold.co/220x280?text=Antesh+Ma'am",
       isPlaceholder: true,
+      section: "backbone",
+    },
+    {
+      id: "aniket-gaba",
+      name: "Aniket Sir",
+      role: "Advisor",
+      bio: "Advising on event execution, schedule orchestration, and operational alignment.",
+      image: "/team/aniket-gaba.jpeg",
+      isPlaceholder: false,
       section: "backbone",
     },
     {

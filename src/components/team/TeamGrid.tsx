@@ -54,6 +54,14 @@ const getRoleBadge = (role: string) => {
       </span>
     );
   }
+  if (role === 'Advisor') {
+    return (
+      <span className="flex items-center gap-1 font-mono text-[9px] text-cream uppercase font-bold bg-ink border-2 border-ink px-2 py-0.5">
+        <Shield className="w-2.5 h-2.5 text-current" />
+        <span>ADVISOR</span>
+      </span>
+    );
+  }
   return (
     <span className="flex items-center gap-1 font-mono text-[9px] text-ink uppercase font-bold bg-cream border-2 border-ink px-2 py-0.5">
       <Shield className="w-2.5 h-2.5 text-current" />

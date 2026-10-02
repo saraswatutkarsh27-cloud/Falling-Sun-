@@ -8,6 +8,7 @@ const backboneLabel: Record<string, string> = {
   Director: "DIRECTOR",
   Principal: "PRINCIPAL",
   "Faculty Advisor": "ADVISOR",
+  Advisor: "ADVISOR",
   "Associate Director": "ASSOC. DIRECTOR",
 };
 
