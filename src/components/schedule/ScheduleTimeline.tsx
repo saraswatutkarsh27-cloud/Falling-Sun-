@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { eventConfig } from '../../config/eventConfig';
 import { Clock, AlertCircle } from 'lucide-react';
-import { WhatsAppCTA } from '../common/WhatsAppCTA';
 import { MagneticButton } from '../common/MagneticButton';
 import { EVENT_DATE_LABEL } from '../../data/event';
 
@@ -20,26 +19,30 @@ export const ScheduleTimeline: React.FC = () => {
 
   return (
     <div className="space-y-16">
-      {/* Notice Banner */}
-      <div className="p-6 bg-cream border-2 border-ink shadow-card flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div className="flex items-start gap-3">
-          <AlertCircle className="w-5 h-5 text-reddark shrink-0 mt-0.5" />
-          <div className="space-y-1">
-            <div className="font-mono text-xs font-bold text-reddark uppercase tracking-wider">
-              TIMELINE ANNOUNCEMENT PENDING
+      {/* Event Date Banner */}
+      <div className="p-6 md:p-8 bg-cream border-2 border-ink shadow-card">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="flex items-start gap-3">
+            <AlertCircle className="w-5 h-5 text-yellow shrink-0 mt-0.5" />
+            <div className="space-y-1">
+              <div className="font-mono text-xs font-bold text-yellow uppercase tracking-widest">
+                EVENT DATES
+              </div>
+              <p className="font-mono text-sm md:text-lg font-black text-ink">
+                {EVENT_DATE_LABEL}
+              </p>
             </div>
-            <p className="text-ink-muted text-xs sm:text-sm font-sans">
-              Exact hourly milestones, keynote speakers, and judging blocks will be announced through WhatsApp. The chronological event structure is outlined below.
-            </p>
-            <p className="font-mono text-xs text-ink font-bold tracking-widest pt-1">
-              <p className="font-mono text-xs text-ink font-bold tracking-widest">{EVENT_DATE_LABEL}</p>
-              <p className="font-mono text-xs text-cream/80">DAY 01 — 24 OCTOBER 2026</p>
-              <p className="font-mono text-xs text-cream/80">DAY 02 — 25 OCTOBER 2026</p>
-            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
+            <span className="px-3 py-1 bg-yellow border-2 border-ink font-bold text-ink tracking-widest">
+              DAY 01 — 24 OCTOBER 2026
+            </span>
+            <span className="px-3 py-1 bg-cream text-bg border-2 border-ink font-bold text-ink tracking-widest">
+              DAY 02 — 25 OCTOBER 2026
+            </span>
           </div>
         </div>
-
-        <WhatsAppCTA compact className="shrink-0" />
       </div>
 
       {/* Day Selector Buttons */}

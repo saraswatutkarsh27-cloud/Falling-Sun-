@@ -110,9 +110,14 @@ export const HeroSection: React.FC = () => {
             </span>
 
             {/* Event date (single source: src/data/event.ts) */}
-            <span className="self-start font-mono text-xs text-cream font-bold tracking-widest">
-              {EVENT_DATE_LABEL}
-            </span>
+            <div className="self-start space-y-2">
+              <span className="font-mono text-[10px] text-cream/70 tracking-[0.2em] uppercase">
+                EVENT DATES
+              </span>
+              <span className="font-mono text-xl sm:text-2xl font-black text-yellow tracking-[0.15em] uppercase">
+                {EVENT_DATE_LABEL}
+              </span>
+            </div>
 
             {/* Headline */}
             <h1 className="rough font-display font-black uppercase text-cream leading-[0.92] -rotate-2 text-[clamp(3.6rem,15vw,11rem)] break-word m-0">
