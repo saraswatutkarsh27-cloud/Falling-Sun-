@@ -7,6 +7,7 @@ export interface TrackItem {
   focusAreas: string[];
   tools: string[];
   colorAccent: string;
+  subThemes: string[];
 }
 
 export interface ScheduleEvent {

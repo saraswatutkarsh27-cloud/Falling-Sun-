@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SectionHeader } from '../components/common/SectionHeader';
-import { GameDevVisual, WebDevVisual, RoboticsVisual } from '../components/tracks/TrackVisuals';
+import { GameDevVisual, WebDevVisual, RoboticsVisual, CreativeSkillsVisual } from '../components/tracks/TrackVisuals';
 import { eventConfig } from '../config/eventConfig';
 import { WhatsAppCTA } from '../components/common/WhatsAppCTA';
 import { CheckCircle2, ArrowUpRight } from 'lucide-react';
@@ -11,11 +11,12 @@ import { useRegistrationLock } from '../components/common/RegistrationLockModal'
 
 export const TracksPage: React.FC = () => {
   const { open: openRegLock } = useRegistrationLock();
-  const visuals = [
-    <GameDevVisual key="game" />,
-    <WebDevVisual key="web" />,
-    <RoboticsVisual key="robotics" />,
-  ];
+  const visuals: Record<string, React.ReactNode> = {
+    'game-development': <GameDevVisual key="game" />,
+    'web-development': <WebDevVisual key="web" />,
+    'robotics': <RoboticsVisual key="robotics" />,
+    'creative-skills': <CreativeSkillsVisual key="creative-skills" />,
+  };
 
   return (
     <div className="pt-32 pb-24 px-6 md:px-12 bg-bg min-h-screen space-y-24 text-cream">
@@ -24,7 +25,7 @@ export const TracksPage: React.FC = () => {
         <SectionHeader
           number="02"
           category="COMPETITION ARENAS"
-          title="THREE PATHWAYS. INFINITE OUTCOMES."
+          title="FOUR PATHWAYS. INFINITE OUTCOMES."
           subtitle="Select your focus track. Whether your craft is graphics pipelines, distributed web applications, or kinetic robotics, Falling Sun provides the infrastructure to build without limits."
         />
 
@@ -106,7 +107,7 @@ export const TracksPage: React.FC = () => {
 
                 {/* Interactive Visual Column */}
                 <div className="lg:col-span-6">
-                  {visuals[idx]}
+                  {visuals[track.id]}
                 </div>
               </div>
               </StampCard>

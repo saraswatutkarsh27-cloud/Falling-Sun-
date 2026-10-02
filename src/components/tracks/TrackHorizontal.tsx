@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { eventConfig } from '../../config/eventConfig';
-import { GameDevVisual, WebDevVisual, RoboticsVisual } from './TrackVisuals';
+import { GameDevVisual, WebDevVisual, RoboticsVisual, CreativeSkillsVisual } from './TrackVisuals';
 import { ArrowLeft, ArrowRight, CheckCircle2, ChevronRight, Sparkles } from 'lucide-react';
 import { MagneticButton } from '../common/MagneticButton';
 import { MaskedReveal, InteractiveRollText } from '../common/AnimatedText';
@@ -13,11 +13,12 @@ export const TrackHorizontal: React.FC = () => {
   const [hoveredTab, setHoveredTab] = useState<number | null>(null);
   const track = eventConfig.tracks[activeTrack];
 
-  const visuals = [
-    <GameDevVisual key="gamedev" />,
-    <WebDevVisual key="webdev" />,
-    <RoboticsVisual key="robotics" />,
-  ];
+  const visuals: Record<string, React.ReactNode> = {
+    'game-development': <GameDevVisual key="gamedev" />,
+    'web-development': <WebDevVisual key="webdev" />,
+    'robotics': <RoboticsVisual key="robotics" />,
+    'creative-skills': <CreativeSkillsVisual key="creative-skills" />,
+  };
 
   const nextTrack = () => {
     setActiveTrack((prev) => (prev + 1) % eventConfig.tracks.length);
@@ -85,7 +86,9 @@ export const TrackHorizontal: React.FC = () => {
           <div className="text-xs text-ink">
             <span className="bg-cream text-bg border-2 border-ink px-2 py-0.5 font-black text-sm">{track.number}</span>
             <span className="text-cream/70 mx-1.5 font-bold">/</span>
-            <span className="font-bold">03</span>
+            <span className="font-bold">
+              {String(eventConfig.tracks.length).padStart(2, '0')}
+            </span>
           </div>
 
           <div className="flex items-center gap-2">
@@ -212,7 +215,7 @@ export const TrackHorizontal: React.FC = () => {
 
             {/* Right Column: Interactive Track Visual */}
             <div className="lg:col-span-6">
-              {visuals[activeTrack]}
+              {visuals[track.id]}
             </div>
           </motion.div>
         </AnimatePresence>

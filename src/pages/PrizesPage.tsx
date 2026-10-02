@@ -11,7 +11,7 @@ export const PrizesPage: React.FC = () => {
           number="04"
           category="RECOGNITION & REWARDS"
           title="THE REWARD ARCHITECTURE"
-          subtitle="Honoring exceptional technical depth, uncompromised design execution, and raw ingenuity across all three competition disciplines."
+          subtitle="Honoring exceptional technical depth, uncompromised design execution, and raw ingenuity across all four competition disciplines."
         />
 
         {/* Prize Grid Component */}

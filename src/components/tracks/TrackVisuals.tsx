@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Crosshair, Cpu, Globe, Terminal, Activity, Zap, Play, Box, RefreshCw, Server, Radio } from 'lucide-react';
+import { Crosshair, Cpu, Globe, Terminal, Activity, Zap, Play, Box, RefreshCw, Server, Radio, Palette, Film, Layers } from 'lucide-react';
 
 /* -------------------------------------------------------------
  * 01: GAME DEVELOPMENT VISUAL (Interactive Simulation Workbench)
@@ -321,6 +321,116 @@ export const RoboticsVisual: React.FC = () => {
           ))}
         </div>
         <div className="text-brown font-bold hidden sm:block">UART @ 115200 BAUD</div>
+      </div>
+    </div>
+  );
+};
+
+/* -------------------------------------------------------------
+ * 04: CREATIVE SKILLS VISUAL (Interactive Artboard & Render Bench)
+ * ------------------------------------------------------------- */
+export const CreativeSkillsVisual: React.FC = () => {
+  const [mode, setMode] = useState<'MODEL' | 'EDIT' | 'DESIGN'>('MODEL');
+  const [renderPass, setRenderPass] = useState<number>(1);
+  const [isRendering, setIsRendering] = useState<boolean>(true);
+
+  const cyclePass = () => {
+    setRenderPass((prev) => (prev >= 4 ? 1 : prev + 1));
+  };
+
+  const layers = ['BACKGROUND', 'MESH / CLIP', 'TYPE + FX'];
+
+  return (
+    <div className="relative w-full h-[390px] md:h-[460px] bg-cream border-2 border-ink shadow-card overflow-hidden flex flex-col justify-between p-6 select-none">
+      {/* HUD Header & Creative Mode Pills */}
+      <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 font-mono text-[10px] text-ink-muted border-b-2 border-ink/20 pb-3">
+        <div className="flex items-center gap-2">
+          <Palette className="w-3.5 h-3.5 text-reddark" />
+          <span className="text-ink font-bold">ARTBOARD // {mode}</span>
+        </div>
+
+        <div className="flex items-center gap-1.5 bg-black/[0.04] p-1 border-2 border-ink/20">
+          {(['MODEL', 'EDIT', 'DESIGN'] as const).map((m) => (
+            <button
+              key={m}
+              type="button"
+              onClick={() => setMode(m)}
+              className={`px-2 py-0.5 rounded text-[9px] font-bold transition-all cursor-pointer ${
+                mode === m
+                  ? 'bg-ink text-cream'
+                  : 'text-ink-muted hover:text-ink'
+              }`}
+            >
+              {m}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Central Layer Stack & Live Canvas Preview */}
+      <div className="relative z-10 my-auto py-3 grid grid-cols-12 gap-3">
+        <div className="col-span-5 space-y-2">
+          {layers.map((layer, idx) => (
+            <div
+              key={layer}
+              className={`h-9 border-2 flex items-center px-2 font-mono text-[9px] font-bold ${
+                idx === renderPass % layers.length
+                  ? 'bg-yellow border-ink text-ink'
+                  : 'bg-black/5 border-ink/30 text-ink-muted'
+              }`}
+            >
+              <Layers className="w-3 h-3 mr-1.5 shrink-0" />
+              {layer}
+            </div>
+          ))}
+        </div>
+
+        <div className="col-span-7 relative border-2 border-ink/40 bg-black/5 h-[132px] flex items-center justify-center">
+          <motion.div
+            animate={isRendering ? { rotate: [0, 8, -8, 0] } : { rotate: 0 }}
+            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+            className="w-16 h-16 border-2 border-ink bg-cream flex items-center justify-center"
+          >
+            {mode === 'MODEL' ? (
+              <Box className="w-8 h-8 text-brown" />
+            ) : mode === 'EDIT' ? (
+              <Film className="w-8 h-8 text-brown" />
+            ) : (
+              <Palette className="w-8 h-8 text-brown" />
+            )}
+          </motion.div>
+          <div className="absolute top-1.5 left-2 font-mono text-[9px] text-ink-muted font-bold">
+            CANVAS 1920×1080
+          </div>
+          <div className="absolute bottom-1.5 right-2 font-mono text-[9px] text-reddark font-bold">
+            PASS {renderPass}/4
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Interactive Export Bar */}
+      <div className="relative z-10 border-t-2 border-ink/20 pt-3 flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] text-ink-muted">
+        <div className="flex flex-wrap items-center gap-1.5">
+          <button
+            type="button"
+            onClick={cyclePass}
+            className="flex items-center gap-1.5 px-2 py-1 bg-black/5 hover:bg-yellow hover:text-ink border-2 border-ink/30 transition-colors cursor-pointer"
+            title="Click to advance render pass"
+          >
+            <RefreshCw className="w-2.5 h-2.5" />
+            <span>RENDER PASS {renderPass}/4</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setIsRendering(!isRendering)}
+            className="flex items-center gap-1.5 px-2 py-1 bg-ink text-cream hover:bg-yellow hover:text-ink font-bold text-[9px] transition-colors cursor-pointer"
+          >
+            <Play className={`w-2.5 h-2.5 ${isRendering ? 'fill-current' : ''}`} />
+            <span>{isRendering ? 'PREVIEW LIVE' : 'PREVIEW PAUSED'}</span>
+          </button>
+        </div>
+        <div className="text-brown font-bold hidden sm:block">EXPORT // PNG · 4K</div>
       </div>
     </div>
   );

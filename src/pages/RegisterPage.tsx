@@ -116,7 +116,7 @@ export const RegisterPage: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-reddark shrink-0" />
-                  <span>Choose from Game Dev, Web Dev, or Robotics tracks</span>
+                  <span>Choose from Game Dev, Web Dev, Robotics, or Creative Skills tracks</span>
                 </div>
                 <div className="flex items-center gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-reddark shrink-0" />
@@ -142,7 +142,9 @@ export const RegisterPage: React.FC = () => {
             <div className="lg:col-span-5 p-6 sm:p-8 bg-cream border-2 border-ink shadow-[6px_6px_0_#1d1210] space-y-6">
               <div className="font-mono text-xs text-ink-muted uppercase tracking-widest flex items-center justify-between font-bold">
                 <span>SELECT PREFERRED TRACK</span>
-                <span className="text-reddark">03 OPTIONS</span>
+                <span className="text-reddark">
+                  {String(eventConfig.tracks.length).padStart(2, '0')} OPTIONS
+                </span>
               </div>
 
               <div className="space-y-3">

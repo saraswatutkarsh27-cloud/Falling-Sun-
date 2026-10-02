@@ -18,7 +18,7 @@ export const HomeTracksSection: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="font-mono text-xs uppercase tracking-[0.2em] text-ink font-bold"
           >
-            THREE COMPETITION ARENAS
+            FOUR COMPETITION ARENAS
           </motion.p>
 
           <motion.h2
@@ -44,7 +44,7 @@ export const HomeTracksSection: React.FC = () => {
         </div>
 
         {/* Track Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
           {eventConfig.tracks.map((track, idx) => (
             <motion.div
               key={track.id}
@@ -90,6 +90,18 @@ export const HomeTracksSection: React.FC = () => {
                       <CheckCircle2 className="w-3.5 h-3.5 text-reddark shrink-0" />
                       <span>{area}</span>
                     </div>
+                  ))}
+                </div>
+
+                {/* Sub-theme pills */}
+                <div className="flex flex-wrap gap-2 pt-3">
+                  {track.subThemes.map((theme) => (
+                    <span
+                      key={theme}
+                      className="px-2.5 py-1 bg-yellow/40 border-2 border-ink text-ink font-mono text-[10px] font-bold uppercase tracking-wide"
+                    >
+                      {theme}
+                    </span>
                   ))}
                 </div>
 

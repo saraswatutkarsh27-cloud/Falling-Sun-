@@ -127,6 +127,7 @@ export const Footer: React.FC = () => {
               <FooterLink to="/tracks" number="01" label="GAME DEVELOPMENT" />
               <FooterLink to="/tracks" number="02" label="WEB DEVELOPMENT" />
               <FooterLink to="/tracks" number="03" label="ROBOTICS" />
+              <FooterLink to="/tracks" number="04" label="CREATIVE SKILLS" />
             </ul>
 
             <div className="text-xs text-yellow tracking-widest uppercase pt-6 font-bold">

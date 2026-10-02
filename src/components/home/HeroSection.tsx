@@ -105,7 +105,7 @@ export const HeroSection: React.FC = () => {
 
             {/* Tag line */}
             <span className="self-start bg-yellow text-ink font-bold tracking-[0.08em] px-3 py-1.5 border-2 border-ink -rotate-[1.5deg] text-xs sm:text-sm uppercase">
-              UNDER 18 HACKATHON · GAME • WEB • ROBOTICS
+              UNDER 18 HACKATHON · GAME • WEB • ROBOTICS • CREATIVE SKILLS
             </span>
 
             {/* Headline */}
