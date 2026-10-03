@@ -74,7 +74,11 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
       {!isFinished && (
         <motion.div
           key="preloader-overlay"
-          className="fixed inset-0 z-[99999] flex items-center justify-center overflow-hidden bg-[#050505] text-[#111111] select-none"
+          className="fixed inset-0 z-[99999] flex items-center justify-center overflow-hidden bg-bg px-5 text-cream select-none"
+          style={{
+            backgroundImage:
+              'repeating-linear-gradient(0deg, rgba(243,223,198,0.12) 0 1px, transparent 1px 5px)',
+          }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{
@@ -84,46 +88,60 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           role="status"
           aria-label={`Loading Falling Sun, ${progress}%`}
         >
-          <div className="relative w-[min(500px,82vw)] border border-[#111111] bg-[#f3efe9] px-5 py-5 shadow-[10px_10px_0_#ed002d] sm:px-7 sm:py-6">
-            <div className="absolute inset-x-0 top-0 h-[2px] bg-[#111111]/20" />
-
-            <div className="flex items-center gap-4">
-              <div className="h-[2px] flex-1 bg-[#555]" />
-              <div className="flex items-center gap-2" aria-hidden="true">
-                <span className="block h-3 w-3 border border-[#111111] bg-[#111111]" />
-                <span className="block h-3 w-3 border border-[#111111] bg-[#ed002d]" />
-                <span className="block h-3 w-3 border border-[#111111] bg-[#f8f5f1]" />
+          <div className="stamp w-[min(480px,100%)]">
+            <div className="eng min-h-[310px] justify-between gap-8 p-6 sm:min-h-[350px] sm:p-9">
+              <div className="flex items-center justify-between gap-3 font-mono text-[10px] font-bold tracking-[0.18em] text-cream/75 uppercase sm:text-xs">
+                <span>FALLING SUN // SYSTEM</span>
+                <span className="text-yellow">2026</span>
               </div>
-            </div>
 
-            <div className="mt-7 flex items-end justify-between gap-4">
-              <strong className="font-[FamilyName:var(--font-display)] text-[clamp(1.9rem,5vw,2.3rem)] leading-none tracking-[-0.08em] text-[#111111] uppercase">
-                FALLING SUN
-              </strong>
+              <div className="flex flex-col items-center text-center">
+                <motion.img
+                  src="/logo_transparent.png"
+                  alt=""
+                  aria-hidden="true"
+                  className="mb-4 h-16 w-16 object-contain sm:h-20 sm:w-20"
+                  animate={{ rotate: [0, 8, -8, 0], scale: [1, 1.04, 1] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                />
+                <strong className="font-display text-[clamp(2.4rem,10vw,4rem)] leading-[0.85] tracking-wide text-cream uppercase">
+                  Falling Sun
+                </strong>
+                <span className="mt-3 font-mono text-[10px] font-bold tracking-[0.2em] text-yellow uppercase sm:text-xs">
+                  BUILD · BREAK · CREATE
+                </span>
+              </div>
 
-              <strong className="font-mono text-[clamp(1.4rem,4vw,2rem)] leading-none tracking-[-0.04em] text-[#ed002d] tabular-nums">
-                {String(progress).padStart(2, '0')}%
-              </strong>
-            </div>
+              <div>
+                <div className="mb-2 flex items-end justify-between gap-4">
+                  <span className="font-mono text-[10px] font-bold tracking-[0.16em] text-cream/75 uppercase">
+                    Loading experience
+                  </span>
+                  <strong className="font-display text-2xl leading-none text-yellow tabular-nums sm:text-3xl">
+                    {String(progress).padStart(2, '0')}%
+                  </strong>
+                </div>
 
-            <div
-              className="mt-6 h-[26px] w-full overflow-hidden border-2 border-[#111111] bg-[#ffffff]"
-              role="progressbar"
-              aria-valuemin={0}
-              aria-valuemax={100}
-              aria-valuenow={progress}
-              aria-label="Loading progress"
-            >
-              <motion.div
-                className="h-full bg-[#111111]"
-                animate={{ width: `${progress}%` }}
-                transition={{ duration: 0.12, ease: 'linear' }}
-              />
-            </div>
+                <div
+                  className="h-5 w-full overflow-hidden border-2 border-ink bg-cream p-[3px]"
+                  role="progressbar"
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                  aria-valuenow={progress}
+                  aria-label="Loading progress"
+                >
+                  <motion.div
+                    className="h-full bg-yellow"
+                    animate={{ width: `${progress}%` }}
+                    transition={{ duration: 0.12, ease: 'linear' }}
+                  />
+                </div>
 
-            <div className="mt-3 flex items-center justify-between gap-4 font-mono text-[9px] font-bold uppercase tracking-[0.16em] text-[#555555]">
-              <span>HACKATHON 2026</span>
-              <span>INITIALIZING...</span>
+                <div className="mt-3 flex items-center justify-between gap-4 font-mono text-[9px] font-bold tracking-[0.14em] text-cream/65 uppercase">
+                  <span>HACKATHON · 12H + 12H</span>
+                  <span>INITIALIZING...</span>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
