@@ -1,6 +1,7 @@
 import React from 'react';
 import { HeroSection } from '../components/home/HeroSection';
 import { IntroSection } from '../components/home/IntroSection';
+import { ExperienceSection } from '../components/home/ExperienceSection';
 import { Format1212 } from '../components/home/Format1212';
 import { HomeTeamSection } from '../components/team/HomeTeamSection';
 import { HomeTracksSection } from '../components/tracks/HomeTracksSection';
@@ -25,7 +26,10 @@ export const HomePage: React.FC = () => {
       {/* 01: INTRO / MANIFESTO */}
       <IntroSection />
 
-      {/* 02: 12 + 12 HOURS FORMAT */}
+      {/* 02: EXPERIENCE / EQUIPMENT SHOWCASE */}
+      <ExperienceSection />
+
+      {/* 03: 12 + 12 HOURS FORMAT */}
       <Format1212 />
 
 
