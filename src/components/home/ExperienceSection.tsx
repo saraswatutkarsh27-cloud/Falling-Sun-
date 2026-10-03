@@ -3,27 +3,27 @@ import React from 'react';
 const experiences = [
   {
     id: '01',
-    title: 'XR + MOTION LAB',
+    title: '3D PRINTERS',
     description:
-      'Prototype immersive interfaces, motion-driven interactions, and tactile play systems with real hardware on-site.',
-    tags: ['VR/AR', 'Sensors', 'Spatial UX'],
-    image: '/ps5.webp',
-  },
-  {
-    id: '02',
-    title: 'FAB + ROBOTICS',
-    description:
-      'From laser-cut enclosures to autonomous bots, build the actual machine behind the idea and see it move.',
-    tags: ['3D Print', 'Robotics', 'Electronics'],
+      'Print mounts, brackets, and enclosures for your robot, then test the physical part in the same build window. [CONFIRM: STL queue and print request flow].',
+    pill: 'PRINT YOUR PARTS',
     image: '/3d.webp',
   },
   {
-    id: '03',
-    title: 'FLIGHT + PLAY TEST',
+    id: '02',
+    title: 'FPV DRONES',
     description:
-      'Go beyond static prototypes with drones, controllers, and prototype systems made for real world interaction.',
-    tags: ['Drone Ops', 'Game Feel', 'Testing'],
+      'Fly in a supervised zone, tune sensor and flight logic, and turn robotics ideas into a live demo. [CONFIRM: safety rules].',
+    pill: 'FLY YOUR IDEA',
     image: '/drone.webp',
+  },
+  {
+    id: '03',
+    title: 'PS5 ZONE',
+    description:
+      'Reset, recharge, and play a bit before the next build push. It sparks Game Dev ideas and keeps the team sharp. [CONFIRM: timed slots].',
+    pill: 'RESET AND PLAY',
+    image: '/ps5.webp',
   },
 ];
 
@@ -41,7 +41,7 @@ export const ExperienceSection: React.FC = () => (
       </h2>
 
       <p className="mt-6 max-w-3xl text-cream text-lg md:text-xl font-medium leading-relaxed">
-        Hackathons shouldn&apos;t only be about laptops. We&apos;re bringing hardware you can touch, fly and play, for builders of every track.
+        Hackathons should not live on laptops alone. We are bringing hardware you can touch, fly, and play with.
       </p>
 
       <div className="mt-12 grid gap-8 md:grid-cols-3">
@@ -71,15 +71,10 @@ export const ExperienceSection: React.FC = () => (
                 {item.description}
               </p>
 
-              <div className="mt-5 flex flex-wrap gap-2">
-                {item.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="inline-flex items-center border-2 border-ink bg-ink px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-cream -rotate-1"
-                  >
-                    {tag}
-                  </span>
-                ))}
+              <div className="mt-5">
+                <span className="inline-flex items-center border-2 border-ink bg-ink px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-cream -rotate-1">
+                  {item.pill}
+                </span>
               </div>
             </div>
           </article>
