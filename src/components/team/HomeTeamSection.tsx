@@ -22,7 +22,7 @@ export const HomeTeamSection: React.FC = () => {
               transition={{ duration: 0.5 }}
               className="font-mono text-xs uppercase tracking-[0.2em] text-ink font-bold"
             >
-              THE STUDENTS BEHIND THE EVENT
+              THE PEOPLE BEHIND THE EVENT
             </motion.p>
 
             <motion.h2
@@ -54,7 +54,7 @@ export const HomeTeamSection: React.FC = () => {
 
         {/* Backbone Members */}
         {backboneMembers.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 w-full">
             {backboneMembers.map((member, idx) => (
                 <motion.div
                   key={member.id}
