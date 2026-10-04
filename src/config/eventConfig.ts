@@ -14,8 +14,8 @@ export const eventConfig: EventConfig = {
   instagramUrl: "https://www.instagram.com/fallingsun.in?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==",
 
   // Registration portal state (single source of truth)
-  registrationOpensAt: "2026-10-05T00:00:00",
-  registrationUrl: "",
+  registrationOpensAt: "2026-01-01T00:00:00",
+  registrationUrl: "https://fallingsundelhi.fillout.com/registrationforms",
 
   tracks: [
     {
@@ -334,19 +334,19 @@ export const eventConfig: EventConfig = {
       isPlaceholder: false,
     },
     {
+      id: "dev-priya",
+      name: "Dev Priya",
+      role: "Lead Organizer",
+      bio: "Lead Organizer heading participant workflows, registration onboarding, and event communications.",
+      image: "/team/dev-priya.jpeg",
+      isPlaceholder: false,
+    },
+    {
       id: "anand",
       name: "Anand",
       role: "Organizer",
       bio: "Organizing guest relations, event coordination, and participant hospitality.",
       image: "/team/anand.jpeg",
-      isPlaceholder: false,
-    },
-    {
-      id: "dev-priya",
-      name: "Dev Priya",
-      role: "Organizer",
-      bio: "Organizing participant workflows, registration onboarding, and communications.",
-      image: "/team/dev-priya.jpeg",
       isPlaceholder: false,
     },
     {
@@ -366,27 +366,11 @@ export const eventConfig: EventConfig = {
       isPlaceholder: false,
     },
     {
-      id: "pranab",
-      name: "Pranab",
-      role: "Organizer",
-      bio: "Organizing event operations, participant coordination, and on-ground execution.",
-      image: "/team/pranab.jpeg",
-      isPlaceholder: false,
-    },
-    {
       id: "adarsh",
       name: "Adarsh",
       role: "Event Incharge",
       bio: "Managing event operations, participant coordination, and on-ground logistics.",
       image: "/team/adarsh.jpeg",
-      isPlaceholder: false,
-    },
-    {
-      id: "mayank",
-      name: "Mayank",
-      role: "Event Incharge",
-      bio: "Managing event execution, scheduling, and participant support.",
-      image: "/team/mayank.jpeg",
       isPlaceholder: false,
     },
   ],

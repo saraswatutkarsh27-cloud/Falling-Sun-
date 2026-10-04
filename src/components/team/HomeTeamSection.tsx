@@ -6,8 +6,8 @@ import { eventConfig } from '../../config/eventConfig';
 import { RoleTag } from './RoleTag';
 
 export const HomeTeamSection: React.FC = () => {
-  const backboneMembers = eventConfig.team.filter((m) => m.section === 'backbone');
-  const regularMembers = eventConfig.team.filter((m) => m.section !== 'backbone');
+  const organizers = eventConfig.team.filter((m) => m.section !== 'backbone');
+  const facultyMembers = eventConfig.team.filter((m) => m.section === 'backbone');
 
   return (
     <section className="relative py-24 px-6 md:px-12 bg-bg">
@@ -52,38 +52,17 @@ export const HomeTeamSection: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Backbone Members */}
-        {backboneMembers.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 w-full">
-            {backboneMembers.map((member, idx) => (
-                <motion.div
-                  key={member.id}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-20px' }}
-                  transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                  whileHover={{ y: -6 }}
-                  className="group relative overflow-hidden bg-cream border-2 border-ink shadow-card hover:shadow-[8px_8px_0_#1d1210] transition-all duration-300"
-                >
-                  <div className="relative aspect-[220/280] w-full overflow-hidden bg-ink">
-                    <img
-                      src={member.image}
-                      alt={`${member.name} - ${member.role}`}
-                      className="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <RoleTag role={member.role} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-300 pointer-events-none" />
-                  </div>
-                </motion.div>
-              ))}
-          </div>
-        )}
-
-        {/* Regular Team Cards Grid */}
+        {/* SECTION 1: ORGANIZERS (TOP) */}
         <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <span className="px-3 py-1 bg-reddark border-2 border-cream text-cream font-mono text-xs font-bold uppercase tracking-widest">
+              ORGANIZERS
+            </span>
+            <div className="flex-1 h-px bg-cream/20 border-t-2 border-dashed"></div>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {regularMembers.map((member, idx) => (
+            {organizers.map((member, idx) => (
               <motion.div
                 key={member.id}
                 initial={{ opacity: 0, y: 24 }}
@@ -109,6 +88,43 @@ export const HomeTeamSection: React.FC = () => {
             ))}
           </div>
         </div>
+
+        {/* SECTION 2: ADVISING FACULTY (BOTTOM) */}
+        {facultyMembers.length > 0 && (
+          <div className="space-y-4 pt-4">
+            <div className="flex items-center gap-3">
+              <span className="px-3 py-1 bg-green border-2 border-cream text-cream font-mono text-xs font-bold uppercase tracking-widest">
+                ADVISING FACULTY
+              </span>
+              <div className="flex-1 h-px bg-cream/20 border-t-2 border-dashed"></div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 w-full">
+              {facultyMembers.map((member, idx) => (
+                <motion.div
+                  key={member.id}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-20px' }}
+                  transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  whileHover={{ y: -6 }}
+                  className="group relative overflow-hidden bg-cream border-2 border-ink shadow-card hover:shadow-[8px_8px_0_#1d1210] transition-all duration-300"
+                >
+                  <div className="relative aspect-[220/280] w-full overflow-hidden bg-ink">
+                    <img
+                      src={member.image}
+                      alt={`${member.name} - ${member.role}`}
+                      className="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <RoleTag role={member.role} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-300 pointer-events-none" />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

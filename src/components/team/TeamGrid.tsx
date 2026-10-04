@@ -9,8 +9,8 @@ import { RoleTag } from './RoleTag';
 export const TeamGrid: React.FC = () => {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
-  const backboneMembers = eventConfig.team.filter((m) => m.section === 'backbone');
-  const regularMembers = eventConfig.team.filter((m) => m.section !== 'backbone');
+  const organizers = eventConfig.team.filter((m) => m.section !== 'backbone');
+  const facultyMembers = eventConfig.team.filter((m) => m.section === 'backbone');
 
   return (
     <div className="space-y-16">
@@ -29,11 +29,68 @@ export const TeamGrid: React.FC = () => {
         <WhatsAppCTA compact className="shrink-0" />
       </div>
 
-      {/* BACKBONE Members - Top Row */}
-      {backboneMembers.length > 0 && (
-        <div className="space-y-6">
+      {/* SECTION 1: ORGANIZERS (TOP) */}
+      <div className="space-y-6">
+        <div className="flex items-center gap-3">
+          <div className="px-3 py-1.5 bg-reddark border-2 border-ink text-cream font-mono text-xs font-bold uppercase tracking-widest flex items-center gap-2 shadow-[2px_2px_0_#1d1210]">
+            <Sparkles className="w-4 h-4" />
+            <span>ORGANIZERS</span>
+          </div>
+          <div className="flex-1 h-px bg-ink/25 border-t-2 border-dashed"></div>
+          <span className="font-mono text-xs text-ink-muted uppercase tracking-widest font-semibold">LEADS & CORE CREW</span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {organizers.map((member, idx) => (
+            <motion.div
+              key={member.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-30px' }}
+              transition={{ duration: 0.5, delay: idx * 0.06, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -8 }}
+              onClick={() => setSelectedMember(member)}
+              className="group relative overflow-hidden bg-cream border-2 border-ink shadow-card hover:shadow-[8px_8px_0_#1d1210] transition-all duration-300 cursor-pointer flex flex-col"
+            >
+              <div className="relative aspect-[220/280] w-full overflow-hidden bg-ink">
+                <img
+                  src={member.image}
+                  alt={`${member.name} - ${member.role}`}
+                  className="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-105"
+                  loading="lazy"
+                />
+                <RoleTag role={member.role} />
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-start justify-end p-3">
+                  <span className="p-1.5 bg-cream border-2 border-ink text-ink text-xs">
+                    <Info className="w-3.5 h-3.5" />
+                  </span>
+                </div>
+              </div>
+              <div className="p-4 bg-cream border-t-2 border-ink/20 flex items-center justify-between">
+                <div>
+                  <p className="font-display text-sm font-bold text-ink">{member.name}</p>
+                  <p className="font-mono text-[11px] text-ink-muted">{member.role}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* SECTION 2: ADVISING FACULTY (BOTTOM) */}
+      {facultyMembers.length > 0 && (
+        <div className="space-y-6 pt-4">
+          <div className="flex items-center gap-3">
+            <div className="px-3 py-1.5 bg-green border-2 border-ink text-cream font-mono text-xs font-bold uppercase tracking-widest flex items-center gap-2 shadow-[2px_2px_0_#1d1210]">
+              <Shield className="w-4 h-4" />
+              <span>ADVISING FACULTY</span>
+            </div>
+            <div className="flex-1 h-px bg-ink/25 border-t-2 border-dashed"></div>
+            <span className="font-mono text-xs text-ink-muted uppercase tracking-widest font-semibold">FACULTY & ADVISORS</span>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 w-full">
-            {backboneMembers.map((member, idx) => (
+            {facultyMembers.map((member, idx) => (
               <motion.div
                 key={member.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -69,52 +126,6 @@ export const TeamGrid: React.FC = () => {
           </div>
         </div>
       )}
-
-      {/* Divider */}
-      <div className="flex items-center gap-3">
-        <div className="flex-1 h-px bg-ink/25 border-t-2 border-dashed"></div>
-        <span className="font-mono text-[10px] text-ink-muted uppercase tracking-widest">CREW</span>
-        <div className="flex-1 h-px bg-ink/25 border-t-2 border-dashed"></div>
-      </div>
-
-      {/* TEAM SECTION */}
-      <div className="space-y-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {regularMembers.map((member, idx) => (
-            <motion.div
-              key={member.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-30px' }}
-              transition={{ duration: 0.5, delay: idx * 0.06, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -8 }}
-              onClick={() => setSelectedMember(member)}
-              className="group relative overflow-hidden bg-cream border-2 border-ink shadow-card hover:shadow-[8px_8px_0_#1d1210] transition-all duration-300 cursor-pointer flex flex-col"
-            >
-              <div className="relative aspect-[220/280] w-full overflow-hidden bg-ink">
-                <img
-                  src={member.image}
-                  alt={`${member.name} - ${member.role}`}
-                  className="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-105"
-                  loading="lazy"
-                />
-                <RoleTag role={member.role} />
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-start justify-end p-3">
-                  <span className="p-1.5 bg-cream border-2 border-ink text-ink text-xs">
-                    <Info className="w-3.5 h-3.5" />
-                  </span>
-                </div>
-              </div>
-              <div className="p-4 bg-cream border-t-2 border-ink/20 flex items-center justify-between">
-                <div>
-                  <p className="font-display text-sm font-bold text-ink">{member.name}</p>
-                  <p className="font-mono text-[11px] text-ink-muted">{member.role}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
 
       {/* Member Details Modal */}
       <AnimatePresence>
