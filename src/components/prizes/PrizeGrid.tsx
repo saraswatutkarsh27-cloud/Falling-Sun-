@@ -12,7 +12,7 @@ export const PrizeGrid: React.FC = () => {
       <div className="text-center space-y-6 max-w-3xl mx-auto">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-cream text-reddark border-2 border-ink font-mono text-xs uppercase tracking-widest font-bold -rotate-1">
           <Sparkles className="w-3.5 h-3.5" />
-          <span>PRIZE ANNOUNCEMENT PENDING</span>
+          <span>9 AWARD CATEGORIES ANNOUNCED</span>
         </div>
 
         <h3 className="font-display text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-cream">
@@ -21,8 +21,17 @@ export const PrizeGrid: React.FC = () => {
         </h3>
 
         <p className="text-cream text-base md:text-lg leading-relaxed font-bold">
-          The official cash prize pool, partner company bounties, and hardware perks are being curated. Exact values will be disclosed via our official WhatsApp community.
+          Three awards each for Game Development, Web Development, and Hardware. Cash values, partner
+          bounties, and hardware perks are still being finalised — those drop through our WhatsApp
+          community.
         </p>
+
+        {/* Awards Overview */}
+        <div className="flex flex-wrap items-center justify-center gap-2 font-mono text-[11px] uppercase tracking-widest font-bold">
+          <span className="px-3 py-1.5 bg-yellow border-2 border-ink text-ink">Game Dev // 3 Awards</span>
+          <span className="px-3 py-1.5 bg-cream border-2 border-ink text-ink">Web Dev // 3 Awards</span>
+          <span className="px-3 py-1.5 bg-bg border-2 border-cream text-cream">Hardware // 3 Awards</span>
+        </div>
 
         <WhatsAppCTA compact className="mx-auto" />
       </div>

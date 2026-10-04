@@ -5,22 +5,22 @@ export const SITE_URL = 'https://fallingsun2026.vercel.app';
 const SITE_NAME = 'FALLING SUN 2026';
 
 const DEFAULT_DESCRIPTION =
-  'FALLING SUN is a premier 2-day (12H + 12H) under-18 hackathon focusing on Game Development, Web Development, and Robotics. Build something worth remembering.';
+  'FALLING SUN is a premier 2-day (12H + 12H) hackathon covering Game Development, Web Development, Robotics, and Creative Skills. Build something worth remembering.';
 
 const ROUTE_META: Record<string, { title: string; description: string }> = {
   '/': {
-    title: 'FALLING SUN — Under 18 Hackathon | 12H + 12H, 2 Days',
+    title: 'FALLING SUN — Hackathon 2026 | 12H + 12H, 2 Days',
     description: DEFAULT_DESCRIPTION,
   },
   '/about': {
-    title: 'About | FALLING SUN 2026 — Under 18 Hackathon',
+    title: 'About | FALLING SUN 2026 — Hackathon 2026',
     description:
-      'Learn about FALLING SUN 2026, a student-run under-18 hackathon running a 12H + 12H format across 2 days with tracks in Game Dev, Web Dev, and Robotics.',
+      'Learn about FALLING SUN 2026, a student-run hackathon running a 12H + 12H format across 2 days with tracks in Game Dev, Web Dev, Robotics, and Creative Skills.',
   },
   '/tracks': {
     title: 'Tracks | FALLING SUN 2026 — Game Dev, Web Dev, Robotics',
     description:
-      'Explore the three FALLING SUN 2026 hackathon tracks: Game Development, Web Development, and Robotics — focus areas, tools, and judging criteria.',
+      'Explore the four FALLING SUN 2026 hackathon tracks: Game Development, Web Development, Robotics, and Creative Skills — focus areas, tools, and judging criteria.',
   },
   '/schedule': {
     title: 'Schedule | FALLING SUN 2026 — 12H + 12H Over 2 Days',
@@ -28,24 +28,24 @@ const ROUTE_META: Record<string, { title: string; description: string }> = {
       'Day-by-day schedule for FALLING SUN 2026: check-in, keynote, two 12-hour hacking sprints, mentoring, live demos, and awards.',
   },
   '/prizes': {
-    title: 'Prizes | FALLING SUN 2026 — Under 18 Hackathon',
+    title: 'Prizes & Judging | FALLING SUN 2026 — Awards and Scoring',
     description:
-      'Prize pool and awards for FALLING SUN 2026, including Grand Champion, track champions, Most Innovative Concept, and Rising Builder Award.',
+      'Awards and scoring for FALLING SUN 2026: Ray Score, trial points, judges points, plus Best Gameplay, Best Frontend, and hardware tinkering awards.',
   },
   '/team': {
     title: 'Team | FALLING SUN 2026 — Team Falling Sun',
     description:
-      'Meet Team Falling Sun — the student organizers, leads, and backbone behind the FALLING SUN 2026 under-18 hackathon.',
+      'Meet Team Falling Sun — the student organizers, leads, and backbone behind the FALLING SUN 2026 hackathon.',
   },
   '/faq': {
-    title: 'FAQ | FALLING SUN 2026 — Under 18 Hackathon',
+    title: 'FAQ | FALLING SUN 2026 — Hackathon 2026',
     description:
       'Answers to frequently asked questions about FALLING SUN 2026: eligibility, 12H + 12H format, tracks, teams, registration, and mentorship.',
   },
   '/register': {
     title: 'Register | FALLING SUN 2026 — Applications',
     description:
-      'Register for FALLING SUN 2026. Under-18 hackers can apply solo or in teams of up to 4 across Game Dev, Web Dev, and Robotics tracks. 100% free.',
+      'Register for FALLING SUN 2026. Hackers can apply solo or in teams of up to 4 across Game Dev, Web Dev, Robotics, and Creative Skills. 100% free.',
   },
 };
 

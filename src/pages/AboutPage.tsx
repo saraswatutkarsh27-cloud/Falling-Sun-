@@ -58,7 +58,9 @@ export const AboutPage: React.FC = () => {
                 01. VELOCITY
               </h3>
               <p className="text-ink-muted text-sm leading-relaxed font-sans font-medium">
-                Zero bureaucracy. No endless panels or corporate fluff. We give you high-bandwidth connectivity, dedicated power rails, and mentor access so you can write code at peak velocity.
+                No opening ceremony that eats three hours, no queue for a stall. Wi-Fi, power and mentors
+                are ready the moment you sit down, so your 12 hours go into building instead of waiting
+                around.
               </p>
             </motion.div>
 
@@ -77,7 +79,9 @@ export const AboutPage: React.FC = () => {
                 02. DEPTH
               </h3>
               <p className="text-ink-muted text-sm leading-relaxed font-sans font-medium">
-                We reward technical ambition. Whether it's crafting custom physics solvers in Godot, optimizing websocket servers in Rust, or soldering embedded motor drivers, we celebrate builders who go deep.
+                We would rather see one hard thing done properly than ten easy things half-finished. A
+                custom physics solver, a database schema that makes sense, a sensor that actually reads —
+                pick something difficult and go all the way in.
               </p>
             </motion.div>
 
@@ -96,7 +100,9 @@ export const AboutPage: React.FC = () => {
                 03. CRAFTSMANSHIP
               </h3>
               <p className="text-ink-muted text-sm leading-relaxed font-sans font-medium">
-                Software is an art form. We emphasize thoughtful UI design, micro-interactions, silky frame rates, and tactile hardware casings over hastily cobbled together mockups.
+                A demo that runs only on your laptop is only half done. Buttons should respond, the layout
+                should hold up on someone else's screen, and the next person should be able to read your
+                code without calling you first.
               </p>
             </motion.div>
           </div>
