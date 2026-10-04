@@ -3,7 +3,6 @@ import { EventConfig } from '../types';
 export const eventConfig: EventConfig = {
   name: "FALLING SUN",
   tagline: "BUILD SOMETHING WORTH REMEMBERING.",
-  ageGroup: "UNDER 18",
   format: "12H + 12H // 2 DAYS",
   totalHours: "24 HOURS TOTAL (12H + 12H)",
   edition: "2026 EDITION",
@@ -34,6 +33,8 @@ export const eventConfig: EventConfig = {
       ],
       tools: ["Godot", "Unity", "Unreal Engine", "Phaser / WebGL", "Raylib / C++"],
       colorAccent: "#FDB813",
+      // CONFIRM WITH ORGANIZER
+      subThemes: ["Physics", "Procedural worlds", "Atmosphere", "Multiplayer", "etc."],
     },
     {
       id: "web-development",
@@ -50,6 +51,8 @@ export const eventConfig: EventConfig = {
       ],
       tools: ["React / Next.js", "TypeScript", "Three.js / WebGL", "Node.js / Bun", "Tailwind CSS"],
       colorAccent: "#EDEDED",
+      // CONFIRM WITH ORGANIZER
+      subThemes: ["Real-time apps", "Full-stack tools", "AI-powered apps", "Dashboards", "etc."],
     },
     {
       id: "robotics",
@@ -66,6 +69,26 @@ export const eventConfig: EventConfig = {
       ],
       tools: ["Arduino / ESP32", "Raspberry Pi", "ROS / Micro-ROS", "OpenCV", "Python / C++"],
       colorAccent: "#FF5722",
+      // CONFIRM WITH ORGANIZER
+      subThemes: ["Drones", "Line followers", "Sensors and IoT", "Automation", "etc."],
+    },
+    {
+      id: "creative-skills",
+      number: "04",
+      title: "CREATIVE SKILLS",
+      tagline: "MODEL IT. EDIT IT. DESIGN IT. SHIP IT FINISHED.",
+      description:
+        "For makers who design more than they code. Show us a finished piece, not a rough sketch.",
+      focusAreas: [
+        "3D Modeling & Texturing",
+        "Video Editing & Post Production",
+        "Graphic Design & Layout",
+        "Motion Graphics & Animation"
+      ],
+      tools: ["Blender", "Figma", "DaVinci Resolve", "After Effects", "Illustrator"],
+      colorAccent: "#F2327F",
+      // CONFIRM WITH ORGANIZER
+      subThemes: ["3D modeling", "Video editing", "Graphic design", "Motion and animation", "etc."],
     },
   ],
 
@@ -74,7 +97,7 @@ export const eventConfig: EventConfig = {
       dayNumber: "DAY 01",
       title: "IGNITION & ARCHITECTURE",
       duration: "12 HOURS HACKING",
-      dateLabel: "DATE ANNOUNCEMENT PENDING",
+      dateLabel: "24 OCTOBER 2026 — DAY 01",
       events: [
         {
           time: "TBA",
@@ -124,7 +147,7 @@ export const eventConfig: EventConfig = {
       dayNumber: "DAY 02",
       title: "SYNTHESIS & JUDGING",
       duration: "12 HOURS HACKING",
-      dateLabel: "DATE ANNOUNCEMENT PENDING",
+      dateLabel: "25 OCTOBER 2026 — DAY 02",
       events: [
         {
           time: "TBA",
@@ -218,10 +241,37 @@ export const eventConfig: EventConfig = {
 
   team: [
     {
+      id: "girijesh-mishra",
+      name: "Girijesh Kr Mishra Sir",
+      role: "Principal",
+      bio: "Guiding the academic vision and institutional mentorship for Falling Sun.",
+      image: "https://placehold.co/220x280?text=Girijesh+Sir",
+      isPlaceholder: true,
+      section: "backbone",
+    },
+    {
+      id: "kamal-sir",
+      name: "Kamal Sir",
+      role: "Faculty Advisor",
+      bio: "Advising on technical curriculum, judging standards, and student development.",
+      image: "https://placehold.co/220x280?text=Kamal+Sir",
+      isPlaceholder: true,
+      section: "backbone",
+    },
+    {
+      id: "antesh-maam",
+      name: "Antesh Ma'am",
+      role: "Faculty Advisor",
+      bio: "Overseeing participant experience, coordination, and on-ground event support.",
+      image: "https://placehold.co/220x280?text=Antesh+Ma'am",
+      isPlaceholder: true,
+      section: "backbone",
+    },
+    {
       id: "aniket-gaba",
       name: "Aniket Gaba",
-      role: "Backbone",
-      bio: "The backbone of Falling Sun — keeping the entire event, team, and operations standing tall.",
+      role: "Advisor",
+      bio: "Advising on event execution, schedule orchestration, and operational alignment.",
       image: "/team/aniket-gaba.jpeg",
       isPlaceholder: false,
       section: "backbone",
@@ -310,17 +360,23 @@ export const eventConfig: EventConfig = {
 
   faqs: [
     {
+      id: "f0",
+      question: "Who can participate?",
+      answer: "Those who are under 18 and all.",
+      category: "Eligibility",
+    },
+    {
       id: "f1",
       question: "WHAT IS FALLING SUN?",
       answer:
-        "FALLING SUN is a premier under-18 hackathon where ambitious young technologists gather for 2 days (12 hours + 12 hours) to build real, working projects in Game Development, Web Development, and Robotics. It is engineered to give builders high-end creative freedom without corporate templates.",
+        "FALLING SUN is a premier hackathon where ambitious young technologists gather for 2 days (12 hours + 12 hours) to build real, working projects in Game Development, Web Development, Robotics, and Creative Skills. It is engineered to give builders high-end creative freedom without corporate templates.",
       category: "General",
     },
     {
       id: "f2",
-      question: "WHO CAN PARTICIPATE? IS IT STRICTLY UNDER 18?",
+      question: "IS IT OPEN TO ALL SKILL LEVELS?",
       answer:
-        "Yes, Falling Sun is strictly an under-18 event. You must be aged 18 or younger on the day the hackathon commences. High school students, self-taught creators, and young builders of all skill levels are welcome.",
+        "Yes. Self-taught creators and young builders of all skill levels are welcome.",
       category: "Eligibility",
     },
     {
@@ -332,9 +388,9 @@ export const eventConfig: EventConfig = {
     },
     {
       id: "f4",
-      question: "WHAT ARE THE THREE TRACKS?",
+      question: "WHAT ARE THE FOUR TRACKS?",
       answer:
-        "The hackathon is centered around three pillars: (1) Game Development — building original playable titles, procedural systems, and game mechanics; (2) Web Development — engineering modern interactive web applications and digital interfaces; and (3) Robotics — programming microcontrollers, sensors, and physical computing prototypes.",
+        "The hackathon is centered around four tracks: (1) Game Development — building original playable titles, procedural systems, and game mechanics; (2) Web Development — engineering modern interactive web applications and digital interfaces; (3) Robotics — programming microcontrollers, sensors, and physical computing prototypes; and (4) Creative Skills — 3D modeling, video editing, and graphic design for makers who ship finished pieces.",
       category: "Tracks",
     },
     {
@@ -362,7 +418,7 @@ export const eventConfig: EventConfig = {
       id: "f8",
       question: "WHAT SHOULD I BRING TO THE HACKATHON?",
       answer:
-        "Bring your laptop, charger, testing hardware/peripherals (for Game Dev and Robotics, bring your controllers, dev boards, sensors, and cables), personal identification (student ID or government ID verifying your age), and uninhibited curiosity.",
+        "Bring your laptop, charger, testing hardware/peripherals (for Game Dev and Robotics, bring your controllers, dev boards, sensors, and cables), personal identification (student ID or government ID), and uninhibited curiosity.",
       category: "Preparation",
     },
     {

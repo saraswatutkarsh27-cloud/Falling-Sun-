@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MaskedReveal } from './AnimatedText';
+import { SectionTitle } from '../SectionTitle';
 
 interface SectionHeaderProps {
   number: string;
@@ -21,16 +22,24 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
 }) => {
   return (
     <div className={`space-y-4 ${align === 'center' ? 'text-center' : 'text-left'} ${className}`}>
-      {/* Category & Section Number with Falling Sun tick mark */}
-      <div className={`flex items-center gap-3 font-mono text-xs text-ink-muted ${align === 'center' ? 'justify-center' : 'justify-start'}`}>
-        <span className="text-sun font-black text-sm">{number}</span>
-        <span className="text-black/20">//</span>
-        <span className="tracking-widest uppercase font-semibold text-ink-soft">{category}</span>
+      {/* Category & Section Number sticker row */}
+      <div
+        className={`flex items-center gap-3 text-xs ${
+          align === 'center' ? 'justify-center' : 'justify-start'
+        }`}
+      >
+        <span className="bg-cream text-bg border-2 border-ink px-2 py-0.5 font-black text-sm">
+          {number}
+        </span>
+        <span className="text-ink font-bold">//</span>
+        <span className="tracking-widest uppercase font-bold text-ink">{category}</span>
       </div>
 
-      {/* Main Title with Masked Reveal Animation */}
-      <div className="font-display text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-ink break-word">
-        <MaskedReveal text={title} />
+      {/* Main Title as a tilted cream label with rough edges */}
+      <div className="mt-4">
+        <SectionTitle>
+          <MaskedReveal text={title} />
+        </SectionTitle>
       </div>
 
       {/* Optional Subtitle */}
@@ -40,20 +49,24 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className={`text-ink-muted text-base md:text-lg max-w-2xl font-sans leading-relaxed ${align === 'center' ? 'mx-auto' : ''}`}
+          className={`text-cream text-lg md:text-xl font-bold leading-snug max-w-2xl ${
+            align === 'center' ? 'mx-auto' : ''
+          }`}
         >
           {subtitle}
         </motion.p>
       )}
 
-      {/* Animated Hairline Rule */}
+      {/* Animated Rule */}
       <motion.div
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`h-[1px] bg-black/10 origin-left mt-6 ${align === 'center' ? 'origin-center' : ''}`}
+        className={`h-[3px] bg-cream origin-left mt-6 ${align === 'center' ? 'origin-center' : ''}`}
       />
     </div>
   );
 };
+
+export default SectionHeader;

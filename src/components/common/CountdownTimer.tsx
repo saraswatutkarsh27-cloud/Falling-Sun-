@@ -32,21 +32,17 @@ export const CountdownGrid: React.FC<CountdownGridProps> = ({ timeLeft, variant 
       {items.map((item) => (
         <div key={item.label} className="text-center">
           <div
-            className={`rounded-xl p-3 border ${
-              dark ? 'bg-white/10 border-white/5' : 'bg-[#F0EFF4] border-black/5'
+            className={`p-3 border ${
+              dark ? 'bg-cream/10 border-cream/30' : 'bg-ink border-ink'
             }`}
           >
-            <span
-              className={`font-display text-3xl font-black tabular-nums ${
-                dark ? 'text-white' : 'text-ink'
-              }`}
-            >
+            <span className="font-display text-3xl font-black tabular-nums text-cream">
               {String(item.value).padStart(2, '0')}
             </span>
           </div>
           <span
             className={`font-mono text-[10px] tracking-widest mt-2 block ${
-              dark ? 'text-white/40' : 'text-ink-muted'
+              dark ? 'text-cream/80' : 'text-ink-muted'
             }`}
           >
             {item.label}

@@ -20,7 +20,7 @@ export const MaskedReveal: React.FC<MaskedRevealProps> = ({
   delay = 0,
   stagger = 0.03,
   highlightWords = [],
-  highlightClass = 'text-sun',
+  highlightClass = 'text-reddark',
 }) => {
   const words = text.split(' ');
 
@@ -111,7 +111,7 @@ interface InteractiveRollTextProps {
 export const InteractiveRollText: React.FC<InteractiveRollTextProps> = ({
   text,
   isHovered,
-  activeColor = 'text-sun',
+  activeColor = 'text-reddark',
   className = '',
 }) => {
   const [selfHover, setSelfHover] = useState(false);

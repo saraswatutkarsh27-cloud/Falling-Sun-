@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowUpRight, Code, Cpu, Gamepad2 } from 'lucide-react';
+import { ArrowUpRight, Code, Cpu, Gamepad2, Palette } from 'lucide-react';
 import { MaskedReveal, InteractiveRollText } from '../common/AnimatedText';
 import { MagneticButton } from '../common/MagneticButton';
 
@@ -31,24 +31,24 @@ const DisciplineBadge: React.FC<DisciplineBadgeProps> = ({ icon, title, trackNum
       transition={{ duration: 0.5, delay }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="p-5 rounded-2xl bg-white border border-black/10 shadow-[0_4px_16px_rgba(0,0,0,0.02)] flex items-center justify-between hover:border-sun hover:shadow-[0_8px_24px_rgba(245,158,11,0.15)] transition-all cursor-pointer will-change-transform"
+      className="p-5 bg-cream border-2 border-ink shadow-card flex items-center justify-between hover:shadow-[8px_8px_0_#1d1210] transition-all cursor-pointer will-change-transform"
     >
       <div className="flex items-center gap-3">
         <motion.div
           animate={{ rotate: isHovered ? 12 : 0, scale: isHovered ? 1.1 : 1 }}
           transition={{ type: 'spring', stiffness: 300 }}
-          className="w-9 h-9 rounded-xl bg-sun/10 border border-sun/30 flex items-center justify-center text-sun"
+          className="w-9 h-9 bg-bg border-2 border-ink flex items-center justify-center text-cream"
         >
           {icon}
         </motion.div>
         <InteractiveRollText
           text={title}
           isHovered={isHovered}
-          activeColor="text-sun"
+          activeColor="text-brown"
           className="text-ink font-extrabold tracking-wide text-xs"
         />
       </div>
-      <span className="text-sun font-black text-[11px] bg-sun/10 px-2 py-0.5 rounded-md border border-sun/20">
+      <span className="text-ink font-black text-[11px] bg-yellow px-2 py-0.5 border-2 border-ink -rotate-1">
         {trackNumber}
       </span>
     </motion.div>
@@ -68,22 +68,22 @@ export const IntroSection: React.FC = () => {
     <section
       id="intro-section"
       ref={sectionRef}
-      className="relative py-28 md:py-36 px-6 md:px-12 bg-[#F0EFF4] border-t border-black/10 overflow-hidden"
+      className="relative py-28 md:py-36 px-6 md:px-12 bg-bg overflow-hidden"
     >
       {/* Background Parallax Watermark on Scroll */}
       <motion.div
         style={{ x: parallaxBg }}
-        className="absolute bottom-10 right-0 whitespace-nowrap font-display font-black text-[18vw] text-black/[0.03] select-none pointer-events-none"
+        className="absolute bottom-10 right-0 whitespace-nowrap font-display font-black text-[18vw] text-ink/25 select-none pointer-events-none"
       >
         PHILOSOPHY // 01
       </motion.div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Number & Monospace Tag */}
-        <div className="flex items-center gap-4 font-mono text-xs text-ink-muted mb-8">
-          <span className="text-sun font-black text-base">01</span>
-          <span className="text-black/20">//</span>
-          <span className="tracking-widest uppercase font-semibold text-ink-soft">MANIFESTO & PHILOSOPHY</span>
+        {/* Section Number & Tag */}
+        <div className="flex items-center gap-4 text-xs mb-8">
+          <span className="bg-cream text-bg border-2 border-ink px-2 py-0.5 font-black text-sm">01</span>
+          <span className="text-ink font-bold">//</span>
+          <span className="tracking-widest uppercase font-bold text-ink">MANIFESTO & PHILOSOPHY</span>
         </div>
 
         {/* Huge Line-by-Line Editorial Headline */}
@@ -101,8 +101,8 @@ export const IntroSection: React.FC = () => {
                 }}
                 className={`font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95] break-word ${
                   index === 0
-                    ? 'text-sun'
-                    : 'text-ink'
+                    ? 'inline-block bg-cream text-bg px-3 -rotate-1 w-fit'
+                    : 'text-cream'
                 }`}
               >
                 {line}
@@ -117,7 +117,7 @@ export const IntroSection: React.FC = () => {
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="h-[1px] bg-black/10 origin-left mb-12"
+          className="h-[3px] bg-cream/60 origin-left mb-12"
         />
 
         {/* Secondary Paragraph & Quick Track Stat Pills */}
@@ -129,10 +129,10 @@ export const IntroSection: React.FC = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="lg:col-span-7 space-y-6"
           >
-            <p className="font-sans text-ink text-lg md:text-xl leading-relaxed font-medium">
-              <MaskedReveal text="A two-day under-18 hackathon where high school students and self-taught youth assemble to engineer, experiment, tackle authentic engineering challenges, and ship working prototypes." />
+            <p className="text-cream text-lg md:text-xl leading-relaxed font-bold">
+              <MaskedReveal text="A two-day hackathon where young builders assemble to engineer, experiment, tackle authentic engineering challenges, and ship working prototypes." />
             </p>
-            <p className="font-sans text-ink-muted text-sm md:text-base leading-relaxed">
+            <p className="text-cream text-sm md:text-base leading-relaxed font-medium">
               No hollow slide decks or vaporware. Whether it’s physics engines in Godot, real-time reactive websockets in React, or autonomous telemetry circuits on ESP32, Falling Sun celebrates the craft of shipping real systems.
             </p>
             <div className="pt-2">
@@ -140,13 +140,13 @@ export const IntroSection: React.FC = () => {
                 to="/about"
                 text="READ FULL EVENT MANIFESTO"
                 icon={<ArrowUpRight className="w-4 h-4" />}
-                className="px-6 py-3 rounded-full font-mono text-xs font-bold tracking-wider"
+                className="px-6 py-3 font-mono text-xs font-bold tracking-wider"
                 variant="primary"
               />
             </div>
           </motion.div>
 
-          {/* 3 Discipline Badges on the right with 3D Tilt Scroll entrance & character wave roll */}
+          {/* 4 Discipline Badges on the right with 3D Tilt Scroll entrance & character wave roll */}
           <div className="lg:col-span-5 grid grid-cols-1 gap-3.5 font-mono text-xs">
             <DisciplineBadge
               icon={<Gamepad2 className="w-4 h-4" />}
@@ -165,6 +165,12 @@ export const IntroSection: React.FC = () => {
               title="ROBOTICS"
               trackNumber="TRACK 03"
               delay={0.4}
+            />
+            <DisciplineBadge
+              icon={<Palette className="w-4 h-4" />}
+              title="CREATIVE SKILLS"
+              trackNumber="TRACK 04"
+              delay={0.5}
             />
           </div>
         </div>

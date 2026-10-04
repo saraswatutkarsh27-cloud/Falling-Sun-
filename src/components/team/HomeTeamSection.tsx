@@ -10,7 +10,7 @@ export const HomeTeamSection: React.FC = () => {
   const regularMembers = eventConfig.team.filter((m) => m.section !== 'backbone');
 
   return (
-    <section className="relative py-24 px-6 md:px-12 bg-[#F0EFF4] border-t border-black/10">
+    <section className="relative py-24 px-6 md:px-12 bg-bg">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
@@ -20,7 +20,7 @@ export const HomeTeamSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="font-mono text-xs uppercase tracking-[0.2em] text-ink-muted font-semibold"
+              className="font-mono text-xs uppercase tracking-[0.2em] text-ink font-bold"
             >
               THE STUDENTS BEHIND THE EVENT
             </motion.p>
@@ -30,7 +30,7 @@ export const HomeTeamSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.05 }}
-              className="font-display text-4xl sm:text-5xl md:text-6xl font-black text-ink tracking-tight break-word"
+              className="font-display text-4xl sm:text-5xl md:text-6xl font-black text-cream tracking-tight break-word"
             >
               Team Falling Sun
             </motion.h2>
@@ -44,7 +44,7 @@ export const HomeTeamSection: React.FC = () => {
           >
             <Link
               to="/team"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-black/30 hover:border-black bg-transparent hover:bg-black text-ink hover:text-white font-sans text-sm font-semibold transition-all duration-300 shadow-sm hover:shadow-md group"
+              className="inline-flex items-center gap-2 px-6 py-2.5 border-2 border-cream text-cream hover:bg-cream hover:text-ink font-sans text-sm font-bold transition-all duration-300 group"
             >
               <span>Our Team</span>
               <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -54,7 +54,7 @@ export const HomeTeamSection: React.FC = () => {
 
         {/* Backbone Members */}
         {backboneMembers.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
             {backboneMembers.map((member, idx) => (
                 <motion.div
                   key={member.id}
@@ -63,9 +63,9 @@ export const HomeTeamSection: React.FC = () => {
                   viewport={{ once: true, margin: '-20px' }}
                   transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
                   whileHover={{ y: -6 }}
-                  className="group relative rounded-2xl overflow-hidden bg-white border border-sun/30 hover:border-sun shadow-[0_4px_20px_rgba(245,158,11,0.06)] hover:shadow-[0_12px_32px_rgba(245,158,11,0.15)] transition-all duration-300"
+                  className="group relative overflow-hidden bg-cream border-2 border-ink shadow-card hover:shadow-[8px_8px_0_#1d1210] transition-all duration-300"
                 >
-                  <div className="relative aspect-[220/280] w-full overflow-hidden bg-neutral-900">
+                  <div className="relative aspect-[220/280] w-full overflow-hidden bg-ink">
                     <img
                       src={member.image}
                       alt={`${member.name} - ${member.role}`}
@@ -91,9 +91,9 @@ export const HomeTeamSection: React.FC = () => {
                 viewport={{ once: true, margin: '-20px' }}
                 transition={{ duration: 0.5, delay: idx * 0.06, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -6 }}
-                className="group relative rounded-2xl overflow-hidden bg-white border border-black/10 hover:border-black/30 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.12)] transition-all duration-300"
+                className="group relative overflow-hidden bg-cream border-2 border-ink shadow-card hover:shadow-[8px_8px_0_#1d1210] transition-all duration-300"
               >
-                <div className="relative aspect-[220/280] w-full overflow-hidden bg-neutral-900">
+                <div className="relative aspect-[220/280] w-full overflow-hidden bg-ink">
                   <img
                     src={member.image}
                     alt={`${member.name} - ${member.role}`}

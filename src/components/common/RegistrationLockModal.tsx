@@ -48,35 +48,35 @@ const RegistrationLockModal: React.FC<{ show: boolean; onClose: () => void }> = 
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/70"
           />
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 30 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-10 w-full max-w-md bg-white rounded-3xl overflow-hidden shadow-2xl border border-black/10"
+            className="relative z-10 w-full max-w-md bg-cream border-2 border-ink shadow-card overflow-hidden"
           >
             {/* Header */}
-            <div className="relative bg-gradient-to-br from-ink to-neutral-800 p-8 text-center">
+            <div className="relative bg-ink p-8 text-center">
               <button
                 onClick={onClose}
                 aria-label="Close"
-                className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-colors"
+                className="absolute top-4 right-4 p-2 bg-cream/10 hover:bg-cream/20 text-cream/70 hover:text-cream transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
-              <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-sun/20 flex items-center justify-center">
+              <div className="w-16 h-16 mx-auto mb-4 bg-yellow flex items-center justify-center">
                 {registrationOpen ? (
-                  <PartyPopper className="w-8 h-8 text-sun" />
+                  <PartyPopper className="w-8 h-8 text-ink" />
                 ) : (
-                  <Lock className="w-8 h-8 text-sun" />
+                  <Lock className="w-8 h-8 text-ink" />
                 )}
               </div>
-              <h3 className="font-display text-2xl font-black text-white mb-1">
+              <h3 className="font-display text-2xl font-black text-cream mb-1">
                 {registrationOpen ? 'REGISTRATION IS OPEN' : 'REGISTRATION LOCKED'}
               </h3>
-              <p className="font-mono text-xs text-white/50 tracking-wider">
+              <p className="font-mono text-xs text-cream/80 tracking-wider">
                 {registrationOpen ? 'THE PORTAL IS LIVE — APPLY NOW' : `PORTAL OPENS ${opensLabel.toUpperCase()}`}
               </p>
             </div>
@@ -93,7 +93,7 @@ const RegistrationLockModal: React.FC<{ show: boolean; onClose: () => void }> = 
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={onClose}
-                    className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-ink text-white font-mono text-xs font-bold tracking-wider hover:bg-sun hover:text-black transition-colors"
+                    className="w-full flex items-center justify-center gap-2 py-3 bg-yellow text-ink border-2 border-ink shadow-btn font-display text-lg font-black uppercase tracking-wide hover:shadow-[7px_7px_0_#1d1210] transition-shadow"
                   >
                     <span>START REGISTRATION</span>
                     <ArrowUpRight className="w-4 h-4" />
@@ -106,7 +106,7 @@ const RegistrationLockModal: React.FC<{ show: boolean; onClose: () => void }> = 
                   </p>
                   <CountdownGrid timeLeft={timeLeft} variant="light" />
                   <div className="mt-6 flex items-center justify-center gap-2 font-mono text-xs text-ink-muted">
-                    <Clock className="w-3.5 h-3.5 text-sun" />
+                    <Clock className="w-3.5 h-3.5 text-reddark" />
                     <span>{opensLabel.toUpperCase()} • 12:00 AM</span>
                   </div>
                   <a
@@ -114,14 +114,14 @@ const RegistrationLockModal: React.FC<{ show: boolean; onClose: () => void }> = 
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={onClose}
-                    className="mt-4 w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-white border border-black/10 text-ink font-mono text-xs font-bold tracking-wider hover:border-sun transition-colors"
+                    className="mt-4 w-full flex items-center justify-center gap-2 py-3 bg-cream text-ink border-2 border-ink font-mono text-xs font-bold tracking-wider hover:bg-yellow transition-colors"
                   >
                     <span>GET NOTIFIED ON WHATSAPP</span>
-                    <ArrowUpRight className="w-4 h-4 text-sun" />
+                    <ArrowUpRight className="w-4 h-4 text-reddark" />
                   </a>
                   <button
                     onClick={onClose}
-                    className="mt-3 w-full py-3 rounded-xl bg-ink text-white font-mono text-xs font-bold tracking-wider hover:bg-sun hover:text-black transition-colors"
+                    className="mt-3 w-full py-3 bg-yellow text-ink border-2 border-ink shadow-btn font-display text-lg font-black uppercase tracking-wide hover:shadow-[7px_7px_0_#1d1210] transition-shadow"
                   >
                     GOT IT
                   </button>

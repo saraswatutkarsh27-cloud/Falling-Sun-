@@ -8,7 +8,7 @@ import { Footer } from './components/common/Footer';
 import { Preloader } from './components/common/Preloader';
 import { PageTransition } from './components/common/PageTransition';
 import { ScrollHUD } from './components/common/ScrollHUD';
-import { AmbientBackground } from './components/common/AmbientBackground';
+import { RoughFilter } from './components/RoughFilter';
 import { RegistrationProvider } from './components/common/RegistrationLockModal';
 import { RouteSeo } from './components/common/RouteSeo';
 
@@ -113,12 +113,9 @@ export const App: React.FC = () => {
     <Router>
       <RouteSeo />
       <RegistrationProvider>
-      <div className="relative min-h-screen bg-background text-ink selection:bg-sun selection:text-black">
-        {/* Analog Noise Texture */}
-        <div className="noise-overlay pointer-events-none" />
-
-        {/* Interactive Ambient Solar Constellation Canvas */}
-        <AmbientBackground />
+      <div className="relative min-h-screen bg-bg text-cream selection:bg-yellow selection:text-ink">
+        {/* Hidden SVG filter for the .rough heading class */}
+        <RoughFilter />
 
         {/* Cinematic Preloader */}
         <Preloader onComplete={() => setPreloaderDone(true)} />

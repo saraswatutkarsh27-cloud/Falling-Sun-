@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { eventConfig } from '../../config/eventConfig';
 import { Plus } from 'lucide-react';
 
@@ -24,72 +24,57 @@ export const FaqAccordion: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: index * 0.04 }}
-            className={`rounded-3xl border transition-all duration-300 overflow-hidden will-change-transform ${
-              isOpen
-                ? 'bg-white border-sun shadow-[0_8px_30px_rgba(245,158,11,0.08)]'
-                : 'bg-white border-black/10 hover:border-black/25 shadow-[0_2px_12px_rgba(0,0,0,0.02)]'
-            }`}
+            className="will-change-transform"
           >
-            {/* Question Button with Tactile Tap */}
-            <motion.button
-              type="button"
-              onClick={() => toggle(index)}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              whileTap={{ scale: 0.99 }}
-              className="w-full p-6 md:p-8 flex items-center justify-between gap-6 text-left cursor-pointer"
-              aria-expanded={isOpen}
-              data-cursor="link"
+            <details
+              open={isOpen}
+              className="bg-cream text-ink border-[3px] border-ink border-l-[10px] border-l-green shadow-btn transition-shadow hover:shadow-[7px_7px_0_#1d1210]"
             >
-              <div className="flex items-center gap-4 min-w-0">
-                <span className="font-mono text-xs text-sun font-black text-sm shrink-0">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <span className={`font-display text-lg sm:text-xl md:text-2xl font-black transition-colors duration-200 break-word ${
-                  isOpen || isHovered ? 'text-sun-dark' : 'text-ink'
-                }`}>
-                  {faq.question}
-                </span>
-              </div>
-
-              {/* Animated Plus morphing to Close (X) */}
-              <motion.div
-                animate={{
-                  rotate: isOpen ? 45 : 0,
-                  scale: isHovered ? 1.15 : 1,
+              <summary
+                onClick={(e) => {
+                  // Fully controlled: prevent the native toggle and drive it from state
+                  e.preventDefault();
+                  toggle(index);
                 }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                className={`w-9 h-9 rounded-full border flex items-center justify-center shrink-0 transition-colors ${
-                  isOpen
-                    ? 'border-sun bg-sun text-black'
-                    : 'border-black/15 text-ink-soft bg-black/[0.02] group-hover:border-black'
-                }`}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className="p-4 md:p-5 flex items-center justify-between gap-4 md:gap-6 cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden"
+                aria-expanded={isOpen}
+                data-cursor="link"
               >
-                <Plus className="w-4 h-4" />
-              </motion.div>
-            </motion.button>
+                <span className="flex items-center gap-3 md:gap-4 min-w-0">
+                  <span className="shrink-0 bg-yellow border-2 border-ink px-1.5 py-0.5 text-xs font-black">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span
+                    className={`font-display text-lg sm:text-xl md:text-2xl font-black uppercase leading-tight break-word transition-colors duration-200 ${
+                      isOpen || isHovered ? 'text-reddark' : 'text-ink'
+                    }`}
+                  >
+                    {faq.question}
+                  </span>
+                </span>
 
-            {/* Answer Content with Height & Opacity Transition */}
-            <AnimatePresence initial={false}>
-              {isOpen && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                  className="overflow-hidden"
+                <span
+                  className={`w-9 h-9 border-2 border-ink flex items-center justify-center shrink-0 transition-all duration-300 ${
+                    isOpen ? 'bg-yellow rotate-45' : 'bg-cream'
+                  }`}
                 >
-                  <div className="px-6 md:px-8 pb-8 pt-2 border-t border-black/5">
-                    <p className="text-ink-muted text-sm md:text-base leading-relaxed font-sans font-medium">
-                      {faq.answer}
-                    </p>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                  <Plus className="w-4 h-4" />
+                </span>
+              </summary>
+
+              <div className="px-4 md:px-5 pb-5 pt-3 border-t border-ink/20">
+                <p className="text-ink-muted text-sm md:text-base leading-relaxed font-medium">
+                  {faq.answer}
+                </p>
+              </div>
+            </details>
           </motion.div>
         );
       })}
     </div>
   );
 };
+
+export default FaqAccordion;

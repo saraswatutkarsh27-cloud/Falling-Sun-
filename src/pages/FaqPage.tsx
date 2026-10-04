@@ -6,7 +6,7 @@ import { HelpCircle } from 'lucide-react';
 
 export const FaqPage: React.FC = () => {
   return (
-    <div className="pt-32 pb-24 px-6 md:px-12 bg-[#F0EFF4] min-h-screen space-y-24 text-ink">
+    <div className="pt-32 pb-24 px-6 md:px-12 bg-bg min-h-screen space-y-24 text-cream">
       <div className="max-w-7xl mx-auto space-y-20">
         {/* Page Header */}
         <SectionHeader
@@ -20,8 +20,8 @@ export const FaqPage: React.FC = () => {
         <FaqAccordion />
 
         {/* Have more questions callout */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-white border border-black/10 shadow-[0_4px_24px_rgba(0,0,0,0.02)] text-center space-y-4 max-w-2xl mx-auto">
-          <HelpCircle className="w-8 h-8 text-sun mx-auto" />
+        <div className="p-8 sm:p-10 bg-cream border-2 border-ink shadow-card text-center space-y-4 max-w-2xl mx-auto">
+          <HelpCircle className="w-8 h-8 text-reddark mx-auto" />
           <h4 className="font-display text-2xl font-black text-ink">
             STILL HAVE AN UNANSWERED QUESTION?
           </h4>

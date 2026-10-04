@@ -25,8 +25,8 @@ export const WhatsAppCTA: React.FC<WhatsAppCTAProps> = ({
         rel="noopener noreferrer"
         text="JOIN WHATSAPP CHANNEL"
         icon={<ArrowUpRight className="w-3.5 h-3.5" />}
-        className={`px-5 py-2.5 rounded-full font-mono text-xs font-bold tracking-wider ${className}`}
-        variant="secondary"
+        className={`px-5 py-2.5 font-mono text-xs font-bold tracking-wider ${className}`}
+        variant="primary"
       />
     );
   }
@@ -37,15 +37,12 @@ export const WhatsAppCTA: React.FC<WhatsAppCTAProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className={`relative overflow-hidden rounded-3xl border border-sun/40 bg-white p-8 md:p-12 shadow-[0_8px_30px_rgba(0,0,0,0.03)] ${className}`}
+      className={`relative overflow-hidden bg-cream text-ink border-2 border-ink p-8 md:p-12 shadow-card ${className}`}
     >
-      {/* Background ambient solar glow */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-sun/10 rounded-full blur-[100px] pointer-events-none" />
-
       <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
         <div className="space-y-3 max-w-2xl">
-          <div className="flex items-center gap-2 font-mono text-xs text-sun-dark tracking-widest uppercase font-bold">
-            <span className="h-2 w-2 rounded-full bg-sun animate-ping" />
+          <div className="flex items-center gap-2 font-mono text-xs text-reddark tracking-widest uppercase font-bold">
+            <span className="h-2 w-2 bg-green animate-pulse" />
             <span>OFFICIAL COMMUNICATIONS CHANNEL</span>
           </div>
 
@@ -59,16 +56,14 @@ export const WhatsAppCTA: React.FC<WhatsAppCTAProps> = ({
 
           <div className="flex flex-wrap items-center gap-4 pt-2 font-mono text-xs text-ink-muted">
             <span className="flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-sun" />
+              <ShieldCheck className="w-4 h-4 text-brown" />
               <span>Zero Spam</span>
             </span>
-            <span className="text-black/15">•</span>
+            <span className="text-ink/30">•</span>
             <span className="flex items-center gap-1.5">
-              <Bell className="w-4 h-4 text-sun" />
+              <Bell className="w-4 h-4 text-brown" />
               <span>Instant Drop Alerts</span>
             </span>
-            <span className="text-black/15">•</span>
-            <span>Under-18 Verified</span>
           </div>
         </div>
 
@@ -78,8 +73,8 @@ export const WhatsAppCTA: React.FC<WhatsAppCTAProps> = ({
           rel="noopener noreferrer"
           text="GET UPDATES ON WHATSAPP"
           icon={<ArrowUpRight className="w-4 h-4" />}
-          className="px-8 py-4 rounded-full font-mono text-xs font-bold tracking-wider"
-          variant="secondary"
+          className="px-8 py-4 font-mono text-xs font-bold tracking-wider"
+          variant="primary"
         />
       </div>
     </motion.div>

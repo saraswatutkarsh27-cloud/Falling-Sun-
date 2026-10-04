@@ -21,26 +21,26 @@ export const ScrollHUD: React.FC = () => {
       {/* Top Compass / Radar Indicator */}
       <motion.div
         style={{ rotate: rotateAngle }}
-        className="w-7 h-7 rounded-full bg-white/90 border border-black/15 flex items-center justify-center shadow-sm text-sun"
+        className="w-7 h-7 bg-cream border-2 border-ink flex items-center justify-center text-brown"
       >
-        <Compass className="w-4 h-4 text-sun" />
+        <Compass className="w-4 h-4 text-brown" />
       </motion.div>
 
-      {/* Vertical Hairline Progress Rail */}
-      <div className="relative w-[3px] h-36 bg-black/10 rounded-full overflow-hidden">
+      {/* Vertical Progress Rail */}
+      <div className="relative w-[3px] h-36 bg-cream/40 overflow-hidden">
         <motion.div
-          className="w-full bg-gradient-to-b from-sun via-amber-500 to-flame rounded-full origin-top"
+          className="w-full bg-yellow origin-top"
           style={{ height: '100%', scaleY: smoothProgress }}
         />
       </div>
 
       {/* Live Percentage Readout */}
-      <div className="font-mono text-[10px] font-bold text-ink-soft bg-white/90 px-2 py-0.5 rounded border border-black/10 shadow-sm">
+      <div className="font-mono text-[10px] font-black text-ink bg-cream px-2 py-0.5 border-2 border-ink">
         {String(percent).padStart(2, '0')}%
       </div>
 
       {/* Floating Coordinate Tag */}
-      <div className="font-mono text-[8px] text-ink-faint tracking-widest uppercase rotate-90 origin-center mt-6">
+      <div className="font-mono text-[8px] text-cream font-bold tracking-widest uppercase rotate-90 origin-center mt-6">
         28°32'N
       </div>
     </aside>

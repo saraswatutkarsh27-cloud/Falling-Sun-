@@ -5,7 +5,7 @@ import { WhatsAppCTA } from '../components/common/WhatsAppCTA';
 
 export const SchedulePage: React.FC = () => {
   return (
-    <div className="pt-32 pb-24 px-6 md:px-12 bg-[#F0EFF4] min-h-screen space-y-24 text-ink">
+    <div className="pt-32 pb-24 px-6 md:px-12 bg-bg min-h-screen space-y-24 text-cream">
       <div className="max-w-7xl mx-auto space-y-20">
         {/* Page Header */}
         <SectionHeader

@@ -9,35 +9,65 @@ interface RoleTagStyle {
 
 const getRoleTagStyle = (role: string): RoleTagStyle => {
   switch (role) {
+    case 'Principal':
+      return {
+        label: 'PRINCIPAL',
+        icon: <Crown className="w-2.5 h-2.5 text-current" />,
+        className: 'bg-pink text-cream border-ink',
+      };
+    case 'Faculty Advisor':
+      return {
+        label: 'FACULTY ADVISOR',
+        icon: <Shield className="w-2.5 h-2.5 text-current" />,
+        className: 'bg-green text-cream border-ink',
+      };
+    case 'Advisor':
+      return {
+        label: 'ADVISOR',
+        icon: <Shield className="w-2.5 h-2.5 text-current" />,
+        className: 'bg-ink text-cream border-cream',
+      };
+    case 'Director':
+      return {
+        label: 'DIRECTOR',
+        icon: <Crown className="w-2.5 h-2.5 text-current" />,
+        className: 'bg-yellow text-ink border-ink',
+      };
+    case 'Associate Director':
+      return {
+        label: 'ASSOC. DIRECTOR',
+        icon: <Crown className="w-2.5 h-2.5 text-current" />,
+        className: 'bg-ink text-cream border-cream',
+      };
     case 'Backbone':
       return {
         label: 'BACKBONE',
-        icon: <Crown className="w-2.5 h-2.5" />,
-        className: 'text-amber-800 bg-amber-100 border-amber-300',
+        icon: <Crown className="w-2.5 h-2.5 text-current" />,
+        className: 'bg-ink text-yellow border-cream',
       };
     case 'Lead Organizer':
       return {
         label: 'LEAD ORG',
-        icon: <Sparkles className="w-2.5 h-2.5" />,
-        className: 'text-flame-dark bg-flame/20 border-flame/40',
+        icon: <Sparkles className="w-2.5 h-2.5 text-current" />,
+        className: 'bg-reddark text-cream border-ink',
       };
     case 'Organizer':
       return {
         label: 'ORGANIZER',
-        icon: <Shield className="w-2.5 h-2.5" />,
-        className: 'text-sun-dark bg-sun/30 border-sun/60',
+        icon: <Shield className="w-2.5 h-2.5 text-current" />,
+        className: 'bg-cream text-ink border-ink',
       };
     case 'Event Incharge':
       return {
         label: 'EVENT INCHARGE',
-        icon: <ShieldCheck className="w-2.5 h-2.5" />,
-        className: 'text-orange-700 bg-orange-100 border-orange-300',
+        icon: <ShieldCheck className="w-2.5 h-2.5 text-current" />,
+        className: 'bg-cream text-ink border-ink',
       };
     default:
       return {
         label: role.toUpperCase(),
-        icon: <Shield className="w-2.5 h-2.5" />,
-        className: 'text-ink bg-white/90 border-black/15',
+        icon: <Shield className="w-2.5 h-2.5 text-current" />,
+        className: 'bg-cream text-ink border-ink',
       };
   }
 };
@@ -46,7 +76,7 @@ export const RoleTag: React.FC<{ role: string; className?: string }> = ({ role, 
   const style = getRoleTagStyle(role);
   return (
     <div
-      className={`absolute top-3 left-3 z-10 flex items-center gap-1 px-2 py-0.5 rounded-md border backdrop-blur-md font-mono text-[9px] font-bold uppercase tracking-widest shadow-sm ${style.className} ${className}`}
+      className={`absolute top-3 left-3 z-10 flex items-center gap-1 px-2 py-0.5 border-2 font-mono text-[9px] tracking-widest uppercase font-bold ${style.className} ${className}`}
     >
       {style.icon}
       <span>{style.label}</span>

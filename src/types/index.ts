@@ -7,6 +7,7 @@ export interface TrackItem {
   focusAreas: string[];
   tools: string[];
   colorAccent: string;
+  subThemes: string[];
 }
 
 export interface ScheduleEvent {
@@ -58,7 +59,6 @@ export interface FaqItem {
 export interface EventConfig {
   name: string;
   tagline: string;
-  ageGroup: string;
   format: string;
   totalHours: string;
   edition: string;

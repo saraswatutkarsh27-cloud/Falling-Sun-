@@ -1,147 +1,222 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 
 interface PreloaderProps {
   onComplete: () => void;
 }
+
+const STATUS: { at: number; text: string }[] = [
+  { at: 0, text: 'Warming up the servers' },
+  { at: 30, text: 'Pairing teams' },
+  { at: 60, text: 'Stocking the snack table' },
+  { at: 85, text: 'Lowering the sun' },
+  { at: 100, text: 'Ready. Start building' },
+];
+
+const TITLE = 'Falling Sun';
 
 export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const [progress, setProgress] = useState(1);
   const [isFinished, setIsFinished] = useState(false);
   const onCompleteRef = useRef(onComplete);
   onCompleteRef.current = onComplete;
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    // Safely check sessionStorage
-    try {
-      if (sessionStorage.getItem('fallingsun_preloader_seen')) {
-        setIsFinished(true);
-        onCompleteRef.current();
-        return;
-      }
-    } catch {
-      // Ignore storage restrictions
-    }
-
-    const duration = 1200; // 1.2s smooth duration
+    const minimumDuration = 4200;
     const start = Date.now();
     let isDone = false;
+    let pageLoaded = document.readyState === 'complete';
+    let progressTimer: ReturnType<typeof setInterval> | undefined;
+    let safetyTimer: ReturnType<typeof setTimeout> | undefined;
+    let hideTimer: ReturnType<typeof setTimeout> | undefined;
+    let completeTimer: ReturnType<typeof setTimeout> | undefined;
+
+    const handlePageLoad = () => {
+      pageLoaded = true;
+    };
 
     const finish = () => {
       if (isDone) return;
       isDone = true;
-      try {
-        sessionStorage.setItem('fallingsun_preloader_seen', 'true');
-      } catch {
-        // Ignore
-      }
+
+      if (progressTimer) clearInterval(progressTimer);
+      if (safetyTimer) clearTimeout(safetyTimer);
+      window.removeEventListener('load', handlePageLoad);
+
       setProgress(100);
-      setTimeout(() => {
+
+      hideTimer = setTimeout(() => {
         setIsFinished(true);
-        setTimeout(() => {
+        completeTimer = setTimeout(() => {
           onCompleteRef.current();
-        }, 400);
-      }, 100);
+        }, 420);
+      }, 300);
     };
 
-    // Use interval to guarantee progress updates even if tab is unfocused
-    const timer = setInterval(() => {
-      const elapsed = Date.now() - start;
-      const t = Math.min(elapsed / duration, 1);
-      // Cubic ease-out
-      const eased = 1 - Math.pow(1 - t, 3);
-      const current = Math.max(1, Math.min(100, Math.round(1 + eased * 99)));
-      setProgress(current);
+    if (!pageLoaded) {
+      window.addEventListener('load', handlePageLoad);
+    }
 
-      if (t >= 1) {
-        clearInterval(timer);
+    progressTimer = setInterval(() => {
+      const elapsed = Date.now() - start;
+      const fraction = Math.min(elapsed / minimumDuration, 1);
+      const next = Math.min(90, Math.max(1, Math.round(fraction * 90)));
+      setProgress(next);
+
+      if (fraction >= 1 && pageLoaded) {
         finish();
       }
-    }, 16);
+    }, 40);
 
-    // Emergency safety timeout: never get stuck on preloader
-    const safetyTimeout = setTimeout(() => {
-      clearInterval(timer);
-      finish();
-    }, 2000);
+    safetyTimer = setTimeout(finish, 12000);
 
     return () => {
-      clearInterval(timer);
-      clearTimeout(safetyTimeout);
+      if (progressTimer) clearInterval(progressTimer);
+      if (safetyTimer) clearTimeout(safetyTimer);
+      if (hideTimer) clearTimeout(hideTimer);
+      if (completeTimer) clearTimeout(completeTimer);
+      window.removeEventListener('load', handlePageLoad);
     };
-  }, []); // Empty dependency array: runs exactly once on mount!
+  }, []);
+
+  const status = [...STATUS].reverse().find((s) => progress >= s.at)!;
 
   return (
     <AnimatePresence>
       {!isFinished && (
         <motion.div
           key="preloader-overlay"
-          className="fixed inset-0 z-[99999] flex flex-col justify-between bg-[#F0EFF4] p-8 md:p-14 text-ink overflow-hidden select-none"
-          initial={{ opacity: 1 }}
-          exit={{
-            y: '-100%',
-            transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] },
+          className="fixed inset-0 z-[99999] flex items-center justify-center overflow-hidden bg-bg px-5 text-cream select-none"
+          style={{
+            backgroundImage:
+              'repeating-linear-gradient(0deg, rgba(243,223,198,0.12) 0 1px, transparent 1px 5px)',
           }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{
+            opacity: 0,
+            scale: 1.04,
+            transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+          }}
+          role="status"
+          aria-label={`Loading Falling Sun, ${progress}%`}
         >
-          {/* Subtle light grid */}
-          <div className="absolute inset-0 tech-grid opacity-50 pointer-events-none" />
-
-          {/* Top metadata */}
-          <div className="relative z-10 flex items-center justify-between font-mono text-xs text-ink-muted">
-            <span className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-sun animate-ping" />
-              <span className="text-ink font-bold tracking-widest uppercase">CALIBRATING SYSTEM</span>
-            </span>
-            <span className="text-ink-muted font-semibold">28°32'N 77°14'E</span>
-          </div>
-
-          {/* Center Logo & Emblem */}
-          <div className="relative z-10 flex flex-col items-center justify-center text-center space-y-6">
-            <motion.div
-              initial={{ scale: 0.85, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-36 h-36 md:w-44 md:h-44"
-            >
-              <img
-                src="/logo_transparent.webp"
-                alt="Falling Sun Logo"
-                className="w-full h-full object-contain filter drop-shadow-[0_12px_30px_rgba(245,158,11,0.25)]"
-              />
-            </motion.div>
-
-            <motion.div
-              initial={{ y: 15, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.1, duration: 0.6 }}
-            >
-              <h1 className="font-display text-2xl md:text-3xl font-black tracking-widest text-ink">
-                FALLING SUN
-              </h1>
-              <p className="mt-1 font-mono text-xs tracking-widest text-ink-muted uppercase font-semibold">
-                UNDER 18 HACKATHON // 12H + 12H
-              </p>
-            </motion.div>
-          </div>
-
-          {/* Bottom Progress Counter (Guaranteed 01 -> 100) */}
-          <div className="relative z-10 space-y-4 max-w-xl mx-auto w-full">
-            <div className="flex items-end justify-between font-mono">
-              <div className="text-xs text-ink-muted uppercase tracking-wider font-semibold">
-                INITIALIZING ENVIRONMENT...
+          <div className="stamp w-[min(480px,100%)]">
+            <div className="eng min-h-[310px] justify-between gap-8 p-6 sm:min-h-[350px] sm:p-9">
+              <div className="flex items-center justify-between gap-3 font-mono text-[10px] font-bold tracking-[0.18em] text-cream/75 uppercase sm:text-xs">
+                <span>FALLING SUN // SYSTEM</span>
+                <span className="text-yellow">2026</span>
               </div>
-              <div className="text-4xl md:text-6xl font-black tracking-tighter text-ink font-mono">
-                {String(progress).padStart(2, '0')}{' '}
-                <span className="text-lg md:text-2xl text-ink-faint font-normal">/ 100</span>
-              </div>
-            </div>
 
-            {/* Hairline progress track */}
-            <div className="h-[3px] w-full bg-black/10 overflow-hidden rounded-full">
-              <div
-                className="h-full bg-gradient-to-r from-sun via-amber-500 to-flame transition-all duration-75"
-                style={{ width: `${progress}%` }}
-              />
+              <div className="flex flex-col items-center text-center">
+                {/* Sun drops in, then gently bobs */}
+                <motion.div
+                  className="mb-4"
+                  initial={reduceMotion ? false : { y: -60, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ type: 'spring', stiffness: 90, damping: 11 }}
+                >
+                  <motion.img
+                    src="/logo_transparent.png"
+                    alt=""
+                    aria-hidden="true"
+                    className="h-16 w-16 object-contain sm:h-20 sm:w-20"
+                    animate={
+                      reduceMotion
+                        ? undefined
+                        : { rotate: [0, 8, -8, 0], scale: [1, 1.04, 1] }
+                    }
+                    transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                  />
+                </motion.div>
+
+                {/* Title: letters rise in one by one */}
+                <strong
+                  className="font-display text-[clamp(2.4rem,10vw,4rem)] leading-[0.85] tracking-wide text-cream uppercase"
+                  aria-label={TITLE}
+                >
+                  {TITLE.split('').map((char, i) => (
+                    <motion.span
+                      key={i}
+                      aria-hidden="true"
+                      className="inline-block"
+                      initial={reduceMotion ? false : { y: '60%', opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{
+                        delay: 0.3 + i * 0.05,
+                        duration: 0.45,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
+                    >
+                      {char === ' ' ? '\u00A0' : char}
+                    </motion.span>
+                  ))}
+                </strong>
+
+                <motion.span
+                  className="mt-3 font-mono text-[10px] font-bold tracking-[0.2em] text-yellow uppercase sm:text-xs"
+                  initial={reduceMotion ? false : { opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1, duration: 0.5 }}
+                >
+                  BUILD · BREAK · CREATE
+                </motion.span>
+              </div>
+
+              <div>
+                <div className="mb-2 flex items-end justify-between gap-4">
+                  {/* One status line that swaps as loading advances */}
+                  <span className="relative h-4 flex-1 overflow-hidden font-mono text-[10px] font-bold tracking-[0.16em] text-cream/75 uppercase">
+                    <AnimatePresence mode="wait" initial={false}>
+                      <motion.span
+                        key={status.text}
+                        className="absolute inset-0 block truncate"
+                        initial={reduceMotion ? false : { y: 12, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: -12, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {status.text}
+                      </motion.span>
+                    </AnimatePresence>
+                  </span>
+                  <strong className="font-display text-2xl leading-none text-yellow tabular-nums sm:text-3xl">
+                    {String(progress).padStart(2, '0')}%
+                  </strong>
+                </div>
+
+                <div
+                  className="h-5 w-full overflow-hidden border-2 border-ink bg-cream p-[3px]"
+                  role="progressbar"
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                  aria-valuenow={progress}
+                  aria-label="Loading progress"
+                >
+                  <motion.div
+                    className="relative h-full overflow-hidden bg-yellow"
+                    animate={{ width: `${progress}%` }}
+                    transition={{ duration: 0.12, ease: 'linear' }}
+                  >
+                    {/* Soft shine sweeping across the fill */}
+                    {!reduceMotion && (
+                      <motion.span
+                        aria-hidden="true"
+                        className="absolute inset-y-0 w-10 bg-white/50 blur-[2px]"
+                        initial={{ left: '-20%' }}
+                        animate={{ left: '120%' }}
+                        transition={{ duration: 1.1, repeat: Infinity, ease: 'linear' }}
+                      />
+                    )}
+                  </motion.div>
+                </div>
+
+                <div className="mt-3 flex items-center justify-between gap-4 font-mono text-[9px] font-bold tracking-[0.14em] text-cream/65 uppercase">
+                  <span>HACKATHON · 12H + 12H</span>
+                  <span>INITIALIZING...</span>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -149,3 +224,5 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
     </AnimatePresence>
   );
 };
+
+export default Preloader;
