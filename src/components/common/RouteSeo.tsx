@@ -35,7 +35,7 @@ const ROUTE_META: Record<string, { title: string; description: string }> = {
   '/team': {
     title: 'Team | FALLING SUN 2026 — Team Falling Sun',
     description:
-      'Meet Team Falling Sun — the student organizers, leads, and backbone behind the FALLING SUN 2026 hackathon.',
+      'Meet Team Falling Sun — the organizers, leads, and faculty behind the FALLING SUN 2026 hackathon.',
   },
   '/faq': {
     title: 'FAQ | FALLING SUN 2026 — Hackathon 2026',

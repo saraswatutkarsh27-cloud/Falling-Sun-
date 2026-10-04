@@ -303,7 +303,7 @@ export const eventConfig: EventConfig = {
     {
       id: "anshika",
       name: "Anshika",
-      role: "Associate Director",
+      role: "Faculty Advisor",
       bio: "Supporting event operations, coordinating teams, and driving strategic execution.",
       image: "/team/anshika.jpeg",
       isPlaceholder: false,

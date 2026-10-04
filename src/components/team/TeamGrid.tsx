@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { eventConfig } from '../../config/eventConfig';
-import { Shield, Sparkles, X, Info, Crown } from 'lucide-react';
+import { Shield, Sparkles, X, Info } from 'lucide-react';
 import { WhatsAppCTA } from '../common/WhatsAppCTA';
 import { TeamMember } from '../../types';
 import { RoleTag } from './RoleTag';
@@ -22,29 +22,12 @@ export const TeamGrid: React.FC = () => {
             <span>ORGANIZING COMMITTEE • TEAM FALLING SUN</span>
           </div>
           <p className="text-ink-muted text-xs sm:text-sm font-sans">
-            Curated and run by students passionate about the builder ecosystem. Full mentor credentials and judging panels will be unveiled via WhatsApp.
+            The people behind Falling Sun. Full mentor credentials and judging panels will be unveiled via WhatsApp.
           </p>
         </div>
 
         <WhatsAppCTA compact className="shrink-0" />
       </div>
-
-      {/* BACKBONE Section Header */}
-      {backboneMembers.length > 0 && (
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex items-center gap-4"
-        >
-          <span className="flex items-center gap-2 font-mono text-xs text-reddark tracking-widest uppercase font-bold">
-            <Crown className="w-3.5 h-3.5 text-reddark" />
-            <span>BACKBONE</span>
-          </span>
-          <div className="flex-1 h-px bg-ink/30 border-t-2 border-dashed"></div>
-        </motion.div>
-      )}
 
       {/* BACKBONE Members - Top Row */}
       {backboneMembers.length > 0 && (
