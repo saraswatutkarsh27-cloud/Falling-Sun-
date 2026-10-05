@@ -152,9 +152,6 @@ export const HeroSection: React.FC = () => {
               <span className="bg-cream text-ink text-xs font-bold px-3 py-1 border-2 border-ink -rotate-1 uppercase">
                 ZERO ENTRY FEE
               </span>
-              <span className="bg-cream text-ink text-xs font-bold px-3 py-1 border-2 border-ink rotate-1 uppercase">
-                COHORT CAPACITY 78% FILLED (44 SLOTS REMAINING)
-              </span>
               <span className="bg-cream text-ink text-xs font-bold px-3 py-1 border-2 border-ink -rotate-1 uppercase">
                 EDITION // 2026 · 28°32'N 77°14'E · V2.6
               </span>

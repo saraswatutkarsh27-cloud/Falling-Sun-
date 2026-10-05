@@ -15,7 +15,7 @@ export const eventConfig: EventConfig = {
 
   // Registration portal state (single source of truth)
   registrationOpensAt: "2026-01-01T00:00:00",
-  registrationUrl: "https://fallingsundelhi.fillout.com/registrationforms",
+  registrationUrl: "https://fallingsun.fillout.com/register",
 
   tracks: [
     {
@@ -297,15 +297,6 @@ export const eventConfig: EventConfig = {
       role: "Faculty Advisor",
       bio: "Overseeing participant experience, coordination, and on-ground event support.",
       image: "/team/antesh-chauhan.png",
-      isPlaceholder: false,
-      section: "backbone",
-    },
-    {
-      id: "anshika",
-      name: "Anshika",
-      role: "Faculty Advisor",
-      bio: "Supporting event operations, coordinating teams, and driving strategic execution.",
-      image: "/team/anshika.jpeg",
       isPlaceholder: false,
       section: "backbone",
     },

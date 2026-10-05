@@ -15,10 +15,6 @@ export const RegistrationProvider: React.FC<{ children: React.ReactNode }> = ({ 
   const [show, setShow] = useState(false);
 
   const open = () => {
-    if (isRegistrationOpen() && eventConfig.registrationUrl) {
-      window.open(eventConfig.registrationUrl, '_blank', 'noopener,noreferrer');
-      return;
-    }
     setShow(true);
   };
 
@@ -85,6 +81,11 @@ const RegistrationLockModal: React.FC<{ show: boolean; onClose: () => void }> = 
             <div className="p-8">
               {registrationOpen ? (
                 <>
+                  <div className="mb-6 p-4 bg-yellow border-2 border-ink text-center">
+                    <p className="font-display text-lg font-black uppercase text-ink leading-snug">
+                      Only 200 participants will appear at venue
+                    </p>
+                  </div>
                   <p className="text-center text-ink-muted text-sm mb-6 font-sans">
                     Applications are now open. Submit your application before the deadline — solo or teams of up to 4.
                   </p>
@@ -98,6 +99,12 @@ const RegistrationLockModal: React.FC<{ show: boolean; onClose: () => void }> = 
                     <span>START REGISTRATION</span>
                     <ArrowUpRight className="w-4 h-4" />
                   </a>
+                  <button
+                    onClick={onClose}
+                    className="mt-3 w-full py-3 bg-cream text-ink border-2 border-ink font-mono text-xs font-bold tracking-wider hover:bg-cream/80 transition-colors"
+                  >
+                    CLOSE
+                  </button>
                 </>
               ) : (
                 <>
