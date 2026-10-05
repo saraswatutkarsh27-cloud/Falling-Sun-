@@ -109,7 +109,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5 text-xs text-cream/80">
               <FooterLink to="/" number="00" label="HOME" />
               <FooterLink to="/about" number="01" label="ABOUT" />
-              <FooterLink to="/rays" number="02" label="TRACKS" />
+              <FooterLink to="/rays" number="02" label="RAYS" />
               <FooterLink to="/schedule" number="03" label="SCHEDULE" />
               <FooterLink to="/prizes" number="04" label="PRIZES" />
               <FooterLink to="/team" number="05" label="TEAM" />
