@@ -343,8 +343,8 @@ export const eventConfig: EventConfig = {
     {
       id: "aniket-gaba",
       name: "Aniket Gaba",
-      role: "Director",
-      bio: "Directing event execution, schedule orchestration, and operational alignment.",
+      role: "Faculty Advisor",
+      bio: "Advising on event execution, schedule orchestration, and operational alignment.",
       image: "/team/aniket-gaba.jpeg",
       isPlaceholder: false,
       section: "backbone",
