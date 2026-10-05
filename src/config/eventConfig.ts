@@ -93,8 +93,25 @@ export const eventConfig: EventConfig = {
       subThemes: ["3D modeling", "Video editing", "Graphic design", "Motion and animation", "etc."],
     },
     {
-      id: "many-more",
+      id: "cybersecurity",
       number: "M2",
+      title: "CYBERSECURITY",
+      tagline: "BREAK IN. LOCK DOWN. DEFEND.",
+      description:
+        "Hack ethically, defend boldly. Not strictly limited to under-18 participants — builders over 18 are also welcome in this mini-track.",
+      focusAreas: [
+        "CTF Challenges & Exploitation",
+        "Web & Network Security",
+        "Reverse Engineering",
+        "Security Tools & Automation"
+      ],
+      tools: ["Kali Linux", "Burp Suite", "Wireshark", "Python", "Nmap"],
+      colorAccent: "#4CAF50",
+      subThemes: ["CTF", "Web security", "Cryptography", "Forensics", "etc."],
+    },
+    {
+      id: "many-more",
+      number: "M3",
       title: "AND MANY MORE",
       tagline: "MORE MINI-TRACKS DROP BEFORE KICKOFF.",
       description:
@@ -437,7 +454,7 @@ export const eventConfig: EventConfig = {
     {
       id: "f0",
       question: "Who can participate?",
-      answer: "Those who are under 18 and all.",
+      answer: "Falling Sun is built for young builders (under 18). The Cybersecurity mini-track, however, is open to everyone — participants over 18 are also welcome to join that track.",
       category: "Eligibility",
     },
     {
