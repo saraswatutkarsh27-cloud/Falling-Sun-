@@ -41,8 +41,8 @@ OLD TEAM (11 members):
   - Bhavesh (President), Aazim (Director), Manas (Vice Director)
   - Aarya, Bidisha, Aarav, Arnab, Sampada (Event Incharges)
 
-NEW TEAM (8 members):
-  - Aniket Gaba (Director) - FIRST in row 1
+NEW TEAM (10 members):
+  - Aniket Gaba (Backbone) - FIRST, own backbone row
   - Tanmay Singh (Lead Organizer)
   - Ayush Sharma (Lead Organizer)
   - Kartik Patel (Lead Organizer)
@@ -50,6 +50,10 @@ NEW TEAM (8 members):
   - Dev Priya (Organizer)
   - Aditya Kashyap (Organizer)
   - Divyansh (Event Incharge)
+  - Adarsh (Event Incharge)
+  - Mayank (Event Incharge)
+
+  Anshika (Associate Director) removed from the team.
 
 All 11 old team photos removed. 8 new photos added from
 "C:\Users\tanmay\Downloads\teamfallingsun" folder.
@@ -157,7 +161,99 @@ RegisterPage.tsx updated:
   - src/pages/TracksPage.tsx (lock modal)
   - src/pages/RegisterPage.tsx (countdown page)
   - src/pages/TeamPage.tsx (renamed)
-  - public/team/ (8 new photos, all old removed)
+  - public/team/ (10 photos, Anshika removed, all re-compressed)
+
+========================================
+  CHANGE SET 11 - SEO, PERFORMANCE & BUG FIXES
+========================================
+
+11A. TEAM CORRECTIONS
+-----------------------
+  - Aniket Gaba: role changed Director -> Backbone (no Director tag)
+  - Anshika removed from team + photo deleted
+  - Adarsh and Mayank KEPT (Event Incharges)
+  - TeamGrid/HomeTeamSection backbone badge now renders the real role
+    instead of a hardcoded DIRECTOR / ASSOC. DIRECTOR label
+
+11B. SEO / SEARCH ENGINE METADATA (NEW)
+-------------------------------------------
+  index.html:
+    - Full title, description, keywords, robots, canonical URL
+    - Open Graph tags (og:type, og:url, og:title, og:description,
+      og:image 1200x630 absolute URL, og:site_name, og:locale)
+    - Twitter card (summary_large_image)
+    - JSON-LD structured data: Event + WebSite schema
+    - noscript fallback content for crawlers
+  NEW FILE: src/components/common/RouteSeo.tsx
+    - Per-route title/description/canonical/OG updates (mounted in App.tsx)
+  NEW FILE: public/robots.txt
+  NEW FILE: public/sitemap.xml (all 8 routes)
+
+11C. ASSETS COMPRESSED (FASTER LOADS)
+----------------------------------------
+  logo_transparent.png  894 KB -> 67 KB (512px, palette PNG)
+  NEW logo_transparent.webp 36 KB  (used by Navbar/Footer/Hero/Preloader)
+  NEW favicon.png         5.6 KB (was pointing at the 894 KB logo)
+  NEW apple-touch-icon.png 27 KB
+  NEW og-image.jpg      162 KB (1200x630 for social/OG previews)
+  Team photos re-encoded at JPEG q70 (only kept when smaller)
+  Deleted unused: image.png, logo_with_bg.png (root + public,
+    6.4 MB total) and public/team/anshika.jpeg
+
+11D. DEPLOYMENT FIX (VERCEL)
+-------------------------------
+  NEW FILE: vercel.json - SPA rewrites so deep links
+  (/team, /tracks, /register, refresh) resolve to index.html
+  instead of returning 404.
+
+11E. REGISTRATION LOCK BUG FIX
+---------------------------------
+  NEW FILE: src/utils/registration.ts
+    - Single source of truth for the open date (eventConfig.registrationOpensAt)
+  NEW FILE: src/components/common/CountdownTimer.tsx
+    - Shared useCountdown() hook + <CountdownGrid /> (was duplicated)
+  - RegistrationLockModal + RegisterPage now share one date/clock
+  - isOpen is finally honoured: after Oct 5, 2026 REGISTER buttons go
+    straight to eventConfig.registrationUrl (falls back to WhatsApp),
+    and the modal/page switch to "REGISTRATION IS OPEN" state
+  - eventConfig.registrationUrl added: set it when the form goes live
+
+11F. CLEANUP
+--------------
+  - src/types/index.ts: dropped unused socials.twitter
+  - "CyferNode" references in comments renamed to "Falling Sun"
+
+========================================
+  CHANGE SET 12 - HERO FIX, ROLE TAGS, NEW MEMBER
+========================================
+
+12A. HOME PAGE HERO ("FALLING SUN") FIXED
+-------------------------------------------
+  BUG: "FALLING" rendered 1302px inside a 1280px container and
+  15vw on mobile -> letters were CLIPPED on both edges.
+  FIX: size is now text-[12vw] md:text-[min(11.5vw,180px)] + nowrap,
+  verified fitting at 390 / 1440 / 1920 px widths (no h-overflow).
+  Also removed the drop-shadow filter behind "SUN" (it painted a
+  white rectangle artifact) -> replaced with a text-shadow glow.
+  Sub-badge now wraps cleanly on mobile, CTA buttons no longer
+  overflow on small screens, hero fits the first mobile viewport.
+
+12B. ROLE TAGS ON EVERY TEAM CARD (TOP LEFT)
+----------------------------------------------
+  NEW FILE: src/components/team/RoleTag.tsx
+  Color-coded pill on the TOP LEFT corner of every photo:
+    BACKBONE (amber) / LEAD ORG (flame) / ORGANIZER (sun) /
+    EVENT INCHARGE (orange) / CORE fallback
+  Applied in TeamGrid.tsx (backbone + regular rows) and
+  HomeTeamSection.tsx. Old bottom-right badges removed.
+
+12C. TEAM ROSTER UPDATES
+---------------------------
+  - Divyansh: Event Incharge -> Organizer
+  - Pranab: NEW Organizer (photo public/team/pranab.jpeg,
+    400x500 JPEG q70, 20.5 KB)
+  - Team = 11 members: 1 backbone + 3 leads + 5 organizers
+    + 2 event incharges
 
 ========================================
   HOW TO RUN LOCALLY

@@ -10,6 +10,7 @@ import { PageTransition } from './components/common/PageTransition';
 import { ScrollHUD } from './components/common/ScrollHUD';
 import { RoughFilter } from './components/RoughFilter';
 import { RegistrationProvider } from './components/common/RegistrationLockModal';
+import { RouteSeo } from './components/common/RouteSeo';
 
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
@@ -110,6 +111,7 @@ export const App: React.FC = () => {
 
   return (
     <Router>
+      <RouteSeo />
       <RegistrationProvider>
       <div className="relative min-h-screen bg-bg text-cream selection:bg-yellow selection:text-ink">
         {/* Hidden SVG filter for the .rough heading class */}

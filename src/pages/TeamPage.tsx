@@ -12,10 +12,10 @@ export const TeamPage: React.FC = () => {
             [00] — OUR CREW
           </div>
           <h1 className="font-display text-5xl sm:text-6xl md:text-7xl font-black tracking-tight text-cream break-word">
-            The students behind the event.
+            Team Falling Sun
           </h1>
           <p className="text-cream text-base sm:text-lg max-w-2xl mx-auto font-bold leading-relaxed">
-            Team Falling Sun — student builders, designers, and organizers crafting the Falling Sun hackathon.
+            Builders, designers, and organizers crafting the Falling Sun hackathon.
           </p>
         </div>
 

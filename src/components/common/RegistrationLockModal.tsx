@@ -1,18 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Lock, X, Clock } from 'lucide-react';
-
-const REGISTRATION_OPENS_AT = new Date('2026-10-05T00:00:00').getTime();
-
-function getTimeLeft() {
-  const now = Date.now();
-  const diff = Math.max(0, REGISTRATION_OPENS_AT - now);
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
-  const seconds = Math.floor((diff / 1000) % 60);
-  return { days, hours, minutes, seconds, isOpen: diff <= 0 };
-}
+import { Lock, X, Clock, PartyPopper, ArrowUpRight } from 'lucide-react';
+import { eventConfig } from '../../config/eventConfig';
+import { isRegistrationOpen, getRegistrationTarget } from '../../utils/registration';
+import { useCountdown, CountdownGrid } from './CountdownTimer';
 
 export const RegistrationLockContext = React.createContext<{
   open: () => void;
@@ -22,8 +13,13 @@ export const useRegistrationLock = () => React.useContext(RegistrationLockContex
 
 export const RegistrationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [show, setShow] = useState(false);
+
+  const open = () => {
+    setShow(true);
+  };
+
   return (
-    <RegistrationLockContext.Provider value={{ open: () => setShow(true) }}>
+    <RegistrationLockContext.Provider value={{ open }}>
       {children}
       <RegistrationLockModal show={show} onClose={() => setShow(false)} />
     </RegistrationLockContext.Provider>
@@ -31,13 +27,13 @@ export const RegistrationProvider: React.FC<{ children: React.ReactNode }> = ({ 
 };
 
 const RegistrationLockModal: React.FC<{ show: boolean; onClose: () => void }> = ({ show, onClose }) => {
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft);
-
-  useEffect(() => {
-    if (!show) return;
-    const interval = setInterval(() => setTimeLeft(getTimeLeft()), 1000);
-    return () => clearInterval(interval);
-  }, [show]);
+  const timeLeft = useCountdown();
+  const registrationOpen = isRegistrationOpen();
+  const opensLabel = new Date(eventConfig.registrationOpensAt).toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
 
   return (
     <AnimatePresence>
@@ -61,51 +57,83 @@ const RegistrationLockModal: React.FC<{ show: boolean; onClose: () => void }> = 
             <div className="relative bg-ink p-8 text-center">
               <button
                 onClick={onClose}
+                aria-label="Close"
                 className="absolute top-4 right-4 p-2 bg-cream/10 hover:bg-cream/20 text-cream/70 hover:text-cream transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
               <div className="w-16 h-16 mx-auto mb-4 bg-yellow flex items-center justify-center">
-                <Lock className="w-8 h-8 text-ink" />
+                {registrationOpen ? (
+                  <PartyPopper className="w-8 h-8 text-ink" />
+                ) : (
+                  <Lock className="w-8 h-8 text-ink" />
+                )}
               </div>
-              <h3 className="font-display text-2xl font-black text-cream mb-1">REGISTRATION LOCKED</h3>
-              <p className="font-mono text-xs text-cream/80 tracking-wider">PORTAL OPENS OCTOBER 5, 2026</p>
+              <h3 className="font-display text-2xl font-black text-cream mb-1">
+                {registrationOpen ? 'REGISTRATION IS OPEN' : 'REGISTRATION LOCKED'}
+              </h3>
+              <p className="font-mono text-xs text-cream/80 tracking-wider">
+                {registrationOpen ? 'THE PORTAL IS LIVE — APPLY NOW' : `PORTAL OPENS ${opensLabel.toUpperCase()}`}
+              </p>
             </div>
 
-            {/* Countdown */}
+            {/* Body */}
             <div className="p-8">
-              <p className="text-center text-ink-muted text-sm mb-6 font-sans">
-                Registration portal opens in:
-              </p>
-              <div className="grid grid-cols-4 gap-3">
-                {[
-                  { label: 'DAYS', value: timeLeft.days },
-                  { label: 'HRS', value: timeLeft.hours },
-                  { label: 'MIN', value: timeLeft.minutes },
-                  { label: 'SEC', value: timeLeft.seconds },
-                ].map((item) => (
-                  <div key={item.label} className="text-center">
-                    <div className="bg-ink p-3">
-                      <span className="font-display text-3xl font-black text-cream tabular-nums">
-                        {String(item.value).padStart(2, '0')}
-                      </span>
-                    </div>
-                    <span className="font-mono text-[10px] text-ink-muted tracking-widest mt-2 block">
-                      {item.label}
-                    </span>
+              {registrationOpen ? (
+                <>
+                  <div className="mb-6 p-4 bg-yellow border-2 border-ink text-center">
+                    <p className="font-display text-lg font-black uppercase text-ink leading-snug">
+                      Only 200 participants will appear at venue
+                    </p>
                   </div>
-                ))}
-              </div>
-              <div className="mt-6 flex items-center justify-center gap-2 font-mono text-xs text-ink-muted">
-                <Clock className="w-3.5 h-3.5 text-reddark" />
-                <span>OCTOBER 5, 2026 • 12:00 AM</span>
-              </div>
-              <button
-                onClick={onClose}
-                className="mt-6 w-full py-3 bg-yellow text-ink border-2 border-ink shadow-btn font-display text-lg font-black uppercase tracking-wide hover:shadow-[7px_7px_0_#1d1210] transition-shadow"
-              >
-                GOT IT
-              </button>
+                  <p className="text-center text-ink-muted text-sm mb-6 font-sans">
+                    Applications are now open. Submit your application before the deadline — duo or teams of up to 4.
+                  </p>
+                  <a
+                    href={getRegistrationTarget()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={onClose}
+                    className="w-full flex items-center justify-center gap-2 py-3 bg-yellow text-ink border-2 border-ink shadow-btn font-display text-lg font-black uppercase tracking-wide hover:shadow-[7px_7px_0_#1d1210] transition-shadow"
+                  >
+                    <span>START REGISTRATION</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </a>
+                  <button
+                    onClick={onClose}
+                    className="mt-3 w-full py-3 bg-cream text-ink border-2 border-ink font-mono text-xs font-bold tracking-wider hover:bg-cream/80 transition-colors"
+                  >
+                    CLOSE
+                  </button>
+                </>
+              ) : (
+                <>
+                  <p className="text-center text-ink-muted text-sm mb-6 font-sans">
+                    Registration portal opens in:
+                  </p>
+                  <CountdownGrid timeLeft={timeLeft} variant="light" />
+                  <div className="mt-6 flex items-center justify-center gap-2 font-mono text-xs text-ink-muted">
+                    <Clock className="w-3.5 h-3.5 text-reddark" />
+                    <span>{opensLabel.toUpperCase()} • 12:00 AM</span>
+                  </div>
+                  <a
+                    href={eventConfig.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={onClose}
+                    className="mt-4 w-full flex items-center justify-center gap-2 py-3 bg-cream text-ink border-2 border-ink font-mono text-xs font-bold tracking-wider hover:bg-yellow transition-colors"
+                  >
+                    <span>GET NOTIFIED ON WHATSAPP</span>
+                    <ArrowUpRight className="w-4 h-4 text-reddark" />
+                  </a>
+                  <button
+                    onClick={onClose}
+                    className="mt-3 w-full py-3 bg-yellow text-ink border-2 border-ink shadow-btn font-display text-lg font-black uppercase tracking-wide hover:shadow-[7px_7px_0_#1d1210] transition-shadow"
+                  >
+                    GOT IT
+                  </button>
+                </>
+              )}
             </div>
           </motion.div>
         </div>

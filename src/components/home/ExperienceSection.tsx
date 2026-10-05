@@ -15,7 +15,7 @@ const experiences = [
     description:
       'Fly in a supervised zone, tune sensor and flight logic, and turn robotics ideas into a live demo. [CONFIRM: safety rules].',
     pill: 'FLY YOUR IDEA',
-    image: '/drone.webp',
+    image: '/fpvdrone.png',
   },
   {
     id: '03',

@@ -21,7 +21,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`${align === 'center' ? 'text-center' : 'text-left'} ${className}`}>
+    <div className={`space-y-4 ${align === 'center' ? 'text-center' : 'text-left'} ${className}`}>
       {/* Category & Section Number sticker row */}
       <div
         className={`flex items-center gap-3 text-xs ${

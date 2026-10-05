@@ -74,7 +74,7 @@ export const Footer: React.FC = () => {
           <div className="md:col-span-6 space-y-6">
             <div className="flex items-center gap-4">
               <img
-                src="/logo_transparent.png"
+                src="/logo_transparent.webp"
                 alt="Falling Sun Logo"
                 className="w-12 h-12 object-contain"
               />

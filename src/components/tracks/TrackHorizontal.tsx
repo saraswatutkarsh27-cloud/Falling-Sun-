@@ -39,7 +39,7 @@ export const TrackHorizontal: React.FC = () => {
 
   return (
     <div className="relative w-full max-w-7xl mx-auto px-6 md:px-12 py-10 select-none">
-      {/* Top Track Switcher Tabs (CyferNode Editorial Pill Design) */}
+      {/* Top Track Switcher Tabs (Falling Sun Editorial Pill Design) */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-8 border-b-[3px] border-cream/40">
         <div className="flex flex-wrap items-center gap-2 p-1.5 bg-cream border-2 border-ink shadow-card">
           {eventConfig.tracks.map((t, idx) => {

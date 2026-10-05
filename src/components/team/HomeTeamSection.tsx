@@ -1,20 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Sparkles, Crown } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { eventConfig } from '../../config/eventConfig';
-
-const backboneLabel: Record<string, string> = {
-  Director: "DIRECTOR",
-  Principal: "PRINCIPAL",
-  "Faculty Advisor": "ADVISOR",
-  Advisor: "ADVISOR",
-  "Associate Director": "ASSOC. DIRECTOR",
-};
+import { RoleTag } from './RoleTag';
 
 export const HomeTeamSection: React.FC = () => {
-  const backboneMembers = eventConfig.team.filter((m) => m.section === 'backbone');
-  const regularMembers = eventConfig.team.filter((m) => m.section !== 'backbone');
+  const organizers = eventConfig.team.filter((m) => m.section !== 'backbone');
+  const facultyMembers = eventConfig.team.filter((m) => m.section === 'backbone');
 
   return (
     <section className="relative py-24 px-6 md:px-12 bg-bg">
@@ -29,7 +22,7 @@ export const HomeTeamSection: React.FC = () => {
               transition={{ duration: 0.5 }}
               className="font-mono text-xs uppercase tracking-[0.2em] text-ink font-bold"
             >
-              THE STUDENTS BEHIND THE EVENT
+              THE PEOPLE BEHIND THE EVENT
             </motion.p>
 
             <motion.h2
@@ -59,40 +52,17 @@ export const HomeTeamSection: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Backbone Members */}
-        {backboneMembers.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
-            {backboneMembers.map((member, idx) => (
-                <motion.div
-                  key={member.id}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-20px' }}
-                  transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                  whileHover={{ y: -6 }}
-                  className="group relative overflow-hidden bg-cream border-2 border-ink shadow-card hover:shadow-[8px_8px_0_#1d1210] transition-all duration-300"
-                >
-                  <div className="relative aspect-[220/280] w-full overflow-hidden bg-ink">
-                    <img
-                      src={member.image}
-                      alt={`${member.name} - ${member.role}`}
-                      className="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute top-3 left-3 px-2 py-0.5 bg-ink border-2 border-cream font-mono text-[9px] text-yellow tracking-widest uppercase font-bold z-10 flex items-center gap-1">
-                      <Crown className="w-2.5 h-2.5 text-yellow" />
-                      <span>{backboneLabel[member.role] ?? 'MEMBER'}</span>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-          </div>
-        )}
-
-        {/* Regular Team Cards Grid */}
+        {/* SECTION 1: ORGANIZERS (TOP) */}
         <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <span className="px-3 py-1 bg-reddark border-2 border-cream text-cream font-mono text-xs font-bold uppercase tracking-widest">
+              ORGANIZERS
+            </span>
+            <div className="flex-1 h-px bg-cream/20 border-t-2 border-dashed"></div>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {regularMembers.map((member, idx) => (
+            {organizers.map((member, idx) => (
               <motion.div
                 key={member.id}
                 initial={{ opacity: 0, y: 24 }}
@@ -110,31 +80,51 @@ export const HomeTeamSection: React.FC = () => {
                     loading="lazy"
                   />
 
-                  {member.role === 'Lead Organizer' && (
-                    <div className="absolute top-3 left-3 px-2 py-0.5 bg-ink border-2 border-cream font-mono text-[9px] text-yellow tracking-widest uppercase font-bold z-10 flex items-center gap-1">
-                      <Sparkles className="w-2.5 h-2.5 text-yellow" />
-                      <span>LEAD ORG</span>
-                    </div>
-                  )}
+                  <RoleTag role={member.role} />
 
-                  {member.role === 'Director' && (
-                    <div className="absolute top-3 left-3 px-2 py-0.5 bg-yellow border-2 border-ink font-mono text-[9px] text-ink tracking-widest uppercase font-bold z-10 flex items-center gap-1">
-                      <Crown className="w-2.5 h-2.5 text-ink" />
-                      <span>DIRECTOR</span>
-                    </div>
-                  )}
-
-                  {member.role === 'Associate Director' && (
-                    <div className="absolute top-3 left-3 px-2 py-0.5 bg-ink border-2 border-cream font-mono text-[9px] text-cream tracking-widest uppercase font-bold z-10 flex items-center gap-1">
-                      <Crown className="w-2.5 h-2.5 text-cream" />
-                      <span>ASSOC. DIRECTOR</span>
-                    </div>
-                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-300 pointer-events-none" />
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
+
+        {/* SECTION 2: ADVISING FACULTY (BOTTOM) */}
+        {facultyMembers.length > 0 && (
+          <div className="space-y-4 pt-4">
+            <div className="flex items-center gap-3">
+              <span className="px-3 py-1 bg-green border-2 border-cream text-cream font-mono text-xs font-bold uppercase tracking-widest">
+                ADVISING FACULTY
+              </span>
+              <div className="flex-1 h-px bg-cream/20 border-t-2 border-dashed"></div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 w-full">
+              {facultyMembers.map((member, idx) => (
+                <motion.div
+                  key={member.id}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-20px' }}
+                  transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  whileHover={{ y: -6 }}
+                  className="group relative overflow-hidden bg-cream border-2 border-ink shadow-card hover:shadow-[8px_8px_0_#1d1210] transition-all duration-300"
+                >
+                  <div className="relative aspect-[220/280] w-full overflow-hidden bg-ink">
+                    <img
+                      src={member.image}
+                      alt={`${member.name} - ${member.role}`}
+                      className="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <RoleTag role={member.role} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-300 pointer-events-none" />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
