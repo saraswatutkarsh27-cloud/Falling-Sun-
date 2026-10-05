@@ -129,7 +129,7 @@ export const HomeTracksSection: React.FC = () => {
         <div className="text-center pt-4">
           <MagneticButton
             to="/rays"
-            text="EXPLORE ALL TRACKS"
+            text="EXPLORE ALL RAYS"
             icon={<ArrowUpRight className="w-4 h-4" />}
             className="px-8 py-3 font-mono text-xs font-bold tracking-wider"
             variant="outline"

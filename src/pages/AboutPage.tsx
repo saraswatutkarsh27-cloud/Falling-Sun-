@@ -150,7 +150,7 @@ export const AboutPage: React.FC = () => {
         <div className="flex flex-wrap items-center justify-between gap-4 pt-8 border-t-2 border-cream/40 font-mono text-xs">
           <MagneticButton
             to="/rays"
-            text="NEXT: EXPLORE TRACKS"
+            text="NEXT: EXPLORE RAYS"
             icon={<ArrowUpRight className="w-4 h-4" />}
             className="px-6 py-3 rounded-full font-mono text-xs font-bold"
             variant="secondary"
