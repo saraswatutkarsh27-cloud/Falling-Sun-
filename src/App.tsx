@@ -43,7 +43,7 @@ const AnimatedRoutes: React.FC = () => {
           }
         />
         <Route
-          path="/tracks"
+          path="/rays"
           element={
             <PageTransition>
               <TracksPage />

@@ -68,6 +68,7 @@ export interface EventConfig {
   whatsappUrl: string;
   instagramUrl?: string;
   tracks: TrackItem[];
+  miniTracks: TrackItem[];
   schedule: ScheduleDay[];
   prizes: PrizeItem[];
   team: TeamMember[];

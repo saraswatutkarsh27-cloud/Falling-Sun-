@@ -15,6 +15,8 @@ export const TracksPage: React.FC = () => {
     'game-development': <GameDevVisual key="game" />,
     'web-development': <WebDevVisual key="web" />,
     'robotics': <RoboticsVisual key="robotics" />,
+  };
+  const miniVisuals: Record<string, React.ReactNode> = {
     'creative-skills': <CreativeSkillsVisual key="creative-skills" />,
   };
 
@@ -25,7 +27,7 @@ export const TracksPage: React.FC = () => {
         <SectionHeader
           number="02"
           category="COMPETITION ARENAS"
-          title="FOUR PATHWAYS. INFINITE OUTCOMES."
+          title="THREE PATHWAYS. INFINITE OUTCOMES."
           subtitle="Select your focus track. Whether your craft is graphics pipelines, distributed web applications, or kinetic robotics, Falling Sun provides the infrastructure to build without limits."
         />
 
@@ -113,6 +115,101 @@ export const TracksPage: React.FC = () => {
               </StampCard>
             </motion.div>
           ))}
+        </div>
+
+        {/* Mini-Tracks Section */}
+        <div className="space-y-10">
+          <div className="text-center space-y-3">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-ink font-bold">
+              SIDE QUESTS
+            </p>
+            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-black text-cream tracking-tight">
+              MINI-TRACKS
+            </h2>
+            <p className="text-cream text-base md:text-lg max-w-2xl mx-auto font-sans leading-relaxed font-medium">
+              Smaller arenas for craft-first builders. Creative Skills lives here now — with more mini-tracks on the way.
+            </p>
+          </div>
+
+          <div className="space-y-10" style={{ perspective: 1200 }}>
+            {eventConfig.miniTracks.map((track, idx) => (
+              <motion.div
+                key={track.id}
+                initial={{ opacity: 0, y: 50, rotateX: 8 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.75, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="relative transition-all"
+              >
+                <StampCard
+                  title={track.title}
+                  className="p-8 sm:p-12 md:p-16 overflow-hidden"
+                >
+                  <div className="flex items-center justify-end font-mono text-xs text-ink pb-8 border-b-2 border-ink/20 mb-10">
+                    <span className="text-ink-muted hidden sm:inline uppercase tracking-widest font-semibold">
+                      MINI-TRACK SPECIFICATION
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div className="lg:col-span-6 space-y-6">
+                      <div className="font-mono text-xs text-reddark uppercase tracking-wider font-bold">
+                        {track.tagline}
+                      </div>
+
+                      <p className="text-ink-muted text-sm sm:text-base leading-relaxed font-medium">
+                        {track.description}
+                      </p>
+
+                      <div className="space-y-3 pt-2">
+                        <div className="font-mono text-xs text-ink-muted uppercase tracking-widest font-bold">
+                          // EVALUATION FOCUS AREAS
+                        </div>
+                        <div className="space-y-2">
+                          {track.focusAreas.map((area) => (
+                            <div key={area} className="flex items-start gap-3 text-xs sm:text-sm text-ink font-sans font-medium">
+                              <CheckCircle2 className="w-4 h-4 text-reddark shrink-0 mt-0.5" />
+                              <span>{area}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="space-y-2 pt-2">
+                        <div className="font-mono text-xs text-ink-muted uppercase tracking-widest font-bold">
+                          // SUGGESTED ENGINES & STACKS
+                        </div>
+                        <div className="flex flex-wrap gap-2 font-mono text-xs">
+                          {track.tools.map((tool) => (
+                            <span
+                              key={tool}
+                              className="px-3 py-1.5 bg-yellow/40 border-2 border-ink text-ink font-bold"
+                            >
+                              {tool}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="pt-4">
+                        <MagneticButton
+                          onClick={openRegLock}
+                          text="ENROLL IN THIS MINI-TRACK"
+                          icon={<ArrowUpRight className="w-4 h-4" />}
+                          className="px-6 py-3.5 rounded-full font-mono text-xs font-bold tracking-wider"
+                          variant="primary"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="lg:col-span-6">
+                      {miniVisuals[track.id] ?? null}
+                    </div>
+                  </div>
+                </StampCard>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         {/* WhatsApp Callout */}

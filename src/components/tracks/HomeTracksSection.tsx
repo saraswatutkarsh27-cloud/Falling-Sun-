@@ -18,7 +18,7 @@ export const HomeTracksSection: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="font-mono text-xs uppercase tracking-[0.2em] text-ink font-bold"
           >
-            FOUR COMPETITION ARENAS
+            THREE COMPETITION ARENAS
           </motion.p>
 
           <motion.h2
@@ -44,7 +44,7 @@ export const HomeTracksSection: React.FC = () => {
         </div>
 
         {/* Track Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
           {eventConfig.tracks.map((track, idx) => (
             <motion.div
               key={track.id}
@@ -113,7 +113,7 @@ export const HomeTracksSection: React.FC = () => {
                   whileHover={{ opacity: 1, x: 0 }}
                 >
                   <Link
-                    to="/tracks"
+                    to="/rays"
                     className="inline-flex items-center gap-1 px-3 py-1.5 bg-ink text-cream border-2 border-ink font-mono text-[10px] font-black hover:bg-yellow hover:text-ink transition-all"
                   >
                     <span>DETAILS</span>
@@ -128,7 +128,7 @@ export const HomeTracksSection: React.FC = () => {
         {/* View All CTA */}
         <div className="text-center pt-4">
           <MagneticButton
-            to="/tracks"
+            to="/rays"
             text="EXPLORE ALL TRACKS"
             icon={<ArrowUpRight className="w-4 h-4" />}
             className="px-8 py-3 font-mono text-xs font-bold tracking-wider"

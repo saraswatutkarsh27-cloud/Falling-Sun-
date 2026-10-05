@@ -68,9 +68,12 @@ export const eventConfig: EventConfig = {
       // CONFIRM WITH ORGANIZER
       subThemes: ["Drones", "Line followers", "Sensors and IoT", "Automation", "etc."],
     },
+  ],
+
+  miniTracks: [
     {
       id: "creative-skills",
-      number: "04",
+      number: "M1",
       title: "CREATIVE SKILLS",
       tagline: "MODEL IT. EDIT IT. DESIGN IT. SHIP IT FINISHED.",
       description:
@@ -83,8 +86,24 @@ export const eventConfig: EventConfig = {
       ],
       tools: ["Blender", "Figma", "DaVinci Resolve", "After Effects", "Illustrator"],
       colorAccent: "#F2327F",
-      // CONFIRM WITH ORGANIZER
       subThemes: ["3D modeling", "Video editing", "Graphic design", "Motion and animation", "etc."],
+    },
+    {
+      id: "many-more",
+      number: "M2",
+      title: "AND MANY MORE",
+      tagline: "MORE MINI-TRACKS DROP BEFORE KICKOFF.",
+      description:
+        "We're curating additional mini-tracks between now and the opening ceremony. Watch the official WhatsApp channel for announcements.",
+      focusAreas: [
+        "Announcements via WhatsApp",
+        "Community voting",
+        "Surprise bounties",
+        "Bonus mini-challenges"
+      ],
+      tools: ["Stay tuned"],
+      colorAccent: "#FDB813",
+      subThemes: ["TBA", "etc."],
     },
   ],
 
@@ -357,7 +376,7 @@ export const eventConfig: EventConfig = {
       id: "f1",
       question: "WHAT IS FALLING SUN?",
       answer:
-        "FALLING SUN is a premier hackathon where ambitious young technologists gather for 2 days (12 hours + 12 hours) to build real, working projects in Game Development, Web Development, Robotics, and Creative Skills. It is engineered to give builders high-end creative freedom without corporate templates.",
+        "FALLING SUN is a premier hackathon where ambitious young technologists gather for 2 days (12 hours + 12 hours) to build real, working projects in Game Development, Web Development, and Robotics, with additional mini-tracks such as Creative Skills. It is engineered to give builders high-end creative freedom without corporate templates.",
       category: "General",
     },
     {
@@ -376,9 +395,9 @@ export const eventConfig: EventConfig = {
     },
     {
       id: "f4",
-      question: "WHAT ARE THE FOUR TRACKS?",
+      question: "WHAT ARE THE TRACKS?",
       answer:
-        "The hackathon is centered around four tracks: (1) Game Development — building original playable titles, procedural systems, and game mechanics; (2) Web Development — engineering modern interactive web applications and digital interfaces; (3) Robotics — programming microcontrollers, sensors, and physical computing prototypes; and (4) Creative Skills — 3D modeling, video editing, and graphic design for makers who ship finished pieces.",
+        "The hackathon is centered around three main tracks: (1) Game Development — building original playable titles, procedural systems, and game mechanics; (2) Web Development — engineering modern interactive web applications and digital interfaces; and (3) Robotics — programming microcontrollers, sensors, and physical computing prototypes. Alongside these, we run mini-tracks such as Creative Skills — 3D modeling, video editing, and graphic design for makers who ship finished pieces — with more to be announced.",
       category: "Tracks",
     },
     {
