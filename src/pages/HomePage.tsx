@@ -39,7 +39,7 @@ export const HomePage: React.FC = () => {
           'ZERO SPAM',
           'ALL SKILL LEVELS WELCOME',
           'BRING YOUR OWN HARDWARE',
-          'SOLO OR UP TO 4 MEMBERS',
+          'DUO OR UP TO 4 MEMBERS',
           'DIRECT WHATSAPP DISPATCH',
         ]}
       />

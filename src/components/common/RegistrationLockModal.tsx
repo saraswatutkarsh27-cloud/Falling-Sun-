@@ -87,7 +87,7 @@ const RegistrationLockModal: React.FC<{ show: boolean; onClose: () => void }> = 
                     </p>
                   </div>
                   <p className="text-center text-ink-muted text-sm mb-6 font-sans">
-                    Applications are now open. Submit your application before the deadline — solo or teams of up to 4.
+                    Applications are now open. Submit your application before the deadline — duo or teams of up to 4.
                   </p>
                   <a
                     href={getRegistrationTarget()}

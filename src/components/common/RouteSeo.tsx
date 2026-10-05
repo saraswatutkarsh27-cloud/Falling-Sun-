@@ -45,7 +45,7 @@ const ROUTE_META: Record<string, { title: string; description: string }> = {
   '/register': {
     title: 'Register | FALLING SUN 2026 — Applications',
     description:
-      'Register for FALLING SUN 2026. Hackers can apply solo or in teams of up to 4 across Game Dev, Web Dev, Robotics, and Creative Skills. 100% free.',
+      'Register for FALLING SUN 2026. Hackers can apply duo or in teams of up to 4 across Game Dev, Web Dev, Robotics, and Creative Skills. 100% free.',
   },
 };
 

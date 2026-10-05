@@ -403,9 +403,9 @@ export const eventConfig: EventConfig = {
     },
     {
       id: "f5",
-      question: "CAN I PARTICIPATE SOLO OR AS A TEAM?",
+      question: "CAN I PARTICIPATE DUO OR AS A TEAM?",
       answer:
-        "You may register individually or form a team of up to 4 members. If you don't have a team beforehand, our official WhatsApp community will host dedicated team-formation sessions before the opening ceremony.",
+        "You may register in a duo or form a team of up to 4 members. If you don't have a team beforehand, our official WhatsApp community will host dedicated team-formation sessions before the opening ceremony.",
       category: "Participation",
     },
     {

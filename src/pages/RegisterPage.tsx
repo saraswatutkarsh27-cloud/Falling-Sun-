@@ -28,7 +28,7 @@ export const RegisterPage: React.FC = () => {
           number="07"
           category="REGISTRATION PORTAL"
           title="APPLICATION ENROLLMENT"
-          subtitle="Submit your application to participate in the Falling Sun 2026 cohort. Solo creators and teams of up to 4 members are welcome."
+          subtitle="Submit your application to participate in the Falling Sun 2026 cohort. Duo creators and teams of up to 4 members are welcome."
         />
 
         {/* Hero Card: READY TO BUILD? (Light Theme) */}
@@ -64,7 +64,7 @@ export const RegisterPage: React.FC = () => {
                 {registrationOpen ? (
                   <div className="space-y-4">
                     <p className="text-cream/70 text-sm font-sans">
-                      The application portal is open. Submit your entry — solo creators and teams of up to 4 members.
+                      The application portal is open. Submit your entry — duo creators and teams of up to 4 members.
                     </p>
                     <a
                       href={getRegistrationTarget()}
@@ -109,7 +109,7 @@ export const RegisterPage: React.FC = () => {
               <div className="space-y-2.5 pt-2 text-xs sm:text-sm text-ink font-sans font-medium">
                 <div className="flex items-center gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-reddark shrink-0" />
-                  <span>Individual or team registration (up to 4 members)</span>
+                  <span>Duo or team registration (up to 4 members)</span>
                 </div>
                 <div className="flex items-center gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-reddark shrink-0" />
