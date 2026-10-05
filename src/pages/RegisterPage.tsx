@@ -194,6 +194,44 @@ export const RegisterPage: React.FC = () => {
           </div>
         </div>
 
+        {/* Embedded Official Registration Form */}
+        <div className="relative border-2 border-ink bg-cream text-ink shadow-card overflow-hidden">
+          <div className="flex flex-wrap items-center justify-between gap-3 p-5 sm:p-6 border-b-2 border-ink bg-yellow">
+            <div className="space-y-1">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-ink/70 font-bold">
+                OFFICIAL FORM // FALLING SUN 2026
+              </span>
+              <h2 className="font-display text-2xl sm:text-3xl font-black leading-none">
+                FILL THE REGISTRATION FORM
+              </h2>
+            </div>
+            <a
+              href={getRegistrationTarget()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-ink text-cream border-2 border-ink shadow-btn font-mono text-[11px] font-bold tracking-wider hover:shadow-[6px_6px_0_#1d1210] transition-shadow"
+            >
+              <span>OPEN IN NEW TAB</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
+          </div>
+
+          <div className="p-3 sm:p-5">
+            <iframe
+              src={getRegistrationTarget()}
+              title="Falling Sun 2026 Registration Form"
+              loading="lazy"
+              allow="clipboard-write; camera; microphone"
+              className="block w-full h-[1000px] border-2 border-ink bg-white"
+            />
+          </div>
+
+          <div className="p-4 border-t-2 border-ink bg-ink flex items-center gap-2 font-mono text-[11px] text-cream/80 tracking-wide">
+            <ShieldCheck className="w-4 h-4 text-yellow shrink-0" />
+            <span>FORM HOSTED SECURELY ON FILLOUT • YOUR DATA STAYS PRIVATE</span>
+          </div>
+        </div>
+
         {/* WhatsApp Callout */}
         <WhatsAppCTA
           title="INVITE CODE & ACCEPTANCE CONFIRMATION"
